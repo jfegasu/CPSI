@@ -1,0 +1,11 @@
+
+*.bat
+*.sh
+*.sqbpro
+*.md
+
+Dockerfile
+.dockerignore
+
+.git
+.gitignore

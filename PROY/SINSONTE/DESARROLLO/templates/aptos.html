@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+{% if N==0%}
+  <div class="w3-container">
+  <h2>APARTAMENTOS</h2>
+  <a href="/u/i" class="w3-button w3-round w3-border">🞧  NUEVO</a>
+  <a href="/unidad" class="w3-button w3-round w3-border">🢢 REGRESAR</a>
+        
+{%if V>0 %}
+  {% for tipo in cadena %}
+  <ul class="w3-ul w3-card-4">
+    <li class="w3-bar">
+      <img src="{{url_for('static',filename='image/apto.png')}}" class="w3-bar-item" style="width:105px;">
+      <div class="w3-bar-item">
+        <span class="w3-large"><h1>{{tipo.torre}}-{{tipo.apt}}-{{tipo.contacto}}</h1></span><br>
+        <a href="#" class="w3-button w3-round w3-border" title="Grupo Familiar"><h3>👪</h3></a>
+        <a href="/u/u/{{tipo.idunidad}}" class="w3-button w3-round w3-border" title="Editar"><h3>✎</h3></a>
+        <a href="/u/d/{{tipo.idunidad}}" class="w3-button w3-round w3-border" title="Eliminar el registro"><img src="{{url_for('static',filename='image/borrar.png')}}"  width=30px></a>
+        
+      </div>
+    </li>
+  </ul>
+{% endfor %}
+{%endif%}
+</div>
+
+{%endif%}
+{% if N==1%}
+<h1>CREANDO....</h1>
+<form action="/u/ii" method="POST">
+  <center>
+    <div class="card" style="width: 40%;">
+      <div class="card-body">
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Nombre de la Unidad Residencial</label>
+  <textarea class="form-control" name="nomunidad" rows="3"></textarea>
+  <input type=submit class="btn btn-danger" value="Grabar">
+  <a href="/unidad" class="btn btn-success"> Regresar</a
+  </div>
+</div>
+</div>
+</form>
+{%endif%}
+{% if N==2%}
+{% for item in cadena %}
+<h1>EDITANDO....</h1>
+<form action="/u/uu" method="POST">
+  <center>
+    <div class="card" style="width: 40%;">
+      <div class="card-body">
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Nombre de la Unidad Residencial</label>
+  <input type=hidden name=idunidad value={{item.idunidad}}>
+  <textarea class="form-control" name="nomunidad" rows="3">{{item.nombre}}</textarea>
+  <input type=submit class="btn btn-danger" value="Grabar">
+  <a href="/unidad" class="btn btn-success"> Regresar</a
+  </div>
+</div>
+</div>
+</form>
+{%endfor%}
+{%endif%}
+{% if N==21%}
+
+<div class="alert">
+  <h1>REGISTRO ACTUALIZADO CORRECTAMENTE</h1>
+</div>  
+<script>
+  function Ir(){
+    location.href="/unidad";
+  }
+    setTimeout("Ir()",4000);
+</script>
+{%endif%}
+
+{% if N==3%}
+<center>
+<div class="card" style="width: 40%;">
+  <div class="card-body">
+<form action="/u/d31" method=post>
+<h2><strong>DESEA BORRAR EL REGISTRO?</strong></h2><br>
+<input type=hidden value={{ID}} name=idu>
+<input class="btn btn-danger" type=submit value="ACEPTAR" >
+<a href="/unidad" class="btn btn-success">CANCELAR</a>
+</form>
+</div>
+</div>
+
+{%endif%}
+{% if N==31%}
+
+<div class="alert">
+  <h1>REGISTRO ELIMINADO CORRECTAMENTE</h1>
+</div>  
+<script>
+  function Ir(){
+    location.href="/unidad";
+  }
+    setTimeout("Ir()",4000);
+</script>
+{%endif%}
+{% if N==11%}
+
+<div class="alert">
+  <h1>REGISTRO CREADO CORRECTAMENTE</h1>
+</div>  
+<script>
+  function Ir(){
+    location.href="/unidad";
+  }
+    setTimeout("Ir()",4000);
+</script>
+{%endif%}
+</body>
+</html>
+<link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{url_for('static',filename='css/tmenu.css')}}" rel="stylesheet">
+<script src="{{url_for('static',filename='js/tmenu.js')}}"></script>
+

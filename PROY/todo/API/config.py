@@ -1,0 +1,10 @@
+configura={
+    "STATIC_FOLDERS":"static",
+    "TEMPLATE_FOLDER":"templates",
+    "DEBUG":True,
+    "SERVER_NAME":"http://127.0.0.1:5000",
+    "PUERTOREST":5001,
+    "PUERTOAPP":8001,
+    "MODULO":"salud",
+    "SMBD":"SQLITE"
+}

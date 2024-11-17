@@ -1,0 +1,483 @@
+<?xml version="1.0" standalone="yes" ?>
+<DBMODEL Version="4.0">
+<SETTINGS>
+<GLOBALSETTINGS ModelName="INMOVI" IDModel="0" IDVersion="0" VersionStr="1.0.0.0" Comments="" UseVersionHistroy="1" AutoIncVersion="1" DatabaseType="MySQL" ZoomFac="100.00" XPos="0" YPos="0" DefaultDataType="5" DefaultTablePrefix="0" DefSaveDBConn="" DefSyncDBConn="" DefQueryDBConn="" Printer="" HPageCount="4.0" PageAspectRatio="1.440892512336408" PageOrientation="1" PageFormat="A4 (210x297 mm, 8.26x11.7 inches)" SelectedPages="" UsePositionGrid="0" PositionGridX="20" PositionGridY="20" TableNameInRefs="0" DefaultTableType="0" ActivateRefDefForNewRelations="1" FKPrefix="" FKPostfix="" CreateFKRefDefIndex="0" DBQuoteCharacter="`" CreateSQLforLinkedObjects="0" DefModelFont="Tahoma" CanvasWidth="4096" CanvasHeight="2842" />
+<DATATYPEGROUPS>
+<DATATYPEGROUP Name="Numeric Types" Icon="1" />
+<DATATYPEGROUP Name="Date and Time Types" Icon="2" />
+<DATATYPEGROUP Name="String Types" Icon="3" />
+<DATATYPEGROUP Name="Blob and Text Types" Icon="4" />
+<DATATYPEGROUP Name="User defined Types" Icon="5" />
+<DATATYPEGROUP Name="Geographic Types" Icon="6" />
+</DATATYPEGROUPS>
+<DATATYPES>
+<DATATYPE ID="1" IDGroup="0" TypeName="TINYINT" Description="A very small integer. The signed range is -128 to 127. The unsigned range is 0 to 255." ParamCount="1" OptionCount="2" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="UNSIGNED" Default="1" />
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="2" IDGroup="0" TypeName="SMALLINT" Description="A small integer. The signed range is -32768 to 32767. The unsigned range is 0 to 65535." ParamCount="1" OptionCount="2" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="UNSIGNED" Default="1" />
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="3" IDGroup="0" TypeName="MEDIUMINT" Description="A medium-size integer. The signed range is -8388608 to 8388607. The unsigned range is 0 to 16777215." ParamCount="1" OptionCount="2" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="UNSIGNED" Default="1" />
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="4" IDGroup="0" TypeName="INT" Description="A normal-size integer. The signed range is -2147483648 to 2147483647. The unsigned range is 0 to 4294967295." ParamCount="1" OptionCount="2" ParamRequired="0" EditParamsAsString="0" SynonymGroup="1" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="UNSIGNED" Default="0" />
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="5" IDGroup="0" TypeName="INTEGER" Description="A normal-size integer. The signed range is -2147483648 to 2147483647. The unsigned range is 0 to 4294967295." ParamCount="1" OptionCount="2" ParamRequired="0" EditParamsAsString="0" SynonymGroup="1" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="UNSIGNED" Default="1" />
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="6" IDGroup="0" TypeName="BIGINT" Description="A large integer. The signed range is -9223372036854775808 to 9223372036854775807. The unsigned range is 0 to 18446744073709551615." ParamCount="1" OptionCount="2" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="UNSIGNED" Default="0" />
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="7" IDGroup="0" TypeName="FLOAT" Description="A small (single-precision) floating-point number. Cannot be unsigned. Allowable values are -3.402823466E+38 to -1.175494351E-38, 0, and 1.175494351E-38 to 3.402823466E+38." ParamCount="1" OptionCount="1" ParamRequired="1" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="precision" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="8" IDGroup="0" TypeName="FLOAT" Description="A small (single-precision) floating-point number. Cannot be unsigned. Allowable values are -3.402823466E+38 to -1.175494351E-38, 0, and 1.175494351E-38 to 3.402823466E+38." ParamCount="2" OptionCount="1" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+<PARAM Name="decimals" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="9" IDGroup="0" TypeName="DOUBLE" Description="A normal-size (double-precision) floating-point number. Cannot be unsigned. Allowable values are -1.7976931348623157E+308 to -2.2250738585072014E-308, 0, and 2.2250738585072014E-308 to 1.7976931348623157E+308." ParamCount="2" OptionCount="1" ParamRequired="0" EditParamsAsString="0" SynonymGroup="2" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+<PARAM Name="decimals" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="10" IDGroup="0" TypeName="DOUBLE PRECISION" Description="This is a synonym for DOUBLE." ParamCount="2" OptionCount="1" ParamRequired="0" EditParamsAsString="0" SynonymGroup="2" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+<PARAM Name="decimals" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="11" IDGroup="0" TypeName="REAL" Description="This is a synonym for DOUBLE." ParamCount="2" OptionCount="1" ParamRequired="0" EditParamsAsString="0" SynonymGroup="2" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+<PARAM Name="decimals" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="12" IDGroup="0" TypeName="DECIMAL" Description="An unpacked floating-point number. Cannot be unsigned. Behaves like a CHAR column." ParamCount="2" OptionCount="1" ParamRequired="0" EditParamsAsString="0" SynonymGroup="3" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+<PARAM Name="decimals" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="13" IDGroup="0" TypeName="NUMERIC" Description="This is a synonym for DECIMAL." ParamCount="2" OptionCount="1" ParamRequired="1" EditParamsAsString="0" SynonymGroup="3" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+<PARAM Name="decimals" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="ZEROFILL" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="14" IDGroup="1" TypeName="DATE" Description="A date. The supported range is \a1000-01-01\a to \a9999-12-31\a." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="15" IDGroup="1" TypeName="DATETIME" Description="A date and time combination. The supported range is \a1000-01-01 00:00:00\a to \a9999-12-31 23:59:59\a." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="16" IDGroup="1" TypeName="TIMESTAMP" Description="A timestamp. The range is \a1970-01-01 00:00:00\a to sometime in the year 2037. The length can be 14 (or missing), 12, 10, 8, 6, 4, or 2 representing YYYYMMDDHHMMSS, ... , YYYYMMDD, ... , YY formats." ParamCount="1" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+</PARAMS>
+</DATATYPE>
+<DATATYPE ID="17" IDGroup="1" TypeName="TIME" Description="A time. The range is \a-838:59:59\a to \a838:59:59\a." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="18" IDGroup="1" TypeName="YEAR" Description="A year in 2- or 4-digit format (default is 4-digit)." ParamCount="1" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+</PARAMS>
+</DATATYPE>
+<DATATYPE ID="19" IDGroup="2" TypeName="CHAR" Description="A fixed-length string (1 to 255 characters) that is always right-padded with spaces to the specified length when stored. values are sorted and compared in case-insensitive fashion according to the default character set unless the BINARY keyword is given." ParamCount="1" OptionCount="1" ParamRequired="1" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="BINARY" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="20" IDGroup="2" TypeName="VARCHAR" Description="A variable-length string (1 to 255 characters). Values are sorted and compared in case-sensitive fashion unless the BINARY keyword is given." ParamCount="1" OptionCount="1" ParamRequired="1" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="length" />
+</PARAMS>
+<OPTIONS>
+<OPTION Name="BINARY" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="21" IDGroup="2" TypeName="BIT" Description="This is a synonym for CHAR(1)." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="22" IDGroup="2" TypeName="BOOL" Description="This is a synonym for CHAR(1)." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="23" IDGroup="3" TypeName="TINYBLOB" Description="A column maximum length of 255 (2^8 - 1) characters. Values are sorted and compared in case-sensitive fashion." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="24" IDGroup="3" TypeName="BLOB" Description="A column maximum length of 65535 (2^16 - 1) characters. Values are sorted and compared in case-sensitive fashion." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="25" IDGroup="3" TypeName="MEDIUMBLOB" Description="A column maximum length of 16777215 (2^24 - 1) characters. Values are sorted and compared in case-sensitive fashion." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="26" IDGroup="3" TypeName="LONGBLOB" Description="A column maximum length of 4294967295 (2^32 - 1) characters. Values are sorted and compared in case-sensitive fashion." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="27" IDGroup="3" TypeName="TINYTEXT" Description="A column maximum length of 255 (2^8 - 1) characters." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="28" IDGroup="3" TypeName="TEXT" Description="A column maximum length of 65535 (2^16 - 1) characters." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="29" IDGroup="3" TypeName="MEDIUMTEXT" Description="A column maximum length of 16777215 (2^24 - 1) characters." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="30" IDGroup="3" TypeName="LONGTEXT" Description="A column maximum length of 4294967295 (2^32 - 1) characters." ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="31" IDGroup="3" TypeName="ENUM" Description="An enumeration. A string object that can have only one value, chosen from the list of values." ParamCount="1" OptionCount="0" ParamRequired="1" EditParamsAsString="1" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="values" />
+</PARAMS>
+</DATATYPE>
+<DATATYPE ID="32" IDGroup="3" TypeName="SET" Description="A set. A string object that can have zero or more values, each of which must be chosen from the list of values." ParamCount="1" OptionCount="0" ParamRequired="1" EditParamsAsString="1" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<PARAMS>
+<PARAM Name="values" />
+</PARAMS>
+</DATATYPE>
+<DATATYPE ID="33" IDGroup="4" TypeName="Varchar(20)" Description="" ParamCount="0" OptionCount="1" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<OPTIONS>
+<OPTION Name="BINARY" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="34" IDGroup="4" TypeName="Varchar(45)" Description="" ParamCount="0" OptionCount="1" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<OPTIONS>
+<OPTION Name="BINARY" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="35" IDGroup="4" TypeName="Varchar(255)" Description="" ParamCount="0" OptionCount="1" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+<OPTIONS>
+<OPTION Name="BINARY" Default="0" />
+</OPTIONS>
+</DATATYPE>
+<DATATYPE ID="36" IDGroup="5" TypeName="GEOMETRY" Description="Geographic Datatype" ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="38" IDGroup="5" TypeName="LINESTRING" Description="Geographic Datatype" ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="39" IDGroup="5" TypeName="POLYGON" Description="Geographic Datatype" ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="40" IDGroup="5" TypeName="MULTIPOINT" Description="Geographic Datatype" ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="41" IDGroup="5" TypeName="MULTILINESTRING" Description="Geographic Datatype" ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="42" IDGroup="5" TypeName="MULTIPOLYGON" Description="Geographic Datatype" ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+<DATATYPE ID="43" IDGroup="5" TypeName="GEOMETRYCOLLECTION" Description="Geographic Datatype" ParamCount="0" OptionCount="0" ParamRequired="0" EditParamsAsString="0" SynonymGroup="0" PhysicalMapping="0" PhysicalTypeName="" >
+</DATATYPE>
+</DATATYPES>
+<COMMON_DATATYPES>
+<COMMON_DATATYPE ID="5" />
+<COMMON_DATATYPE ID="8" />
+<COMMON_DATATYPE ID="20" />
+<COMMON_DATATYPE ID="15" />
+<COMMON_DATATYPE ID="22" />
+<COMMON_DATATYPE ID="28" />
+<COMMON_DATATYPE ID="26" />
+<COMMON_DATATYPE ID="33" />
+<COMMON_DATATYPE ID="34" />
+<COMMON_DATATYPE ID="35" />
+</COMMON_DATATYPES>
+<TABLEPREFIXES>
+<TABLEPREFIX Name="Default (no prefix)" />
+</TABLEPREFIXES>
+<REGIONCOLORS>
+<REGIONCOLOR Color="Red=#FFEEEC" />
+<REGIONCOLOR Color="Yellow=#FEFDED" />
+<REGIONCOLOR Color="Green=#EAFFE5" />
+<REGIONCOLOR Color="Cyan=#ECFDFF" />
+<REGIONCOLOR Color="Blue=#F0F1FE" />
+<REGIONCOLOR Color="Magenta=#FFEBFA" />
+</REGIONCOLORS>
+<POSITIONMARKERS>
+<POSITIONMARKER ZoomFac="-1.0" X="0" Y="0" />
+<POSITIONMARKER ZoomFac="-1.0" X="0" Y="0" />
+<POSITIONMARKER ZoomFac="-1.0" X="0" Y="0" />
+<POSITIONMARKER ZoomFac="-1.0" X="0" Y="0" />
+<POSITIONMARKER ZoomFac="-1.0" X="0" Y="0" />
+<POSITIONMARKER ZoomFac="-1.0" X="0" Y="0" />
+<POSITIONMARKER ZoomFac="-1.0" X="0" Y="0" />
+<POSITIONMARKER ZoomFac="-1.0" X="0" Y="0" />
+<POSITIONMARKER ZoomFac="-1.0" X="0" Y="0" />
+<POSITIONMARKER ZoomFac="-1.0" X="0" Y="0" />
+<POSITIONMARKER ZoomFac="-1.0" X="0" Y="0" />
+</POSITIONMARKERS>
+</SETTINGS>
+<METADATA>
+<REGIONS>
+</REGIONS>
+<TABLES>
+<TABLE ID="1333" Tablename="THINMOVI" PrevTableName="Table_01" XPos="281" YPos="240" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="2" >
+<COLUMNS>
+<COLUMN ID="1335" ColName="idTHINMOVI" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1387" ColName="idDM_TIPO" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1368" ColName="idDM_FECHA" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1359" ColName="idDM_INFRACION" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1351" ColName="idDM_CATEGORIA" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1344" ColName="idDM_CIUDAD" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+</COLUMNS>
+<RELATIONS_END>
+<RELATION_END ID="1343" />
+<RELATION_END ID="1350" />
+<RELATION_END ID="1358" />
+<RELATION_END ID="1367" />
+<RELATION_END ID="1386" />
+</RELATIONS_END>
+<INDICES>
+<INDEX ID="1336" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1335" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+</INDICES>
+</TABLE>
+<TABLE ID="1338" Tablename="DM_CIUDAD" PrevTableName="Table_02" XPos="725" YPos="300" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="3" >
+<COLUMNS>
+<COLUMN ID="1340" ColName="idDM_CIUDAD" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1342" ColName="NOMCIUDAD" PrevColName="" Pos="1" idDatatype="28" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+</OPTIONSELECTED>
+</COLUMN>
+</COLUMNS>
+<RELATIONS_START>
+<RELATION_START ID="1343" />
+</RELATIONS_START>
+<INDICES>
+<INDEX ID="1341" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1340" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+</INDICES>
+</TABLE>
+<TABLE ID="1345" Tablename="DM_CATEGORIA" PrevTableName="Table_03" XPos="719" YPos="387" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="5" >
+<COLUMNS>
+<COLUMN ID="1347" ColName="idDM_CATEGORIA" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1349" ColName="NOMCATEGORIA" PrevColName="" Pos="1" idDatatype="28" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+</OPTIONSELECTED>
+</COLUMN>
+</COLUMNS>
+<RELATIONS_START>
+<RELATION_START ID="1350" />
+</RELATIONS_START>
+<INDICES>
+<INDEX ID="1348" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1347" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+</INDICES>
+</TABLE>
+<TABLE ID="1352" Tablename="DM_INFRACION" PrevTableName="Table_04" XPos="722" YPos="488" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="7" >
+<COLUMNS>
+<COLUMN ID="1354" ColName="idDM_INFRACION" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1356" ColName="NOM_INFRA" PrevColName="" Pos="1" idDatatype="28" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1357" ColName="INMOVILIZA" PrevColName="" Pos="2" idDatatype="31" DatatypeParams="(0,1)" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="0" Comments="">
+<OPTIONSELECTED>
+</OPTIONSELECTED>
+</COLUMN>
+</COLUMNS>
+<RELATIONS_START>
+<RELATION_START ID="1358" />
+</RELATIONS_START>
+<INDICES>
+<INDEX ID="1355" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1354" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+</INDICES>
+</TABLE>
+<TABLE ID="1360" Tablename="DM_FECHA" PrevTableName="Table_05" XPos="732" YPos="177" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="9" >
+<COLUMNS>
+<COLUMN ID="1362" ColName="idDM_FECHA" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1364" ColName="FECHA" PrevColName="" Pos="1" idDatatype="14" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1365" ColName="ANUAL" PrevColName="" Pos="2" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1366" ColName="MES" PrevColName="" Pos="3" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+</COLUMNS>
+<RELATIONS_START>
+<RELATION_START ID="1367" />
+</RELATIONS_START>
+<INDICES>
+<INDEX ID="1363" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1362" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+</INDICES>
+</TABLE>
+<TABLE ID="1381" Tablename="DM_TIPO" PrevTableName="Table_11" XPos="746" YPos="89" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="11" >
+<COLUMNS>
+<COLUMN ID="1383" ColName="idDM_TIPO" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1385" ColName="NOMTIPO" PrevColName="" Pos="1" idDatatype="28" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+</OPTIONSELECTED>
+</COLUMN>
+</COLUMNS>
+<RELATIONS_START>
+<RELATION_START ID="1386" />
+</RELATIONS_START>
+<INDICES>
+<INDEX ID="1384" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1383" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+</INDICES>
+</TABLE>
+</TABLES>
+<RELATIONS>
+<RELATION ID="1343" RelationName="Rel_01" Kind="2" SrcTable="1338" DestTable="1333" FKFields="idDM_CIUDAD=idDM_CIUDAD\n" FKFieldsComments="\n" relDirection="4" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="-1" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="4" />
+<RELATION ID="1350" RelationName="Rel_02" Kind="2" SrcTable="1345" DestTable="1333" FKFields="idDM_CATEGORIA=idDM_CATEGORIA\n" FKFieldsComments="\n" relDirection="4" MidOffset="-13" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="-1" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="6" />
+<RELATION ID="1358" RelationName="Rel_03" Kind="2" SrcTable="1352" DestTable="1333" FKFields="idDM_INFRACION=idDM_INFRACION\n" FKFieldsComments="\n" relDirection="4" MidOffset="-43" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="-1" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="8" />
+<RELATION ID="1367" RelationName="Rel_04" Kind="2" SrcTable="1360" DestTable="1333" FKFields="idDM_FECHA=idDM_FECHA\n" FKFieldsComments="\n" relDirection="4" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="-1" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="10" />
+<RELATION ID="1386" RelationName="Rel_09" Kind="2" SrcTable="1381" DestTable="1333" FKFields="idDM_TIPO=idDM_TIPO\n" FKFieldsComments="\n" relDirection="4" MidOffset="-43" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="-1" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="12" />
+</RELATIONS>
+<NOTES>
+<NOTE ID="1394" NoteName="Note_01" XPos="279" YPos="183" NoteText="MODELO ESTRELLA \nRETO INMOVILIZACIONES DE TRANSITO \n-DATOS ABIERTOS - \n" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="14" />
+</NOTES>
+<IMAGES>
+<IMAGE ID="1393" ImageName="Image_01" XPos="305" YPos="381" Width="165" Height="138" StrechImg="1" ImgWidth="165" ImgHeight="138" ImgFormat="PNG" ImgData="89504E470D0A1A0A0000000D49484452000000A50000008A080200000044B31D6E000000097048597300000EC300000EC301C76FA8640000200049444154789CEDBDF7731C47962EFA9DCC2CD35DEDE12D9D44238A43493BBB2FDE8B1B37DE9FBEEFC6C68DD9DD3B1A4943278AA40882F0DD68DFE532F3BC1FAA1A008D48B80641491F1960B3015465F597E7E4C9E392981900331311FEC4EF0BEFD22A3ED550FEC427C19F7CFFB1F027DF7F2CFCC9F71F0B7FF2FDC7C29F7CFFB1F027DF7F2CFCC9F71F0B7FF2FDC7C29F7CFFB1F027DF7F2CFCC9F71F0BEA530F60C2E0A32F1900E148FCE08F1721FA3DF09D85F8326474F201CFEFF07DF49D77B5DBEF3E48F819F2CD1F7A2723F5A37CE7B26E0F27472EF70422FA1DCBFDA5E7FB1D76DF95E6A3FCF05BBFF086F27E0F8D3C467E29012291BD24FA1D8AFBA5E7FB28F8C8D70CF4CE6B063EA896DF5AC50F274126F7CCCC36BF04E1F00F7E27727F59F93ED0C79C1338FEF2DB0657F6DD8F49E41B3FC060620281B389C016367F6D2DE30DA689E880F2CF57EE2F1FDF478598DE6742FF864C9F0663D93D58BBC16066308809CCCC00C366120F802084202288C35FFDBC70C9F8E6B7C93B96249DDFE72EB2C59BB33F63BEADB5D61EBC474464490841823E3B41BF1C7C7F7849BE78E4AB36118399050912C4960D1B6B335927212C092185C8A7C8271CED497039F83E8A4BF5A9110E166DB60C0B4BD65ACBCCC65A626663A590444482487C061AFED3F17DEA45F713810449924208CB6CADB5C6B2B59AD91A2B84105248C8CB4FF9A796EF03BBEC734066A20BC00A61C95843C618638D359698ACB5524921C5655ED42F96EFCBB64E9F168288A4CCD675A38D3536E3DDB2952CA59097D694FBD4F2FDD982884812091224346918586BD33435C628A5945252CA4B388F3F35DFE7FB8958C3690C1D4327B00644900A8E0FD78770F25BFD968E391588482A4982A4915A6BADB5312673D002B884BAFD02F93EF8A027F409A4210F5ADCDB43BF89B80F1D4348B845941AA8CCA2340DBF42077BA773B51633274C069D6A634D9AA4D65AE528A594109728C960F27C5F801D6E3586FBDC7AC93BCF78EF5774B728EA414720052F4065168D15CC7D81E91BA8CCC32D4C620807822E48246962B44993D45863AD7594737974FB84F9E637C57A12CF6C52EEED60E301FFFA5F78FD13EDBFC2709F4C0C6B4002C245A182CA1C16EFE0CA5F79F51B9ABA02AF3CA14F5F08410E8190224DD24427DA1ACB2E3B8EA3A4BA0CC94417A5CF2734BBD9A0BB85B5EFF9E9FF8717FF497BCF11F7A0D33C4C9AFDED6EA3F50A9D0DF476100FD81ACC7E496E7132030209528E2222264EE3546BCD96D932B9249D4F2FE513E3FBADD57A32CFC9A30EB61FF1D37FC7D3FF45AD97140D21088E071287C92BD6200DD15AE378086B593A708A98BA42CA9DC898C6BADD238F40499C1863E23806E09127D427B6E026C377A6C627ED554E436EAF63FD47BCFA9EF69E531A422A2817C2C943A7D9BDAD8149A12374B7F0FA2714EB28CF2168A03435B191818894CA3FDB38898D3671120370E02AA53E21E313E09B276F8A67F7097BD87BC1DB3F8BEE36E914D283722104B208D7C10884040910C8681EB6B1FD3366BFC0FC4D941A9376F428A532EF7BCCB1369A13B6E0F1FB13BDF36F0FE93C2FF6D1D0F5F9DE2A1EA0B389F616A221032414847C93ECF10B41800283748CDE36DAEB346CC25E8370263844008094D2F33C66B6B1D55A33E72118A5E4A46FFD5E9CB77C5F08D93974845197E201D842C83C31F5BD03CA529884042C7488A88BA80F935E00DF18530E20E2C8681D232202C1FB249BB473E2FB4214F85110C60BB335C4FC46C6E2077E8719CCB086B586B17411740363CAADB59189D234CDDEF43C4F5EB8947F6A7FEA594012D2855420021FCFADC3E3DF522EC4C53D7B66BE799EC786A3284A92048010224B92B9B061E0DCEA898E2AF08B51E6009C028A7514AAAC14C302F643AC33C31A90825742A106BF0A6752FBB1DF8252CAF33DD77501A4691A2771B63BBFC8315C0297CFA9E197515F466D116E0066D814D6000CA243674B36F5D8C2A4D029948BF21C1A2B28354017FDEC4208D7753DCF739463AD8DA3288A2263CC458EE1CC3AED68C2C2055B1F5E8966AE62E10E9A2F316A23EEC3248002C9C3AC6506D8820DAC61E9A0BA88C5BB98BF8DA071B163CD41821CD7F1AD6FAC49D31408A5942448CA0B5AC8CFC0F787B3FF2787034F8EE3A1B182E57BE86E21EAA2F902610FD682F20D373056E3CC707C54E678F91E5DFB372CDC26BF7C21637D0FA4929EEFA53A4D92244992280CA514799AF3E4F159DB6B02852AE66F211901164E819BBF52348449733B9C0022288F9D02D597B0F8356EFD4F5CFD0EB545C88B32CDDF1D35917294EBB94EECC671144591524A4AA59C8BE0E26CF7B800A7E9BBA037FF5399E7ABDF417928D4F8F503EE6C61D8261D93D51060E9B257466516F3B771E55F68F51B6A5C81BC684BED5DB88E5B28F8C6689DA6511429C7C9CCF5497F929FB37C67100A95255C2BA23483D92FD17A85DE2E9211740C29D82DA2348BFA1266AEA37105953928174726EAA78254D2F7FD244DB4D67192A82892527AAE8B096B753A7D7FE4330545C675BBE3619CF9391946F3A8C3833D0CF7291EC1C410929D224A53549EA5A006E9660365CE07FE69738D987930180C0683244E5CD70D82200882F3F5C0BC4BEBA9E4FB28CD1FF8C8DECD353629D2103A868E59A7B01ACC2009E9C0F1C8F1E014A00E5861180D9B9231800532D79805DB8389924D558280EBC32B537906411DC908C988740264F96B45F28AEF2CD88CECFAF9302C48B0742015A4C2BB4E1066E83873E7812D84C89C362CD4A9E70C11799E97A6699AA4499C640E9949A7BC9D569F9FC849C016698451078326062D8EFB4823D6098C015B00241C381EFC00C1142A73284FC329C05A1EB631D8C5A04D3A445EB9C9B0F6886E6118CD24516A507D15D559088124446F17711FC612DB9CF5A086CA3C8A751C240A27110FF7D1DDC5681F3A865BE4D214CA3308EAE4F86F8C3F8D31DAE7DE0E062D4A2358CBCA4150477916A51978C1A9158552CAF7FD388CA3284AE2244952A9E44120751238CDA5334D9CA7907C00D977AD41D4E3F66B6CFF82DD67E86E713C64020B0592C49674920919BB3EAA0BBCF015ADDEA7C60A98D0DBC6FA8FBCFD04C316C010328F6D131DD08D2462A130731D57195E01C4D87DCA2FFF0F3A9BD029D80004E9A2B1422BF7B1F8154A3359812FC7036EFE8AB51FB0FB0B475D946779E13656FE225CFF0DBEB37CA9AD47BCF100CD5F91254DB83E6A4B58B843CBF7307505A7CD96C93C30AEEBC6719CEA348E22E5E4E9EBA7BBE04731797B4DC7DC5EE7177FC3D3FF4D9B4F11B649085467505D40690AD2818E11F7D06FC21AEEEE3033CA3314342014067BD87A885FFE03ED4D0842A182F20C8A55380526093031230E2124CA53AC23B229E211B69FD2CFFFCE3B3F934E90C9B750985A457F174663E51B94A701C024E86EE2D5F7F8F5BF30ECF0D422DB04D519D4978F8C9E316C61EB113FFD77BCFC2FB4D6A053582629B93C8FCE26AC61C743E30A8953AEBB524AD7739DD889E3388A22E528D771E569AFF6519C90EFDCC732AEC13FC62CE434E2CE16BFFE279EFF8D76D7880DCA35546A289631B50CBF4C4948DD1DB805447D383E13C086D9C26A4A4618EDA3BB41CD75380A6C519B43B9C1C114A44BCC642DD208C2E1C632823A944F611F6117DD2DDA7F0593420840C05A846D4E62408024AEFE950A658090C61834A9B3817E8F1578B88F24647BE8E0E47880E60B5EFB6FFCFA37DAFE192621A70000610F618F75CC6E01C51ABC324AD37953821356481191EBB99EEFC5491CC7B1E33A85426172ABF8A9F8CE70FCF1D8DCF2824D000B13513242DCE76408A700E5E5826E0CBC224D5FA5DA02BC8074C2D96A6D2DD880050441B9F002F2CB2C5DB081B5707C3801AAF3284FC32D42C8DCD9620C18708AEC15C918A411B67FE6CC02707D5AFC0A24201D089995F4C31E899467D009DAAFF9D53FF0EB7FD2DE731202B377D05885B568BEA4DD6768BFC2DADFB93483D2746630E2543BBDCC529352464914C7719AA6CA5113F2B09E8CEFACE6FD649D4C948BCA2CE6EF60D0643F40D821025BCD9D1D3616851D282F4F39720314AB54AC93578272A03548B2F2E016E1F9A41C4805AB118F20BA2414AC86B5CCC44507C221AF08C767A9201C5205281F24B83CCF532B708B3468D2DE1AEFFCCCB0E47A6C53141B00E016E015E1F5E116A03C48E7304EDADBC1EB0778F1DFB4F9989218B337F0E5FFE4A5BBD09A5E7E8F24A4E64BEC3DC7ABBFA33A478532A6AFB3724FB1AF9752BAAEEBB84E1CC75AEB388E1DC7916222D91027E1FB14813B06290FD579ACDC8714A8CF71670BF190D93213465D8CBA6419B020825344690A490CB704E5328889201C4807D2E14C70754C511F0C0899ED8E1892A547568364D66C05442001109364AFCCB33730FB05866D92FF9B5EFE1D9B0FC8F5C016B35F62D0226248074A4248900449968A01447DECFE825FFF1BAF7EA0F6160A150E66505FE5C615A409DADB283448ACA3BF475B0FB932CB59FD4A75FE746137A594EBB88E74B26456DFF35DC7CD1EE87C71727BEDA463C89A9F382E8A355497E0049C55FA80A0130A7BE8EDA1BF8BFE1ED208A2809DE79CC620E2EA1CD880086C6175CEA25360BF86A00E216112B68621B8588172F385D35AC0C26A98244F67293668E91E8482E3533CC0F6136C3D82D168BD829018B6C0664C12670DB9900CD17C8197FF8597FF879A2F914608EAD0293A5B501E748ADE0E8C0649188DCE06D67F40308542158E8FA07E0AF71311798E1739914E751227499A14B830895AF263F3CDD91EECA463B09C84DCDBE59D67D8792A462D0809AFCCD5B9CC02A7511BBBCF6993D1DB45BFC91173D2E3EA0266AEC12B121BCAC8D30988587A28CDF2CC7554E7211D9804592EBF13B05F26A3A163584D6CC087B602482098466395958751076CB0FB82361FA1B70BAF44E9083A661263E711531A62D4C4FAF7FCE26FB4F38492019407E922EC63F331DA1BB006C316D210CA81528847D87D06BF82A0816205CA85573A290D5910C5719C1061E68131C60879FEEEF449EFC7084663D4C6DEAF78FD237ABBE416B834438CBCD2473A703C280742B2902C98950BC785744002D6C2A4481368038A290D391E211AC21DE46B395B980418C0C0C2110099347F531B08836484340408A5692807711F605860E729769F91F2402277F359C3D6503C447B1DFB6BF8E57F61EDEFE8EF70A14AB525D496E0572125252380E005682CC3F3E178E8EEA0D7C2FA8F708BEC97E01468FA1A9C1357A929A594E38028D5699226A94EB33A95F3E5E3B87C1FB6A9E393642C51665117E105100EA709A201C523A429FA2D142A0063B4CF3A815FE169975501F33770F55F69E63A8A55F476587AF0CA1494295BBFFB7BA027DCDE2021902DFC490810AA2BB08C4289C0700AEC95E017580AF60228C5B004905FC5F27D361AC63011F65E90D120C18ECBE4B05785F2398DB8B58EADC7B4F302D1900B752CDEC5F23DCC5C27AF046BF2326321A153EEEF60E729361FA3F92B92905B6BBCFD941A57114C91F273A7DBF1ECF5AC2445394A4A112736F3B1BA9EABCE3BC96EF2EBB75BA0FA3256BF8554A82D63D88449205D9814D10042407AA82DA3BA04AF88F234CDDCC0E2D7545F662294DA98BE862BDFA2BE006228979C22848489C9E4894AA4634B049B804DB6D7E2EA3C16BF020912826A8B5C5F39AC16ABCCE3CA5F0101AF848D878806808574205D0A6668FA0AFC002665B6144CD1D23D0E1AB8FA575EFD8EA6AF407963BE058480B5183431751DE505549F2019A2508650D071B6D0804EB6A12222C771A4A328229DEA4CA59FBB6FF578973B281939792E224927578633D7D0DBC5600F510FE9085A830112100EB91E7B018A352A352898A6D214A40BABB9BE8CAB9A6A7314F5019BAFAFD6D0614101C3C4225BA1A7AEA05865A5307303B7FE5F5AB8031254A861FA1A151BE3511355E671ED5F396860F91E4703180D214838F002519E66AF843482725059005B0A1A3CFB2566BE40507BCFA3E9ABA82C70E6A94D874C84D20C6A0B700AA7F0A8674508AEE348210E5A459CF4221FBFCBB1E2A19CF7B53C6B0F519BE60B6A1A42A7B036E39B9503B700B700C7A72329949CC64847A4C33C650580B5607D18D164009987DC8313C00B20247488A80F1D01C4CA855324AF04C77F63A7A443C4034E6358031048B094900E40A413E808D64048728A5CA8C029BCF7A11980658ABA88073009B38150F04AE496C6358B27F3BF68AD3BED4EA7DDD15A178BC55ABD562E97CFE24B7F97D609F06D2D74847880788834061859A50F094891075BAC3DD418447CD08A982DACCD638EA05C7366E9E57C10AF3E5ADC9039C56C9EB6E69550A8C0F5DE08CB9B146117610F4683002121248400E5AD338F3E242C132C8898044810112C83B34C671E87897237DCF86790C76F60610D8C0108AE07B704B708E51E7F476E8CE977FB9D4E278C42CFF3EAF57AB55215EAF479B4A7897FE74F7AA0A13E3A61B36E0B7B2FB0F782064D180DE51EF20D7A2309FAE0A20C660B36C4D9E78B7CC32D549E7CC86F4EB53C3CC7F99A0AE2600AB35FD0EC176F7770B0863B5BBCFD04DD5DD21109996D07F0768A20C332980182C83D363985D61C4ED0237CE723941224F3873209D21042A1328B99EB68ACA23805795CC288484821A46066A38D31C6B215E79A333E81FD983518B4B0F908CFFF86E673E8186E217752E61F2F21B3F371105EC85C23F6ED9F012004F88095231EBE9C6F8B2482355C6CF0CA7D0AEAB057DF1E8F4911F5B0F30C2FBF476F0B82E0F88000F138E473B45402E35C66CE453693FBB7EECE63DA735FDE78FB6E12A443B8452CDC061B146A28D44FF4E1E5596C40D6E0EBDCAB113ECE77AEABB2997F1C33840DE221BA5BD8F9199B0F9186F002BCEBFD3FDAB6FE48BACA9B960E1DA184DE883DD138DD250959B83C7F1B42B21F40396F0F512A7801A483D13EB67F868EE1B820091A5FF0ADE9C40CF0783EF2DBFAECAD29970F783C514C826404BF044198BDC1E908B0C75F7E8928E79B613897EFD3A49AFD368E25DF1F0AF1BDA752906152C4430CDBE8F791005E37BFCFD10BF1FB2EF2DEDB4840080805F1A6205ACD4693069703D497317F138D55760A6F5F433A545DC0EC175C5FC6EE53846D24034895178766A28CACF7B98136B06FDCE4EDD71F903702341003C536866D2443D8F4B77FFAFDC8F866B0B5366BF773D17C1F84098F8D3C6B0C850A8A45A8049E3B96EFA3127C543D1EF97AF06C74683B8CD7F2B1973B13F73402880B152CFD0537FE1F5AFD966B8BEF29F1150AE5195ABA8BDE36C216BF32E8B7484A280F1063BE6D6E97A96C4D79DF92F9EE347D030C62E80492510CE055A00A3879DA42DE551F79136E6BED69C254BF8D63C8378F17B063CE3212EC065C99C3CC0D30238DE17A6F3C39BD9B1A9A4D2A1A7FC99E3BB38062C443247DA4118C3DB4BBAD053384CBF565AC7E4B2BDF507D25239B0E48E183BE1E02B5055ABDCFDD0DEEEF211A8253A2234619088EC34E017E002FA02C417DDCE6FE8D0FFCCD1560FC4E66BA33EB0489861F60FA3A4A33E4144EE4AF38D0E704B2D61A93CBF7F1AFF0511C87EF1306F18542D0C0FC2D1078EE4B3209940B7AEB466F5EEE68BB9531DF100ACCD021BA5B683E47EB15465DB0058D2BBF4128D469EE26AF7E8BF92FE195F28B2621E201AC8174E105703C00708B98B98195FBD85FC3A089FE2E4C0A49B9880B07C114A6AF62F63ACAB3901E00587DE42378CFCB23EF8C1594D1303154018D654CDF805FC3699BED31B3B59FC25E7B7BE9FA2DE20F06262405752CDC42650EE988D81C6E57DEB8E03B17A223B63211672A41C7D87B06D74334A46888340231AC86D170029ABA82A5AF317F0B95D95C853073779B9B2F108F104C61E61AD5160080048206E6BEC4F27D6431F8519720202498E0B8A8CED1EA7D5CFB373456F2D969F57BA4F98D0DFBE13FF92C65C3D64028F24A28D6E0574EE1551DB7D967B67CD09AF3BC3081FD18097801393ECAB3791231F00EBBEFD3186FE9F8ACF38ED5701C6AAFB3FB0842800DD8C26830509EC5F23DAC7E8BA955A87146691AA2F91C4FFF03833DCC5C6729A93C9D279F0B85FA0A56BF45678BBBBB14F66012B0845410027E098D152CDD45E3CA585C4FB1768E9521099080902776AC8E7FFCE0A0AC938EE0C338C67EECC3AAFC3DDF24802005CE968035368F2C8C411A93C9222263EF4AA18AB92FB1FA2D166EA178B0C765EE6E63EB31FDFA9FDC7E8DFE2E82296EAC506D31BF66FE5BDF706B0DC326466DD80482C01A49C449089D82241D4F09BFF77339174B9A0FD9BE787DFEE9C0000FF7D17A85F606C24E46391B0DB7CC8D152CDDC3E257A82D9372F34F79D4C6CE136C3CA0DDA7686F0096EBAB3C731D7E85FC120090A4F21C166E73F3257A9BBC1922EA925548230C9A68AEA1B9967767FBA43824FAE401AA0FE332F1FDEE2E3C1962F719D67FE49DA7346C41477988A5348DA5AFB1FA0DA6AF1EE6FA5B8DE60BAC7D8FEDC718B5298DB9BF878D87685C4169060BB7F25D9674515FA12BDFA0FB1AFD169221AC4112A2BF87CDC728679D944B9FB086F4A8549F7B4AD3C715176362CAE5BD18CF683629BA9BB4F998361F52E735C503D60913D82BF3D4155ABA4FF3772898CE7F9C2DF7B679F311D67FC0FE2BE814D2A134A6E60B7AF53DB61FF3A07538A1823ACDDDC4D25F78FA3AFB5506B29A07DA5FC3E6036C3FE1DE0E781C8B1C074A2E06B98D9605663EB2E33F0D2E937CBF85CCFDB9F113F69ED3703F6F61EF15D058C2F25D2CDDA5C60A8F0B7F38EA61F309D6FE819D67187640025E1100864D6C3DC2D412AA73700B79669970515DC4C25768AEA1BF83DD5F10F561120C9BD8FD05AF7F446D015EE988597071C8CF3AE3032BF79CE5FB447C7F7843761E38B04ED311B7D6F0FA276C3FA1FE2E92106C410AC5062DDCC1CA7D9AB90ABF9C0B005B6EAD63ED1FB4F190FACD7CE72D2458531AA3BBC9AFFE81EA3C4AD398BB95DFC00D3075152B7F4167232B2B21B64846D4DBE6ADC7A82D716996BC32A49A8490FD1698D9B23563CA0F9AE89FE32D4ECAF724C93EB88D353C6862FB295E3FA4D62B447DE8948564B788FA2A2DFD8596BE46756E9C20C618B4B0FD04AF7EC0DE0B242148422A908405448AB8879D9F519D456315E559146BF99A519EC3E257686FA0BD8E5117E9103641D447F357BCFE27EAAB79A5EAC5B67162CB995B0D477CABE788E33E0CE3BC7782EF22A32F53CEBBCFB1F9889A2F68D82693820D8483CA2216EE62F12E1AAB7083FCB7E23E769ED2FA8FB4F70CA37DC040C83C659D19420196862DDAFE995FFD83777E413CCCEFE616A8BE428B5FD3D23DD49658B8593A2C0D5AD87D86AD07DC7CC6F1E0FDEE83C980F393CD4C7E6A25894F24DF74C46699B4909B14DD2D6C3DA6AD27D4DD42324036D9FD32666F60E53ECDDD44D0C8662A83D1DDC2EB1FB0F113F5B660124805B2D069DEAF47E6850D686FE0D50FA82D72690A33B9E7950A35CCDD446F9BDB5B3CDC471A92358807E86CF0E603D416509A262F38A98FECD46066638CD19A998510424A3AEFBE4D27D0E7FC6E30F8DCC116C316769EE2F53FD17A81A897FBC9DD22EA4B58FE1ACB5FA3B690674F3063D4C6F6CF78F503F69E231D8E83E547DAA9F2D8DB15F5B1F3146B73A82D22A8A358070842A13A8FC57B68BD426713F10026828E1176B0FB1CE53954171034509CBAB0D61FC6186D0C184208A5A438766ECC31715CFF79B64FB0D60A39C93313A3019A2FB1F110DB4FD1DB451AC31A563E95E7317F1B4B7731750507ADD39211F69EE3F53FB1FD342B1FCFC2A6ECF8708A900EE904698864944532A8BFCB5B8FB9BE8CF20C16BFA66C45F002345668E96BB45E61B48FCE6BE890D218DD1D6C3F4563059505CCFBA72819390598596B9DA6A9652BA5CC4E313BDFDAFFCBB41F638BFE2EB61ED3C603DE7F85A897278F7A65CCDCC0EA3798BF8DD2D461AD577F17AF7FC2FA8FE86C2019810860961E4F5DA3D92F104C61D4C2CE33EC3D473CCC7B8AECAF63ED7B54E6519EC754660110823AE66E627513BD6D1E7591C46434C21E5AEB78FD00954504D3F0820B58C3D9DAAC091F332B291DE59CFB5956C7F59F1FC874AE20CF6D00872B04471D345FD0E603EC3DC7689FD21842B053446D014B5F61E96BAA2F1FD4E970D4C3DE33BCFE09BBCF28ECC26A08C9CAE3CA3C56FF0537FF07EACBDCD9C0B3FF4032A2FD574823305338C0CE73D4FE49D3D710347255A13CD496B0F815B75EA1BB8D24848949C718EDF3CE73541F727D19A53AF995737BE8DF40AA4D1CC5699A124839CE24CE2E3B967C675964E3CC6510F339AC676F6DE6D398DBAFB1F9089B4FA8B3416908AB59163898C2DC9758BA87D91B148C1D203AE1FD35ACFF489B8FA8BB091DE67D5A8A352CDCA1EBFF46D7FF6F94A6B9B1C236457F0F619F926D806112EAEFF0D6439E5A467916F3B791F9DE8B559AB9CECBF7D0DEC0B083DE364C8C64449D0D6C3D466319D5599EB901E54D4EC699394D92288ED234F55CCF753DA9E427AB1FCBC704D039DB6CE354D061135B4FB0F110AD35843D580321E095307D15CB7FE1855B549EC973959879B087F57F62FD07B4D7110FC00660768A98B94ED7FE4ACB7F41750142A1B280A5FBE8EC70B789B04FC928D7EAED755EFB3B2AF31434505BCA732BCA33B4709BBB5BE8EDE4A71F588DA88BD64B6CFC84DA1C0A3554172667B8696DE278ACCC1DE5BAAE52EADCD79063EFC728A39A8FE4A09C166FA63832C0F110FBEBB4F9183BBF50BF853402112B3FE300CB5FF3F4D5AC5B06008E87BCF72BBDFE27B69FD2A80D9B3233A4C395595ABC4BABF7317D3533E049284C5DC3EA77DC5CE7CE363AEBA46390A5619BB79FA2BE82A92B2894E15701C00D68EA2A96EE71F31577B7918664359210835DDEFE19B5C5BC2ACA0FF08E6E3A3B9839D56914E5A71F28E5B88E3B89961EC75E1E0E96EF730F9B588DEE36B61F63EB313AAF910E613548A058C7EC0DACDCC3DC4D0AC6669A4DD17E8DD73F61EB11BADB48E32C918D8B752C7C85D56F31F305BC230BAD5BC4EC9774E53B2CDE41A10AB6600B9D507F97361F61FD1F68ADC3A4004002C50666BFC0F23D9EFD12C51AC0B02992013AEBBCF5089B8FD1DB86D1EF7F8A33238D93280AB5D65248D7751DC7119F90EFDCD1C3B98FF71CF22E0ED250876DDA7B461B0F68EF398D5AB00908EC785C5FE2A5BB58B843B545527EEEF219B679FB09D67F446B8DE23E4CCA20760A98BA8A2BFF82A5BB0866DEBA090553B47457AC7E8B2CBEC2001B4A86D47A89B57F60F3210F5BF9C32887AAF3B4788796EF727D91959B2DF918B5A8F91C9B0FB0FB0B87DD717AEC79C6CD98398AA3300CADB1AEEBFA9EE7B8133968F6D8EBF7B8C22B2FD33C2FA411DAEBD87888CD47E86E21198219CA45308DB99B58BA8799EB38308C9321375FF1F4C78F0000106A4944415462FD47DA7A8CC11E740C93F959E7B1748FAE7C87E91BEF29B477BCBCA8787F8DFBBBD4DD8449409C87CEAA0BA82FC12BC30B00C02F61E63A96EF617F0DBD1D360959836484EE36361FA1B688CA3CBC006F35603C33B4D6A3E1281C8560F8BEEF17FC099D51766CF9C661ACE61C82E10406D86AEEEDF0F6CFB4F9805A6B88FA303ACB3AC5CC755ABA4773B7A83493BB334D8AF6065EFF441B0FA9B341F108563380A0418B7768F53B9AFD928AB5C32AFBA3C257AC62F64BAC7E8785DB5CAC32186C9086D4DBC2D6035EFF815B6B9C296A92549AA6B92FB1F435CF5CE7428D41642C8503B4D678E3216F3FCE9BB7E01C934F380AC3E16018C59190A2582CFA057F4247179D4463BC954A776AC20FAE130FB9B586CD47D8798ADE0E740C068487CA02E6BFC2E25D34560ED357E201769EE1D58FB4FB1CA3364CCC60763C6E64F9E77F4165EED0023CC041B8A33A4FCB7FA1956F505D8474C180D1887BD87B812C2162B49FFFAC5B4463054B5F63F12E2AF379A28B4EA8BF87ED67D878C8FB2F910CCFD186899364381C66CADC711DDFF75DD79DD0A9E127DB8F65C7DE32B335F66CA11BCEE575F331B69EA0B38564086B21BDACCC13CBF7307B631CBB044C8AFD57D878485B8FD1DF455611AE1C54E778F12EAD7C838FB64C710A98BE46CBF7B9F50A8316FA3B30098CC0701FDB4FF2736FFC129C2200146B98FD02CB5BE86C61B48F412BCB79A2EE166F3D427D918329380528E7EC02CECCE128ECF7FA711C2BA58AC5A2E77B8E723E7D7FC53C4007B2DA3233593AFD1CB406FD5DECFC4C1B3F61F739463D180D21B950E6A9552C7E450BB7515D807419005B74B7B1F9189B0FB1BF8EB80FA3D95A78159AFD122BDFD0DC4D1C18F0EFAF070088506A60FE16DA1BE8EF7032C2608FC852324267131B8F505B416916B3370090F4505DC4FC6DECAFA3BBC54988B04736A5B08DDD675C9AE1D20CF9D5C3C8CD1960AD1D0D47FDFEC0185328148AC5C075BD730F931CE0C4F22D84B07450DC644F47392721EFAF63E301361EA2BD8E640806A48BF21C2DDCC1F23DCC5C3B8C8B447DDE798A57FFA0DD5F10B6606280A13CAE2FD3CAB7B4721FB5A5637DEE42A1BE8CABDFA1BF83EE0EC22ED8C2180AFBD87BC1AF7E4075814B0DCA944AE6EA59BA87CE26461D24239814C900ED0D6C3C427501B56504F533C6512CDB288A0683C1683422A262B1582C165DF7FCDDE60738D975E908D8B2B5D6B2FDF8AFBD0906388D79D4E5418B87FB887AD01188D8AF60FA2A2D7E4D73372998A22C306452743668EB216D3DA2EE06A523D884A5E2CA0C2FDCE6D56F30FBC5E1CC3848F37BF76F765FBF82D92FB0729FE76F23B304B3D2A4FE2EB69FF0EB9F78EF19274300242495A669FE262DDFC3D4D8DBA313242145038C7A8807D0272EFF7C0B699AF67BFD417FA0B5761C270802DFF7A59C6010EBC4F38888A490449405E74FB71127E950B14ED579AACC92E3C3000C94A7317F1B4B5FA1BE72B0E1E1519B779EF2C623347F45D88689612CDC22666FD0EAB7347F0BA5992329471FDB1113A13485F9DBB8F20DCFDC60B700AB6135E23EF65FE1F54F78FD00FD66FEC36E018D552C7CC5F3B7B8349D1D6306AF82A9156AAC2068E0CCC484A3B0D3E90C4743214426DCBEE7CA8929739C2E1E4A82C81233C3822D9F74CE10002FC0F455C47FA5AC7DCFCE53281FB35F60E10EA6AFA050C949D311F67EC5FA3FB1FB0B06AD2CC6C54A71759196EF63F93E55178E7CE81F997979E22129D416B0F20D3A1B3CD8453C2036D096466DEC3EE3F579D457509A86570208850A4FAD62F10E375F221AC25A5ABA8B9BFF83AEFF2BA6AFBEDD38E484D05A0FFA836EB79BA6691004A572A9502828C799E889A2A7E29B283B1F8D2D1B6D0EFE7B824B4845A5292C7CC56090E0DA224094E52A95C7957F46A3B38DCD47D8F889F6D728EEC1242C1C5B9AC6DC6DAC7C4B73B7DED72DE3B7877110C92DD4307F933BAFD15CC3709F87FB3029A52175B7B0F990EB57505DC0EC0D383E09459539CCDFE2418BDD324985E57BF4C5FF85CCE17A86AEF45AEB7EBFDFE97446A311092A168352A99475C53EF5358F835369248210424AA9AD36C680A0D4C9FB750B85F20CC43D768A98BB09A3515F426375BCE1660CF7B1F998D67FC4EE731AEEC3A460B05FA1D99BB8F21D16EEA23CFB8E463DDE9C130AE5595AF80AAD750C9A4822E82ED820EAA3F50AEB3F7079066E81A6AE40487801A6AF1108335F4079985AC5D42A0AD5B3900D200CC3FDE67EB7DBB5D606A552B95C2E1603A59C4927559C7205CA3B0959A1B5B6DA5AB242C813EF18A543A519383EA656600DB9457895DCD24E47D87F898D1F28F36725219859BA5499C7F23DAC7C83C6CADBA7CA7CF4A33AF27D5205345679F55BEE6EA1D7A424CC5AF7D1681FDB8F519A42651AC56A769002AA73E40598B94152C12BC12B9CF19CDD54A7FD5EBFDD6E4761E47A6EA55C29974ABEE74D74E5CE705A8B832084105290256BADD1864828E7E4535E482AD450A88DFDF263EF4A771BAF7FC2AFFF8DAD27E837A113380E4A5398BB492BF7317FF31C8A3F8A0DCCDF46670BAD0D8C3A1835916AD80EEC737603AECEA3BA406E00C727E921F028F8F8258F03634DBFDF6FEDB7FAFD3E8072A95CAB560B858272D4059CD67C7A0B9388A494D65AC3461B0D2221E80C8E82236D1575C2FD36BABB18EC231E914961C16E91A7AF61E53E16EED0F898C0334179549DC7C257DC7ACDBD1D445DB23A2B39E634E4B0CBC32EA5B170FCF355B1C3E1B0B9D7ECB43BC69820082AD54AA954725DF7620E7E3FD38E82889454594984D15A0B52741E513C21C80B505FE5853BAC636E3A180D509AC7C2D758FD16D3D70E8B0DCE08B78499EB74E55B6EBFB2FD1DE2264A554C5FA5956FB0700BA58690A73F4EEE5D30388EE276BBDD6AB5C2302C140AB55AB55CA9F8455F9E42359E0A67E53B33DCB2E632796E867356CA4979A82DE2BA4450E5C6326F3C467717B505BAF2579ABB45C1B91DD5CE999375E136BA9BAC63EEED517D8196BEA6D56F68EE0B9466C91BEFB8CE23892B8EE3FDFDFD66B3391A8D1CC7A956ABB57ABD582C2A75FE7DCE7F0B67F5189020A9A4659B4939184444CE1942290C90805F86E353A18CDA0216BEE2E13EBC32CDDD406D1ECA3BE39831CEB20500E5A3BE48D7FE8D8229C4432A4F53E30A1ACB285621D491AC8CB3DED118D3EFF5F7F6F6BA9D2E18E572B95AAB954A65CFF526E73D7D1767382F768CAC0E41273A4912062BA51CD739FD9C3D2A49CCD011C7599B1E8217C02BD179B480E7A377C96A88E211D8C22DC01DB7743ABFC40EA34DAFD7DDDADADEDBDD4BD2A452AECCCCCCD41B8D52A9AC949C5C45E2399D17FB2632C30D0A9659EB546B9D85C64F49F9D1DF20825320A79077281674C68DD0D10B03638F9C902854E09541F8D04A71DA244566EEF7FBBB3B7BAD662B4DD362B158ABD5AAD56AB1509828D9EFC5B9B9E685120E1C06EB344DD3342B363BB7133868D207A11326631E1B630683C1CECEEEEEEE5E18458542A1DEA8D76AB520081CD7B960B2718E7C139154C28103E6244974A2B346A4933874E5DCF0D1719D2D8BC55ADBEBF5F676F7F6F6F6C228F2FD42BDD168D4A7B20DD8452EDB0738CFD05BAED81DC71A9BEA344B9D77D9755DF7F2527E7C9CF009ACB5BD6E6F6767676F6F2F1C859EEBD76BB546BD5E29573CDF9DC45953C7C139875A051194745D97C159E99B65CBE0FC80C4CF0EA7A5446BDDEFF5B7B7B79BCD661886BEEFD76BF5E9E9E94AA5EC657ED34F34FFCF3BB44E10241C27F7FB274992C489B5D6FAD673271EFCB92448E2A4D3E9ECEEEEB65AAD244EB29329A6A6A6AAD58AEFFB9F4AB2334C2495822439E48000A2388ED32465CB6CD8F5DC8BF42D5C3CACB55118EDEFB7F7F676DBED8ED669B118D46BB5A9E9A972B9EC177C213E25D9985CFD3709721C27DBF8C471A2B5B12634C6F8BE7F7607DCE58435763018349BAD66B3D9EBF50094CB9546A351ABD5CAE5C0CB24FB536382A95244E4E4C6392571ACB50EC3D068E3FAAEEBB98E7AA731FDE78C288A7ABD5EABD96AB5F6C3D18884A8542A8D46A35EAF07A560A2298827C264FB3B6467A891EF4921A2288AE3388CC2D4A4C618EB5BD7F93DD8EDD6DAD168D46EB79B7BCD6EB79BC489EFFBE54AA5D1A857ABD562B1E8B8934A263F0526DECF233B1933EB1840447112EB548FCC48A75A7BDA733DE59C7F95F3852113EBFDD67EBBD31E0C8660044150ABD5EAF57AB9522E140A93A8E13E0BCEC17F7E2C30ACB1C6983889A3284A9384194A29CFF35CCF731C35895E06934376DEE36834EA757BFBFBFBDD4E37D5A994AA5229D7AAB5CC7DE67AEE846AC08E8FD39E2F787EB7B7DA26691287519C245A6B8094A37CDFF33CCFF51CF139ECD18D36C3E1B0DBEDB6DBED5EBF1747318042A1502E57AAD56AA55CCE75F885E42F7C189F98EF7C1096759246491C855192A6C6182984E33A9EE779AEAB1CE772CA3A33C7711C8DC2FE60D0EBF5FAFDFE6834B2D67A9E17944AB56AB552AE1483A2EBBA4A5E4466D2717029F80690D5A6A4491AC7711845699264A549AEE77A99ACBBEE89739C2706B69C6D2E7ADD5EBB93CB3433BBAE1B14835239CB2E2D16FC8272D465D8741DE0B2F09D8FC6B2D63A8993388EE3384A536DD90A2194528EE3643D2DCE144A3F1BB2191945511886A3E168381C0E87C3308AAC354AA9A01894CBA572B99C150129C791525E2AD30C978DEF7C4C968D36491287511445519224C61822524AB9AEEB7A6E46BC943293F849740DCE47921D01C56C8C4992248EE370140E07C3C170108EC2344D41E4BA6E10144B41A9542A158A05CFF31C95199B63B1BE4C945F46BE335863D3244D92244EE22449D2243556673D05B24EA28EE3B8AEE3BA9EAB5CE94825CF799F93EA348993388AC3288CC228F316247192A669B6D628C729140A41B1180441B158F47DDF711C21059DF14CF449E2F2F20D0016CCAC8D4ED3344E92248EE23889E324AB4A144228251CC77594A35CA5A4924A497928F194F5123E6C21FDC6E31C1EC9C1F6408EB31759A6651CC75114C76114C5511CC5DAE88C6647399EE7158362B1502C140BBEE73B8EE3388E10323F9DF082BAC29F06979BEF31ACB5C6589DEA344DB3A06A9AA65A6B63B431266BEE4824A41459CD8314424A2584944A2AA984CCDA1210303E453EEF2B6E8DB55AEB3C7BDAE8EC8CED344DD3344DD2D46ACB6CB3A4DB2C0BCFF33CDFCFFAE714321FB09452D0F848EEA3495197E5C37B039F07DF3918D6B2313AD55AA73A4992244D32056BB436B980E6C7B01308D9D99B79138A23878667C26D7351CE4F8B30D6F2A188333340524A5729C7733DD7F3FCFC8FEBBACA51EF6F65FAEE814A970C9F15DFC83F509B69616BB5315A6B9DA659D368ADB5D646EBD464226B8CCDE4D8DAFC50A5EC0B9017A98F1BB80B4182C6BA41E68DA79552AEEB388ECAD4B5524A49472A29848038FF73632E069F1BDFEF8261D966EC1A6D7295ACD35C458FCFD43D3869356B3F913DE3C1329F2D042AD3FE4A29E9282565F6574A2965A6253EF1939E074EC3F7D10E0E595B87890EF198C8FA8165F2CBD632988DB5D9974CD567C29CFF038CD7F223D65D2EE1B98927285B1528EBA37E299EF2F438305C4EC077F6ADECAC9C77DF3FFAFAE0EAE73FF077F0CE3833131987AAFB80E3032DFEC62FE6C6FBD13F6F21EFFBFDD9222BF2C229EA0D8E1E7F46E373E7B36F1D5D1A7F8BEF4F2226C7515447C4FE77886C557AEFB73EC4371FC1D1770E5EE37DB2FEEEEB77FF8B37593997697170C1135DEDF747FC87D7DC0FF19D2D726FBDF95E22DF95EFCF7E01FC9CF181DCA98FF09D517E40EA9F2C7EEE38DEF9256355F979ECD9FEC46FE3FF07F072EA7225F475F50000000049454E44AE426082" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="13" />
+</IMAGES>
+</METADATA>
+<PLUGINDATA>
+<PLUGINDATARECORDS>
+<PLUGINDATARECORD PluginName="HTMLReport" Obj_id="-1" DataValue="nil">
+<PLUGINDATAPARAMS>
+<PLUGINDATAPARAM Value="SelectedTables=THINMOVI;DM_CIUDAD;DM_CATEGORIA;DM_INFRACION;DM_FECHA;" />
+</PLUGINDATAPARAMS>
+</PLUGINDATARECORD>
+</PLUGINDATARECORDS>
+</PLUGINDATA>
+<QUERYDATA>
+<QUERYRECORDS>
+</QUERYRECORDS>
+</QUERYDATA>
+<LINKEDMODELS>
+</LINKEDMODELS>
+</DBMODEL>

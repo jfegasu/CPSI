@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ul, #myUL {
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.caret::before {
+  content: &#128448;";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  content: "";
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */'
+  transform: rotate(90deg);  
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+
+<h3>
+<ul id="myUL">
+  <li><span class="caret">📁 MENU PRINCIPAL</span>
+    <ul class="nested">
+      <li><span class="caret">&#10133; NOVEDADES</span>
+        <ul class="nested">
+          <li>&#x1F5CE; <a href="http://siomi.datasena.com">ABIERTAS</a>  </li>
+          <li>&#128462; EN PROCESO</li>
+          <li>&#128462; CERRADA</li>
+    </ul>
+  </li>
+          <li><span class="caret">&#10133; EQUIPAMIENTO</span>
+            <ul class="nested">
+              <li>&#x1F5CE; ELEMENTOS DEL AMBIENTE</li>
+              <li>&#x1F5F9; NUEVO ELEMENTO</li>
+            </ul>
+          </li>
+  </li>  
+        <li><span class="caret">&#10133; CARGA MASIVA</span>
+            <ul class="nested">
+              <li>&#x1F5CE; ELEMENTOS</li>
+            </ul>
+          </li>
+  
+        <li><span class="caret">&#10133; CONFIGURACION</span>
+            <ul class="nested">
+              <li>&#x1F5CE; CUENTADANTE</li>
+            </ul>
+          </li>
+        </ul>
+  </li>  
+    </ul>
+  </li>
+</ul>
+
+<script>
+var toggler = document.getElementsByClassName("caret");
+var i;
+
+for (i = 0; i < toggler.length; i++) {
+  toggler[i].addEventListener("click", function() {
+    this.parentElement.querySelector(".nested").classList.toggle("active");
+    this.classList.toggle("caret-down");
+  });
+}
+</script>
+
+</body>
+</html>

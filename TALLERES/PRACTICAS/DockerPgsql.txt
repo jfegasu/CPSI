@@ -1,0 +1,59 @@
+docker pull postgres
+docker run -e POSTGRES_PASSWORD=root -e POSTGRES_USER=root -e POSTGRES_DB=Analitica -p 5432:5432 --name pgsqlsena -d postgres
+docker exec -it pgsqlsena bash
+psql -U root --db Analitica --password
+
+CREATE TABLE USUARIO(ID SERIAL PRIMARY KEY);
+https://github.com/fegasu/tcprogAnalitica/blob/main/DATASET/HRPOSTGRESQL.sql
+
+docker pull mongo
+docker run -p 27017:27017 --name mongosena -d mongo
+
+docker pull mariadb
+docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root --name mariadbsena -d mariadb
+docker exec -it mariadbsena bash
+mysql -u root -p
+CREATE DATABASE Analitica;
+use Analitica
+CREATE TABLE USUARIO(ID INTEGER PRIMARY KEY AUTO_INCREMENT);
+Cargar el esquema
+https://github.com/fegasu/tcprogAnalitica/blob/main/DATASET/HRMYSQL.sql
+
+docker pull mcr.microsoft.com/mssql/server
+docker scout quickview mcr.microsoft.com/mssql/server
+docker run --name "misqlserver" -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SQL#1234" -p 1433:1433 -d mcr.microsoft.com/mssql/server
+docker start misqlserver
+
+CREATE DATABASE Analitica;
+USE Analitica;
+
+CREATE  table countries (
+  country_id char(2) NOT NULL,
+  country_name varchar(40) DEFAULT NULL,
+  region_id integer  NOT NULL,
+  PRIMARY KEY (country_id)
+) ;
+
+INSERT INTO countries (country_id, country_name, region_id) VALUES
+('AR', 'Argentina', 2);
+
+https://aka.ms/ssmsfullsetup
+
+Docker pull container-registry.oracle.com/database/free 
+
+Docker run -d --name "OracleSena" -p 1521:1521 -e "ORACLE_PWD=ora1234" container-registry.oracle.com/database/free
+docker start container-registry.oracle.com/database/free
+
+system/ora1234
+
+SID=free
+
+https://download.oracle.com/otn_software/java/sqldeveloper/sqldeveloper-23.1.1.345.2114-no-jre.zip
+
+https://www.oracle.com/co/java/technologies/javase/javase8-archive-downloads.html
+
+https://www.oracle.com/co/java/technologies/javase/javase8-archive-downloads.html#license-lightbox
+
+
+
+

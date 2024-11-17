@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<center>
+    <div class="sena-card">
+        <div class="bilinguismo__informacion-card-header">
+            <h3 class="bilinguismo__information-card-title sena-color sena-sombra">
+                <font color=white>SEDES DEL CENTRO DE FORMACION</font></h3>
+        </div>  
+        <div class="sena__informacion-card-container">  
+<table class="w3-striped w3-padding-large sena-p100" >   
+    <td width=50%>
+            <center>
+            <table border=1 class="sena__information-card-text w3-striped   sena-p100">
+                <tr><td colspan=2>
+                    <h5 class="sena-sombra w3-green sena-p100 " >CREAR SEDE</h5></header></td></tr>
+                <tr>
+            <form name=mio method=POST action="/centros/i" class="row g-3 "> 
+                <td width=50%><font color=black>Nombre :</font></td>
+                    <td><input class="sena-fondo sena-p100" type="text" id="nom" name="nom"  placeholder="Ingrese el nombre  de la sede" required></td></tr>
+                <td>Centro de Formaci&oacute;n:</font></td>
+                <td><select id=micentro>
+                {% for tipo in centros %}
+                        <option value="{{tipo.IDCENTRO}}">{{tipo.NOMBRE}}</option> 
+                {% endfor %}       
+                </select>
+                </td></tr>
+                </table>
+                <br>
+                    <input type="submit" value="Grabar"  class="sena-btn sena-p6">
+
+            
+            
+            </form>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td width=50%>
+        
+        <div class="sena-p100">
+        <table class="table  sena__information-card-text table-striped sena-p100" height=20% width=100%>
+    <td>Centro:</td><td><select class="sena-p100" id=idcentro>
+        {% for tipo in centros %}
+                        <option value="{{tipo.IDCENTRO}}">{{tipo.NOMBRE}}</option> 
+                {% endfor %}  
+    </select></td></tr>
+            {% for item1 in sedes %}
+        <td style="text-align:left"><font size=1 color=black><b>{{item1.NOMBRE}}</font></b></td>
+            <td width="100px">
+            <button class="btn w3-blue w3-hover-yellow" alt="Editar" onclick=Ir1("/centros/e/{{item1.IDCENTRO}}") title="Editar"><i class="fa fa-truck"></i></button>
+        <button class="btn w3-red w3-hover-yellow" onclick='Confirmar("Desea Borrar el registro?","/centros/d/{{item1.IDCENTRO}}")' title="Borrar"><i class="fa fa-trash"></i></button>
+            
+    </td></tr>
+    {% endfor %}    
+
+    </tr>
+</table>
+</div>
+</tr>
+</table>
+<br>
+</div>
+</div>
+
+
+{% endblock content %}

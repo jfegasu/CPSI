@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+            <form action="/ppa"
+            <div class="w3-container">
+                <div class="sena-card2">
+            <header class="sena-sombra sena-color"><font size=6 color=yellow ><b>{{ msgito}}<b></font></header></div>
+            
+            <br><br>
+            
+            </form>
+
+        <script>
+            function Voy(){
+            {% if regreso%}
+            location.href="{{regreso}}"
+            {% else %}
+            location.href="/"
+            {% endif %}
+            }
+            setTimeout('Voy()',3000)
+        </script>
+        {% endblock content %}
+    </body>
+</html>

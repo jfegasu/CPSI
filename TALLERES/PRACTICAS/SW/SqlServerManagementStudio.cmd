@@ -1,0 +1,1 @@
+start https://aka.ms/ssmsfullsetup
