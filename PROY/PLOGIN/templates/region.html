@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}<center><BR>
+    <div class="coard  mx-auto border" style="width: 50rem;">
+<table class="table table-striped">
+    <th>NOMBRE REGION</th></tR>
+{% for datos in cadena %}
+<tr><td>{{datos[1]}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+<A class="btn btn-primary" href="/paso1">REGRESAR</A>
+{% endblock content %}
