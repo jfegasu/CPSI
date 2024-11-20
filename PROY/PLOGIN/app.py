@@ -11,6 +11,7 @@ app.config['MYSQL_USER'] = 'prueba'
 app.config['MYSQL_PASSWORD'] = 'prueba'
 app.config['MYSQL_DB'] = 'ejemplo'
 mysql = MySQL(app)
+
 class Auditor():
     def __init__(self):
         os.makedirs('log',exist_ok=True)
