@@ -4,10 +4,10 @@ import os
 class Auditor():
     logger=None
     def __init__(self):
-        os.makedirs('log',exist_ok=True)
+        os.makedirs('/log',exist_ok=True)
         logger = logging.getLogger('werkzeug')
         self.logger =logger 
-        logging.basicConfig(format='%(asctime)s %(message)s ',filename='log/login.log', encoding='utf-8',level=logging.ERROR)
+        logging.basicConfig(format='%(asctime)s %(message)s ',filename='/log/login.log', encoding='utf-8',level=logging.ERROR)
         self.logger.setLevel(logging.ERROR)
         
     
@@ -23,6 +23,7 @@ class Auditor():
         elif tipo==30:
             self.logger.warning(client_ip+' '+msg+' '+usua)
         elif tipo==40:
+            print(client_ip+' '+msg+' '+usua)
             self.logger.error(client_ip+' '+msg+' ['+usua+']')
         elif tipo==50:
             self.logger.critical(client_ip+' '+msg+' '+usua)
