@@ -15,7 +15,7 @@ def Raiz1():
             msgito="BIENVENIDO"
             regreso="/paso1"
             # logger.error('INFO: ingresa '+usua)
-            Au.registra(40,msgito,usua )
+            Au.registra(30,msgito,usua )
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
         except Exception as e:
             msgito="USUARIO O CREDENCIALES NO VALIDOS"
