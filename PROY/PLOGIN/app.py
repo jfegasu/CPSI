@@ -19,7 +19,7 @@ Au=Auditor()
 def Raiz():
     fecha=datetime.now()
     fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
-    print(fe)
+    
     return render_template("login.html")
 @app.route("/v",methods=['POST'])
 def Raiz1():
@@ -38,7 +38,7 @@ def Raiz1():
             msgito="BIENVENIDO"
             regreso="/paso1"
             # logger.error('INFO: ingresa '+usua)
-            Au.registra(40,msgito,usua )
+            Au.registra(30,msgito,usua )
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
         except Exception as e:
             msgito="USUARIO O CREDENCIALES NO VALIDOS"
@@ -69,11 +69,11 @@ def Region():
         cur.execute("select * from regions")
         cadena=cur.fetchall()
 
-        Au.registra(40,'Ingresa a regions ',app.config['MYSQL_USER'])
+        Au.registra(30,'Ingresa a regions ',app.config['MYSQL_USER'])
         
         return render_template("region.html",cadena=cadena)
     except Exception as e:
-        msgito="NO TIENE ACCESO"
+        msgito="NO TIENE ACCESO <region>"
         regreso="/paso1"
         Au.registra(40,msgito,'')
         
