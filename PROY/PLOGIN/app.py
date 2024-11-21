@@ -1,8 +1,7 @@
 from flask import Flask, jsonify,request,render_template
 import json
 from flask_mysqldb import MySQL
-import logging
-import os
+from utils.Audita import Auditor
 
 
 app=Flask(__name__)
@@ -12,20 +11,6 @@ app.config['MYSQL_PASSWORD'] = 'prueba'
 app.config['MYSQL_DB'] = 'ejemplo'
 mysql = MySQL(app)
 
-class Auditor():
-    def __init__(self):
-        os.makedirs('log',exist_ok=True)
-        self.logger = logging.getLogger('werkzeug')
-        logging.basicConfig(format='%(asctime)s %(message)s ',filename='log/login.log', encoding='utf-8',level=logging.INFO)
-        self.logger.setLevel(logging.ERROR)
-    def logstart(self):
-        return self.logger
-    def registra(self,tipo,msg,usua="-"):
-        client_ip = request.remote_addr
-        if tipo==1:
-            self.logger.error('INFO: '+client_ip+' '+msg+' '+usua)
-        elif tipo==0:
-            self.logger.error('ERROR: '+client_ip+' '+msg+' '+usua)
 
 Au=Auditor()
 
@@ -50,13 +35,13 @@ def Raiz1():
             msgito="BIENVENIDO"
             regreso="/paso1"
             # logger.error('INFO: ingresa '+usua)
-            Au.registra(1,msgito,usua )
+            Au.registra(40,msgito,usua )
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
         except Exception as e:
             msgito="USUARIO O CREDENCIALES NO VALIDOS"
             regreso="/"
             usua=''
-            Au.registra(0,msgito)
+            Au.registra(40,msgito)
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
     return usua
@@ -70,7 +55,7 @@ def Paso1():
         msgito="NO HA VALIDADO CREDENCIALES"
         regreso="/"
         # logger.error('ERROR: '+msgito+' ')
-        Au.registra(0,msgito,'')
+        Au.registra(40,msgito,'')
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
 
@@ -81,13 +66,13 @@ def Region():
         cur.execute("select * from regions")
         cadena=cur.fetchall()
 
-        Au.registra(1,'Ingresa a regions ',app.config['MYSQL_USER'])
+        Au.registra(40,'Ingresa a regions ',app.config['MYSQL_USER'])
         
         return render_template("region.html",cadena=cadena)
     except Exception as e:
         msgito="NO TIENE ACCESO"
         regreso="/paso1"
-        Au.registra(0,msgito,'')
+        Au.registra(40,msgito,'')
         
         return render_template("alerta.html", msgito=msgito,regreso=regreso) 
 
