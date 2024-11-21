@@ -2,7 +2,7 @@ from flask import Flask, jsonify,request,render_template
 import json
 from flask_mysqldb import MySQL
 from utils.Audita import Auditor
-
+from datetime import datetime
 
 app=Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
@@ -17,6 +17,9 @@ Au=Auditor()
 
 @app.route("/")
 def Raiz():
+    fecha=datetime.now()
+    fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
+    print(fe)
     return render_template("login.html")
 @app.route("/v",methods=['POST'])
 def Raiz1():

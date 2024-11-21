@@ -1,13 +1,18 @@
 from flask import request
 import logging
 import os
+from datetime import datetime
 class Auditor():
     logger=None
     def __init__(self):
-        os.makedirs('/log',exist_ok=True)
+        
+        fecha=datetime.now()
+        fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
+        print(fe)
+        os.makedirs('/log/'+fe,exist_ok=True)
         logger = logging.getLogger('werkzeug')
         self.logger =logger 
-        logging.basicConfig(format='%(asctime)s %(message)s ',filename='/log/login.log', encoding='utf-8',level=logging.ERROR)
+        logging.basicConfig(format='%(asctime)s %(message)s ',filename='/log/'+fe+'/login.log', encoding='utf-8',level=logging.ERROR)
         self.logger.setLevel(logging.ERROR)
         
     
