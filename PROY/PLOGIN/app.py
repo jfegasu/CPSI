@@ -25,6 +25,7 @@ def Raiz1():
     if request.method == 'POST':
         usua = request.form.get('usua')
         pw = request.form.get('pw')
+        Au.Inyeccion(usua)
         try:
             app.config['MYSQL_HOST'] = 'localhost'
             app.config['MYSQL_USER'] = usua

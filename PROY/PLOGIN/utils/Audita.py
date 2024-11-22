@@ -2,6 +2,7 @@ from flask import request
 import logging
 import os
 from datetime import datetime
+import re
 class Auditor():
     logger=None
     def __init__(self):
@@ -16,7 +17,13 @@ class Auditor():
         self.logger.setLevel(logging.WARNING  )
         # self.logger.warning("inicia")
         
-    
+    def Inyeccion(self,dato):
+        patron=["--",';','union',"'"]
+        for cadena in patron:
+            resultado = re.search(cadena, dato.lower())   
+            if resultado:
+                 self.logger.error('Posible ataque de inyeccion sql'+dato)
+                                   
     def logstart(self):
         return self.logger
     
