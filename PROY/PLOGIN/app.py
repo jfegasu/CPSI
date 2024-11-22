@@ -44,7 +44,8 @@ def Raiz1():
             msgito="USUARIO O CREDENCIALES NO VALIDOS"
             regreso="/"
             usua=''
-            Au.registra(40,msgito)
+            Au.registra(40,msgito,app.config['MYSQL_USER'])
+            
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
     return usua
