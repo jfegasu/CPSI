@@ -14,7 +14,6 @@ mysql = MySQL(app)
 
 Au=Auditor()
 
-
 @app.route("/")
 def Raiz():
     fecha=datetime.now()

@@ -14,7 +14,7 @@ class Auditor():
         self.logger =logger 
         logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename='/log/'+fe+'/login.log', encoding='utf-8',level=logging.WARNING)
         self.logger.setLevel(logging.WARNING  )
-        self.logger.warning("inicia")
+        # self.logger.warning("inicia")
         
     
     def logstart(self):
