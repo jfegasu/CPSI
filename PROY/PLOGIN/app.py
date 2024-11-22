@@ -78,7 +78,8 @@ def Region():
         Au.registra(40,msgito,'')
         
         return render_template("alerta.html", msgito=msgito,regreso=regreso) 
-
-
+# ' OR 1=1 --
+# ';DELETE FROM USUARIOS;
+# mm' UNION select contraseña from usuario where usuario='migma' --
 if __name__=='__main__':
     app.run(debug=True,port=8000,host='0.0.0.0')
