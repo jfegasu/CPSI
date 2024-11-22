@@ -55,7 +55,7 @@ def Paso1():
         cur = mysql.connection.cursor()
         return render_template("paso1.html")
     except Exception as e:
-        msgito="NO HA VALIDADO CREDENCIALES"
+        msgito="NO HA VALIDADO CREDENCIALES <paso1>"
         regreso="/"
         # logger.error('ERROR: '+msgito+' ')
         Au.registra(40,msgito,'')
