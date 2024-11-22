@@ -26,6 +26,8 @@ def Raiz1():
         usua = request.form.get('usua')
         pw = request.form.get('pw')
         Au.Inyeccion(usua)
+        Au.Inyeccion(pw)
+        
         try:
             app.config['MYSQL_HOST'] = 'localhost'
             app.config['MYSQL_USER'] = usua

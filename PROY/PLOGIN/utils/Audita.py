@@ -9,7 +9,7 @@ class Auditor():
         
         fecha=datetime.now()
         fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
-        print("** Inicia **")
+        # print("** Inicia **")
         os.makedirs('/log/'+fe,exist_ok=True)
         logger = logging.getLogger('werkzeug')
         self.logger =logger 
@@ -18,11 +18,11 @@ class Auditor():
         # self.logger.warning("inicia")
         
     def Inyeccion(self,dato):
-        patron=["--",';','union',"'"]
+        patron=["--",';','union',"'"," or "," and ","#", "drop ",'1=1','1 = 1','"']
         for cadena in patron:
             resultado = re.search(cadena, dato.lower())   
             if resultado:
-                 self.logger.error('Posible ataque de inyeccion sql'+dato)
+                 self.logger.error('Posible ataque de inyeccion sql ['+dato+']')
                                    
     def logstart(self):
         return self.logger
