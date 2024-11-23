@@ -100,6 +100,18 @@ def cpwd1():
         msgito="Error: No cumple con las condiciones:\nAl menos Una Mayuscula, \nUn numero, Una minuscular,\n un caracter especial,\n una longitud minima de 8 caracteres"
         regreso="/"
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
+    
+                    
+    try:
+        cur = mysql.connection.cursor()
+        usua=app.config['MYSQL_USER']
+        print(usua)
+        cur.callproc('ChangeUserPassword',[usua,pw2])
+        mysql.connection.commit()
+        return "200" 
+    except Exception as e:
+        print("Fallo",e)
+        return "FALLO"
 
 @app.route("/region")
 def Region():
