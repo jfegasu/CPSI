@@ -27,8 +27,8 @@ def Raiz1():
         pw = request.form.get('pw')
         Utiles.Inyeccion(usua,'usuario')
         Utiles.Inyeccion(pw,'clave')
-        if not Utiles.ConsistenciaClave(pw):
-            print("No cumple")
+        # if not Utiles.ConsistenciaClave(pw):
+        #     print("No cumple")
         try:
             app.config['MYSQL_HOST'] = 'localhost'
             app.config['MYSQL_USER'] = usua
@@ -65,6 +65,37 @@ def Paso1():
         Au.registra(40,msgito,'')
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
+
+@app.route("/cpw")
+def cpwd():
+    return render_template("clogin.html")
+@app.route("/cpw1",methods=['POST'])
+def cpwd1():
+    try:
+        if request.method == 'POST':
+            pw1 = request.form.get('pw1')
+            app.config['MYSQL_PASSWORD'] = pw1
+            cur = mysql.connection.cursor()
+    except Exception as e:
+        msgito="CLAVE ANTERIOR NO COINCIDE <CPWD>"
+        regreso="/"        
+        return render_template("alerta.html", msgito=msgito,regreso=regreso)
+    
+    
+    if request.method == 'POST':
+        pw2 = request.form.get('pw2')
+        pw3 = request.form.get('pw3')
+        if pw2 == pw3:
+            # app.config['MYSQL_PASSWORD'] = pw1
+            # cur = mysql.connection.cursor()
+            msgito="OK  <CPWD>"
+            regreso="/"        
+            return render_template("alerta.html", msgito=msgito,regreso=regreso)
+        else:
+            msgito="CLAVES NO COINCIDEN"
+            regreso="/"        
+            return render_template("alerta.html", msgito=msgito,regreso=regreso)
+    
 
 @app.route("/region")
 def Region():
