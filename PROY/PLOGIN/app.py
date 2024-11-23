@@ -25,9 +25,12 @@ def Raiz1():
     if request.method == 'POST':
         usua = request.form.get('usua')
         pw = request.form.get('pw')
-        Au.Inyeccion(usua)
-        Au.Inyeccion(pw)
-        
+        Au.Inyeccion(usua,'usuario')
+        Au.Inyeccion(pw,'clave')
+        if Au.Consistencia(usua):
+            print("Cumple")
+        else:
+            print("No cumple")
         try:
             app.config['MYSQL_HOST'] = 'localhost'
             app.config['MYSQL_USER'] = usua
