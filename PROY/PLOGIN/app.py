@@ -25,8 +25,8 @@ def Raiz1():
     if request.method == 'POST':
         usua = request.form.get('usua')
         pw = request.form.get('pw')
-        Au.Inyeccion(usua,'usuario')
-        Au.Inyeccion(pw,'clave')
+        Util.Inyeccion(usua,'usuario')
+        Util.Inyeccion(pw,'clave')
         if Util.ConsistenciaClave(pw):
             print("Cumple")
         else:
