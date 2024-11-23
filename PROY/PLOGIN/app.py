@@ -86,16 +86,20 @@ def cpwd1():
         pw2 = request.form.get('pw2')
         pw3 = request.form.get('pw3')
         if pw2 == pw3:
+            pass
             # app.config['MYSQL_PASSWORD'] = pw1
             # cur = mysql.connection.cursor()
-            msgito="OK  <CPWD>"
-            regreso="/"        
-            return render_template("alerta.html", msgito=msgito,regreso=regreso)
+            # msgito="OK  <CPWD>"
+            # regreso="/"        
+            # return render_template("alerta.html", msgito=msgito,regreso=regreso)
         else:
             msgito="CLAVES NO COINCIDEN"
             regreso="/"        
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
-    
+    if not Utiles.ConsistenciaClave(pw2):
+        msgito="Error: No cumple con las condiciones:\nAl menos Una Mayuscula, \nUn numero, Una minuscular,\n un caracter especial,\n una longitud minima de 8 caracteres"
+        regreso="/"
+        return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
 @app.route("/region")
 def Region():
