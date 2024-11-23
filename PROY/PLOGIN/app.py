@@ -97,7 +97,7 @@ def cpwd1():
             regreso="/"        
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
     if not Utiles.ConsistenciaClave(pw2):
-        msgito="Error: No cumple con las condiciones:\nAl menos Una Mayuscula, \nUn numero, Una minuscular,\n un caracter especial,\n una longitud minima de 8 caracteres"
+        msgito="Error: No cumple con las condiciones:\nAl menos debe haber Una Mayuscula, \nUn numero, Una minuscula,\n un caracter especial,\n una longitud minima de 8 caracteres"
         regreso="/"
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
     
@@ -108,7 +108,10 @@ def cpwd1():
         print(usua)
         cur.callproc('ChangeUserPassword',[usua,pw2])
         mysql.connection.commit()
-        return "200" 
+        msgito="CAMBIO SATISFACTORIO DE CLAVE"
+        regreso="/"
+        return render_template("alerta.html", msgito=msgito,regreso=regreso)
+        
     except Exception as e:
         print("Fallo",e)
         return "FALLO"
