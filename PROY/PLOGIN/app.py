@@ -78,7 +78,8 @@ def cpwd1():
             cur = mysql.connection.cursor()
     except Exception as e:
         msgito="CLAVE ANTERIOR NO COINCIDE <CPWD>"
-        regreso="/"        
+        regreso="/" 
+        Au.registra(40,msgito,'')       
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
     
     
@@ -94,11 +95,13 @@ def cpwd1():
             # return render_template("alerta.html", msgito=msgito,regreso=regreso)
         else:
             msgito="CLAVES NO COINCIDEN"
-            regreso="/"        
+            regreso="/" 
+            Au.registra(40,msgito,'')       
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
     if not Utiles.ConsistenciaClave(pw2):
         msgito="Error: No cumple con las condiciones:\nAl menos debe haber Una Mayuscula, \nUn numero, Una minuscula,\n un caracter especial,\n una longitud minima de 8 caracteres"
         regreso="/"
+        Au.registra(40,msgito,'')
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
     
                     
@@ -110,11 +113,14 @@ def cpwd1():
         mysql.connection.commit()
         msgito="CAMBIO SATISFACTORIO DE CLAVE"
         regreso="/"
+        Au.registra(30,msgito,'')
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
         
     except Exception as e:
-        print("Fallo",e)
-        return "FALLO"
+        msgito="FALLO CAMBIO DE CLAVE"
+        regreso="/"
+        Au.registra(40,msgito,'')
+        return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
 @app.route("/region")
 def Region():
