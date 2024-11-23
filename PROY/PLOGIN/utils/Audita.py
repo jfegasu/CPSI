@@ -65,3 +65,24 @@ class Auditor():
             self.logger.critical(client_ip+' '+msg+' '+usua)
         elif tipo==60:
             self.logger.exception(client_ip+' '+msg+' '+usua)
+class Util(Auditor):
+    @classmethod
+    def ConsistenciaClave(cs,datos):
+            mayusculas = len([c for c in datos if c.isupper()])
+            minusculas = len([c for c in datos if c.islower()])
+            numeros = len([c for c in datos if c.isdigit()])
+            canti=len(datos)
+            
+            espe=0
+            caracteres = ['@', '#', '!', '*']
+            for ca in datos:
+                if ca not in string.ascii_letters and ca not in string.digits:
+                    for char in caracteres:
+                        cuenta = datos.count(char)
+                        if cuenta:
+                            espe+=1                
+            print(f"datos={datos},mayusculas={mayusculas},minusculas={minusculas}, numeros={numeros}, longitud={canti},especiales={espe}")
+            if mayusculas>=1 and minusculas>=1 and numeros>=1 and canti>=8 and espe>=1:
+                return True
+            else:
+                return False

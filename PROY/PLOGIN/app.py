@@ -1,7 +1,7 @@
 from flask import Flask, jsonify,request,render_template
 import json
 from flask_mysqldb import MySQL
-from utils.Audita import Auditor
+from utils.Audita import Auditor,Util
 from datetime import datetime
 
 app=Flask(__name__)
@@ -27,7 +27,7 @@ def Raiz1():
         pw = request.form.get('pw')
         Au.Inyeccion(usua,'usuario')
         Au.Inyeccion(pw,'clave')
-        if Au.ConsistenciaClave(pw):
+        if Util.ConsistenciaClave(pw):
             print("Cumple")
         else:
             print("No cumple")
