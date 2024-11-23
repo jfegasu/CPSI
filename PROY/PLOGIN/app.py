@@ -1,7 +1,7 @@
 from flask import Flask, jsonify,request,render_template
 import json
 from flask_mysqldb import MySQL
-from utils.Audita import Auditor,Util
+from utils.Utilitarios import Auditor,Utiles
 from datetime import datetime
 
 app=Flask(__name__)
@@ -25,11 +25,9 @@ def Raiz1():
     if request.method == 'POST':
         usua = request.form.get('usua')
         pw = request.form.get('pw')
-        Util.Inyeccion(usua,'usuario')
-        Util.Inyeccion(pw,'clave')
-        if Util.ConsistenciaClave(pw):
-            print("Cumple")
-        else:
+        Utiles.Inyeccion(usua,'usuario')
+        Utiles.Inyeccion(pw,'clave')
+        if not Utiles.ConsistenciaClave(pw):
             print("No cumple")
         try:
             app.config['MYSQL_HOST'] = 'localhost'

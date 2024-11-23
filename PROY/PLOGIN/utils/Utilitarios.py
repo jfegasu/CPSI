@@ -4,6 +4,7 @@ import os
 from datetime import datetime
 import re
 import string
+
 class Auditor():
     logger=None
     def __init__(self):
@@ -38,7 +39,7 @@ class Auditor():
         elif tipo==60:
             self.logger.exception(client_ip+' '+msg+' '+usua)
 
-class Util(Auditor):
+class Utiles(Auditor):
     
     @classmethod
     def ConsistenciaClave(cs,datos):
