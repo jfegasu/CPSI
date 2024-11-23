@@ -27,7 +27,7 @@ def Raiz1():
         pw = request.form.get('pw')
         Au.Inyeccion(usua,'usuario')
         Au.Inyeccion(pw,'clave')
-        if Au.Consistencia(usua):
+        if Au.ConsistenciaClave(pw):
             print("Cumple")
         else:
             print("No cumple")

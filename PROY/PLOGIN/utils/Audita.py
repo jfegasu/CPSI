@@ -17,7 +17,7 @@ class Auditor():
         logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename='/log/'+fe+'/login.log', encoding='utf-8',level=logging.WARNING)
         self.logger.setLevel(logging.WARNING  )
         # self.logger.warning("inicia")
-    def Consistencia(self,datos):
+    def ConsistenciaClave(self,datos):
             mayusculas = len([c for c in datos if c.isupper()])
             minusculas = len([c for c in datos if c.islower()])
             numeros = len([c for c in datos if c.isdigit()])
@@ -30,10 +30,8 @@ class Auditor():
                     for char in caracteres:
                         cuenta = datos.count(char)
                         if cuenta:
-                            espe+=1
-
-                
-            print(f"datos={datos},mayusculas={mayusculas},minusculas={minusculas}, numeros={numeros} longitud={canti} especiales={espe}")
+                            espe+=1                
+            print(f"datos={datos},mayusculas={mayusculas},minusculas={minusculas}, numeros={numeros}, longitud={canti},especiales={espe}")
             if mayusculas>=1 and minusculas>=1 and numeros>=1 and canti>=8 and espe>=1:
                 return True
             else:
