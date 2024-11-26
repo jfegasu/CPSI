@@ -1,0 +1,33 @@
+from peewee import Model, CharField, IntegerField, ForeignKeyField, MySQLDatabase
+
+# Define the MySQL database connection
+db = MySQLDatabase('my_database', user='your_user', password='your_password', host='localhost', port=3306)
+
+# BaseModel class to define the common database connection
+class BaseModel(Model):
+    class Meta:
+        database = db  # Use the defined MySQL database
+
+# Region model (corresponding to the 'regions' table)
+class Region(BaseModel):
+    region_id = IntegerField(primary_key=True)  # Assuming region_id is an integer
+    region_name = CharField(max_length=40)  # Example: region name
+
+# Country model (corresponding to the 'countries' table)
+class Country(BaseModel):
+    country_id = CharField(max_length=2, primary_key=True)  # Country ID is 2 characters
+    country_name = CharField(max_length=40, null=True)  # Optional field for country name
+    region = ForeignKeyField(Region, backref='countries', on_delete='CASCADE')  # Foreign Key to Region
+
+# Connecting to the database and creating the tables
+db.connect()
+db.create_tables([Region, Country])
+
+# Example: Insert data into Region and Country tables
+new_region = Region.create(region_id=1, region_name="North America")
+new_country = Country.create(country_id="US", country_name="United States", region=new_region)
+
+# Query example: Get all countries in a specific region
+countries_in_region = Country.select().where(Country.region == new_region)
+for country in countries_in_region:
+    print(country.country_name)
