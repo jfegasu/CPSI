@@ -108,8 +108,14 @@ def cpwd1():
     try:
         cur = mysql.connection.cursor()
         usua=app.config['MYSQL_USER']
+        pwx=app.config['MYSQL_PASSWORD']
         print(usua)
-        cur.callproc('ChangeUserPassword',[usua,pw2])
+        # GRANT ALTER, UPDATE ON hr.* TO jgalindos;
+        # cur.callproc('ChangeUserPassword',[usua,pw2])
+        sql=f"set password for '{usua}'@'localhost' = PASSWORD('{pw2}') "
+        # sql1=([usua,pw2])
+        # print(usua,pw2,sql)
+        cur.execute(sql)
         mysql.connection.commit()
         msgito="CAMBIO SATISFACTORIO DE CLAVE"
         regreso="/"
