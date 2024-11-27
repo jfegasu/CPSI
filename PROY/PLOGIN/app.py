@@ -29,12 +29,22 @@ def Raiz1():
         Utiles.Inyeccion(pw,'clave')
         # if not Utiles.ConsistenciaClave(pw):
         #     print("No cumple")
+      
+        if not usua=="root":
+            print(usua)
+        else:
+            msgito="NO SE PUEDE UTILIZAR EL USUARIO ROOT"
+            regreso="/" 
+            Au.registra(30,msgito,'')       
+            return render_template("alerta.html", msgito=msgito,regreso=regreso)
+
         try:
             app.config['MYSQL_HOST'] = 'localhost'
             app.config['MYSQL_USER'] = usua
             app.config['MYSQL_PASSWORD'] = pw
             app.config['MYSQL_DB'] = 'hr'
             cur = mysql.connection.cursor()
+            
             # cur.execute("select count(*) from regions")
             # cadena=cur.fetchall()
             # return render_template("region.html", cadena=cadena)
@@ -71,7 +81,9 @@ def cpwd():
     return render_template("clogin.html")
 @app.route("/cpw1",methods=['POST'])
 def cpwd1():
+    
     try:
+         
         if request.method == 'POST':
             pw1 = request.form.get('pw1')
             app.config['MYSQL_PASSWORD'] = pw1
@@ -98,6 +110,16 @@ def cpwd1():
             regreso="/" 
             Au.registra(40,msgito,'')       
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
+    if request.method == 'POST':
+        pw2 = request.form.get('pw2')
+        pw3 = request.form.get('pw3')
+        usua = request.form.get('usua')
+        if pw1==pw2:
+            msgito="LA CLAVE NUEVA NO PUEDE SER LA ANTERIOR"
+            regreso="/" 
+            Au.registra(40,msgito,'')       
+            return render_template("alerta.html", msgito=msgito,regreso=regreso)
+        
     if not Utiles.ConsistenciaClave(pw2):
         msgito="Error: No cumple con las condiciones:\nAl menos debe haber Una Mayuscula, \nUn numero, Una minuscula,\n un caracter especial,\n una longitud minima de 8 caracteres"
         regreso="/"
@@ -117,9 +139,9 @@ def cpwd1():
         # print(usua,pw2,sql)
         cur.execute(sql)
         mysql.connection.commit()
-        msgito="CAMBIO SATISFACTORIO DE CLAVE"
+        msgito="CAMBIO SATISFACTORIO DE CLAVE "
         regreso="/"
-        Au.registra(30,msgito,'')
+        Au.registra(30,msgito,usua)
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
         
     except Exception as e:
