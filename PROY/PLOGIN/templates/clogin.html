@@ -10,36 +10,44 @@
         
     }
 </script>
-<div class="coard  mx-auto border" style="width: 22rem;">
+<div class="coard  mx-auto border" style="width:70%;border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 0px solid #000000;-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
     <A  href="/"><i class="fa fa-home"></i>&nbsp; Cancelar</A>&nbsp;&nbsp; 
 
     <div class="card-header w3-black">
         
         <h5 class="card-title"><font color="yellow">CAMBIAR CLAVE</font></h5>
       </div>
-    <div class="card-body">
-        
-    <form method="post" action="/cpw1" onsubmit="return revisa()">
-        <table class="table">
-            <tr>
-                <td ><label class="form-label">Anterior clave:</label></td>
-                <td><input class="form-control" type="password" id="pw1" title="Digite la anterior clave " name="pw1" required></td>
-            </tr>
-            <tr>
-                <td><label class="form-label">Digite Clave:</label></td>
-                <td><input class="form-control" type="password"  id="pw2" name="pw2"></td>
-            </tr>
-            <tr>
-                <td><label class="form-label">Revita Clave:</label></td>
-                <td><input class="form-control" type="password"  id="pw3" name="pw3"></td>
-            </tr>
-            
-        </table>
-        <center><input class="btn btn-outline-primary col-10" type="submit" value="Ingresar">
-    </form>
+    <div class="card-body" >
+    <table>
+        <tr>
+            <td><form method="post" action="/cpw1" onsubmit="return revisa()">
+                <table class="table">
+                    <tr>
+                        <td ><label class="form-label">Anterior clave:</label></td>
+                        <td><input class="form-control" type="password" id="pw1" title="Digite la anterior clave " name="pw1" required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="form-label">Digite Clave:</label></td>
+                        <td><input class="form-control" type="password"  id="pw2" name="pw2"></td>
+                    </tr>
+                    <tr>
+                        <td><label class="form-label">Revita Clave:</label></td>
+                        <td><input class="form-control" type="password"  id="pw3" name="pw3"></td>
+                    </tr>
+                    
+                </table>
+                <center><input class="btn btn-outline-primary col-10" type="submit" value="Ingresar">
+            </form>
+        </td>
+            <td><img src="{{url_for('static',filename='images/RequisitosPWD.png')}}"</td>
+        </tr>
+    </table>    
+    </div>
 </div>
-</div>
-<div class="card-body">
-<img src="{{url_for('static',filename='images/RequisitosPWD.png')}}"    
-</div>
+
 {% endblock content %}
