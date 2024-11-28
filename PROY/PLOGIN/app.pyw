@@ -106,7 +106,7 @@ def cpwd1():
             # regreso="/"        
             # return render_template("alerta.html", msgito=msgito,regreso=regreso)
         else:
-            msgito="CLAVES NO COINCIDEN"
+            msgito="LAS NUEVAS CLAVES NO COINCIDEN"
             regreso="/" 
             Au.registra(40,msgito,'')       
             return render_template("alerta.html", msgito=msgito,regreso=regreso)

@@ -10,14 +10,7 @@
         
     }
 </script>
-<div class="coard  mx-auto border" style="width:70%;border-radius: 10px 10px 10px 10px;
--moz-border-radius: 10px 10px 10px 10px;
--webkit-border-radius: 10px 10px 10px 10px;
-border: 0px solid #000000;-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
-    <A  href="/"><i class="fa fa-home"></i>&nbsp; Cancelar</A>&nbsp;&nbsp; 
-
+<div class="coard  mx-auto border sena-borde" style="width:70%;">
     <div class="card-header w3-black">
         
         <h5 class="card-title"><font color="yellow">CAMBIAR CLAVE</font></h5>
@@ -33,15 +26,16 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
                     </tr>
                     <tr>
                         <td><label class="form-label">Digite Clave:</label></td>
-                        <td><input class="form-control" type="password"  id="pw2" name="pw2"></td>
+                        <td><input class="form-control" type="password"  id="pw2" name="pw2" required></td>
                     </tr>
                     <tr>
                         <td><label class="form-label">Revita Clave:</label></td>
-                        <td><input class="form-control" type="password"  id="pw3" name="pw3"></td>
+                        <td><input class="form-control" type="password"  id="pw3" name="pw3" required></td>
                     </tr>
                     
                 </table>
-                <center><input class="btn btn-outline-primary col-10" type="submit" value="Ingresar">
+                <center><input class="btn btn-outline-primary" type="submit" value="Ingresar">
+                    <a href="/" class="btn btn-outline-primary" ><i class="fa fa-home"></i>Regresar</a>
             </form>
         </td>
             <td><img src="{{url_for('static',filename='images/RequisitosPWD.png')}}"</td>
@@ -49,5 +43,6 @@ box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
     </table>    
     </div>
 </div>
+<br><br>
 
 {% endblock content %}
