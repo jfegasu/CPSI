@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}<center><BR>
-    <div class="coard  mx-auto border" style="width: 50rem;">
+    <div class="coard  mx-auto border sena-borde" style="width: 50rem;">
+        <h5 class="sena-sombra"><font color="red" >REGIONES</font></h5>
 <table class="table table-striped">
     <th>NOMBRE REGION</th></tR>
 {% for datos in cadena %}
@@ -9,5 +10,6 @@
 {% endfor %}
 </table>
 </div>
-<A class="btn btn-primary" href="/paso1">REGRESAR</A>
+<br>
+<A class="btn btn-primary" style="width: 50rem;" href="/paso1">REGRESAR</A>
 {% endblock content %}

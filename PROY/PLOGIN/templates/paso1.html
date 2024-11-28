@@ -1,11 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-<A  href="/"><i class="fa fa-home"></i>&nbsp; Regresar</A>&nbsp;&nbsp; <a href="/cpw"><i class="fa fa-refresh"></i> Cambiar clave</a>
+<br>
+<div class="coard  mx-auto border sena-borde" style="width:70%;">
+    <div class="card-header w3-black">
+        
+        <h5 class="card-title"><font color="yellow">MENU PRINCIPAL</font></h5>
+      </div>
+    <div class="card-body" >
+
+<A  class="btn btn-outline-danger" href="/"><i class="fa fa-home"></i>&nbsp; Regresar</A>&nbsp;&nbsp; 
+<a class="btn btn-outline-primary" href="/cpw"><i class="fa fa-refresh"></i> Cambiar clave</a><hr>
 <div style="width:70%;padding: 10,10,10,10;">
 <center>
-    <a href="/region" class="btn btn-primary" id="bt" style="width: 40%;padding-bottom: 10px;">Regiones</a><br>
-    <a href="/region" class="btn btn-primary" id="bt" style="width: 40%;padding: 10,10,10,10;">Paises</a><br>
+    <a href="/region" class="btn btn-primary" id="bt" style="width: 90%;padding-bottom: 10px;">Regiones</a><Hr>
+    <a href="/region" class="btn btn-primary" id="bt" style="width: 90%;padding: 10,10,10,10;">Paises</a><br>
+
     
+
+      
 </center>
 </div>
+</div>
+</div>
+<br>
 {% endblock content %}

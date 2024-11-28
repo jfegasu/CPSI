@@ -9,6 +9,7 @@ border: 8px solid #0df718;-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75)
 box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 html {
+    cursor: alias;
     --scrollbarBG: #f1f5f7;
     --thumbBG: #39A900;
     font-family: Helvetica, Arial, sans-serif;
