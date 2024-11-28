@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['JUICIOSEVAL.py'],
+    ['JUICIOSEVAL.pyw'],
     pathex=[],
     binaries=[],
     datas=[],

@@ -1,1 +1,1 @@
-pyinstaller --onefile -w JUICIOSEVAL.py
+pyinstaller --onefile -w JUICIOSEVAL.pyw
