@@ -9,6 +9,14 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'prueba'
 app.config['MYSQL_PASSWORD'] = 'prueba'
 app.config['MYSQL_DB'] = 'ejemplo'
+app.config['SECRET_KEY'] = "akDFJ34mdfsYMH567sdf" # this must be set in order to use sessions
+app.config['PERMANENT_SESSION_LIFETIME'] = 1500
+
+# Or using timedelta hours
+# app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=24)
+
+# Or using timedelta days
+# app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
 mysql = MySQL(app)
 
 
