@@ -58,7 +58,7 @@ class Utiles(Auditor):
                         if cuenta:
                             espe+=1                
             print(f"datos={datos},mayusculas={mayusculas},minusculas={minusculas}, numeros={numeros}, longitud={canti},especiales={espe}")
-            if mayusculas>=1 and minusculas>=1 and numeros>=1 and canti>=8 and espe>=1:
+            if mayusculas>=1 and minusculas>=1 and numeros>=1 and canti>=12 and espe>=1:
                 return True
             else:
                 return False
