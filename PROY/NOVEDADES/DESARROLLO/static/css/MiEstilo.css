@@ -27,7 +27,8 @@ html {
   .sena-titulo{
     font-size: 14pt;
     font-weight: bold;
-    background-color: var(--scrollbarBG);
+    background-color: #4CAF50;
+    
   }
   .texto3d {
     text-align: left; 
@@ -40,6 +41,7 @@ html {
   .sena-div{
     overflow: auto;
     height: 30rem;
+    width: 300px;
 
   }
   body::-webkit-scrollbar-track {
