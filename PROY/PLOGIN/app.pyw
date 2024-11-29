@@ -86,10 +86,10 @@ def Paso1():
 
 @app.route("/cpw")
 def cpwd():
+    Au.registra(30,'Ingresa a cambiar clave','') 
     return render_template("clogin.html")
 @app.route("/cpw1",methods=['POST'])
 def cpwd1():
-    
     try:
          
         if request.method == 'POST':
