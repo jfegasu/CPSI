@@ -174,6 +174,22 @@ def Region():
         Au.registra(40,msgito,'')
         
         return render_template("alerta.html", msgito=msgito,regreso=regreso) 
+@app.route("/pais")
+def Pais():
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute("select * from countries c join regions r using(region_id)")
+        cadena=cur.fetchall()
+
+        Au.registra(30,'Ingresa a countries ',app.config['MYSQL_USER'])
+        
+        return render_template("pais.html",cadena=cadena)
+    except Exception as e:
+        msgito="NO TIENE ACCESO <pais>"
+        regreso="/paso1"
+        Au.registra(40,msgito,'')
+        
+        return render_template("alerta.html", msgito=msgito,regreso=regreso) 
 # ' OR 1=1 --
 # ';DELETE FROM USUARIOS;
 # mm' UNION select contraseña from usuario where usuario='migma' --

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}<center><BR>
+    <div class="coard  mx-auto border sena-borde" style="width: 50rem;">
+        <h5 class="sena-sombra sena-titulo"><font color="red" >PAISES</font></h5>
+<table class="table table-striped">
+    <th>NOMBRE PAIS</th> <th>REGION</th></tR>
+{% for datos in cadena %}
+<tr><td>{{datos[2]}}</td><td>{{datos[3]}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+<br>
+<A class="btn btn-primary" style="width: 50rem;" href="/paso1">REGRESAR</A>
+{% endblock content %}
