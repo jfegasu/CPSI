@@ -29,6 +29,7 @@ html {
     font-weight: bold;
     background-color: var(--scrollbarBG);
   }
+  
   body::-webkit-scrollbar-track {
     background: var(--scrollbarBG);
   }
