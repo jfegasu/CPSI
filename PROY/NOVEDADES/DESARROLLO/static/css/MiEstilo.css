@@ -29,7 +29,11 @@ html {
     font-weight: bold;
     background-color: var(--scrollbarBG);
   }
-  
+  .sena-div{
+    overflow: auto;
+    height: 40rem;
+    width: 50rem;
+  }
   body::-webkit-scrollbar-track {
     background: var(--scrollbarBG);
   }
