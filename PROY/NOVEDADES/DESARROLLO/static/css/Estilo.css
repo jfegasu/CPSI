@@ -18,6 +18,7 @@ table{
 table.th{
   font-size: 14pt;
   font-weight: bold;
+  background-color: #4CAF50;
 }
 caja{
   width:50%;
