@@ -181,7 +181,7 @@ def Pais():
         cur.execute("select * from countries c join regions r using(region_id)")
         cadena=cur.fetchall()
 
-        Au.registra(30,'Ingresa a countries ',app.config['MYSQL_USER'])
+        Au.registra(30,'Ingresa a couuntries ',app.config['MYSQL_USER'])
         
         return render_template("pais.html",cadena=cadena)
     except Exception as e:
