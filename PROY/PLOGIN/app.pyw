@@ -10,7 +10,7 @@ app.config['MYSQL_USER'] = 'prueba'
 app.config['MYSQL_PASSWORD'] = 'prueba'
 app.config['MYSQL_DB'] = 'ejemplo'
 app.config['SECRET_KEY'] = "akDFJ34mdfsYMH567sdf" # this must be set in order to use sessions
-app.config['PERMANENT_SESSION_LIFETIME'] =   timedelta(minutes=10)
+app.config['PERMANENT_SESSION_LIFETIME'] =   timedelta(minutes=5)
 app.secret_key = 'akDFJ34mdfsYMH567sdf'
 
 
@@ -176,21 +176,21 @@ def Region():
         regreso="/" 
         Au.registra(40,msgito,'')       
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
-    
-    try:
-        cur = mysql.connection.cursor()
-        cur.execute("select * from regions")
-        cadena=cur.fetchall()
+    else:
+        try:
+            cur = mysql.connection.cursor()
+            cur.execute("select * from regions")
+            cadena=cur.fetchall()
 
-        Au.registra(30,'Ingresa a regions ',app.config['MYSQL_USER'])
-        
-        return render_template("region.html",cadena=cadena)
-    except Exception as e:
-        msgito="NO TIENE ACCESO <region>"
-        regreso="/paso1"
-        Au.registra(40,msgito,'')
-        
-        return render_template("alerta.html", msgito=msgito,regreso=regreso) 
+            Au.registra(30,'Ingresa a regions ',app.config['MYSQL_USER'])
+            
+            return render_template("region.html",cadena=cadena)
+        except Exception as e:
+            msgito="NO TIENE ACCESO <region>"
+            regreso="/paso1"
+            Au.registra(40,msgito,'')
+            
+            return render_template("alerta.html", msgito=msgito,regreso=regreso) 
 @app.route("/pais")
 def Pais():
     if Utiles.ValidaSesion():
@@ -198,21 +198,21 @@ def Pais():
         regreso="/" 
         Au.registra(40,msgito,'')       
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
-    
-    try:
-        cur = mysql.connection.cursor()
-        cur.execute("select * from countries c join regions r using(region_id)")
-        cadena=cur.fetchall()
+    else:    
+        try:
+            cur = mysql.connection.cursor()
+            cur.execute("select * from countries c join regions r using(region_id)")
+            cadena=cur.fetchall()
 
-        Au.registra(30,'Ingresa a couuntries ',app.config['MYSQL_USER'])
-        
-        return render_template("pais.html",cadena=cadena)
-    except Exception as e:
-        msgito="NO TIENE ACCESO <pais>"
-        regreso="/paso1"
-        Au.registra(40,msgito,'')
-        
-        return render_template("alerta.html", msgito=msgito,regreso=regreso) 
+            Au.registra(30,'Ingresa a couuntries ',app.config['MYSQL_USER'])
+            
+            return render_template("pais.html",cadena=cadena)
+        except Exception as e:
+            msgito="NO TIENE ACCESO <pais>"
+            regreso="/paso1"
+            Au.registra(40,msgito,'')
+            
+            return render_template("alerta.html", msgito=msgito,regreso=regreso) 
 # ' OR 1=1 --
 # ';DELETE FROM USUARIOS;
 # mm' UNION select contraseña from usuario where usuario='migma' --
