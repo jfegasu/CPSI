@@ -1,8 +1,8 @@
-from flask import Flask, jsonify,request,render_template
+from flask import Flask,session, jsonify,request,render_template
 import json
 from flask_mysqldb import MySQL
 from utils.Utilitarios import Auditor,Utiles
-from datetime import datetime
+from datetime import datetime,timedelta
 
 app=Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
@@ -10,7 +10,10 @@ app.config['MYSQL_USER'] = 'prueba'
 app.config['MYSQL_PASSWORD'] = 'prueba'
 app.config['MYSQL_DB'] = 'ejemplo'
 app.config['SECRET_KEY'] = "akDFJ34mdfsYMH567sdf" # this must be set in order to use sessions
-app.config['PERMANENT_SESSION_LIFETIME'] = 1500
+app.config['PERMANENT_SESSION_LIFETIME'] =   timedelta(minutes=10)
+app.secret_key = 'akDFJ34mdfsYMH567sdf'
+
+
 
 # Or using timedelta hours
 # app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=24)
@@ -24,6 +27,7 @@ Au=Auditor()
 
 @app.route("/")
 def Raiz():
+    session['usuario']='prueba'    
     fecha=datetime.now()
     fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
     
@@ -68,7 +72,8 @@ def Raiz1():
             Au.registra(40,msgito,app.config['MYSQL_USER'])
             
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
-
+    session.permanent = True
+    session['usuario'] = usua
     return usua
 
 @app.route("/paso1")
@@ -86,8 +91,14 @@ def Paso1():
 
 @app.route("/cpw")
 def cpwd():
-    Au.registra(30,'Ingresa a cambiar clave','') 
-    return render_template("clogin.html")
+    if Utiles.ValidaSesion():
+        msgito="SESION CADUCADA"
+        regreso="/" 
+        Au.registra(40,msgito,'')       
+        return render_template("alerta.html", msgito=msgito,regreso=regreso)
+    
+        Au.registra(30,'Ingresa a cambiar clave','') 
+        return render_template("clogin.html")
 @app.route("/cpw1",methods=['POST'])
 def cpwd1():
     try:
@@ -160,6 +171,12 @@ def cpwd1():
 
 @app.route("/region")
 def Region():
+    if Utiles.ValidaSesion():
+        msgito="SESION CADUCADA"
+        regreso="/" 
+        Au.registra(40,msgito,'')       
+        return render_template("alerta.html", msgito=msgito,regreso=regreso)
+    
     try:
         cur = mysql.connection.cursor()
         cur.execute("select * from regions")
@@ -176,6 +193,12 @@ def Region():
         return render_template("alerta.html", msgito=msgito,regreso=regreso) 
 @app.route("/pais")
 def Pais():
+    if Utiles.ValidaSesion():
+        msgito="SESION CADUCADA"
+        regreso="/" 
+        Au.registra(40,msgito,'')       
+        return render_template("alerta.html", msgito=msgito,regreso=regreso)
+    
     try:
         cur = mysql.connection.cursor()
         cur.execute("select * from countries c join regions r using(region_id)")

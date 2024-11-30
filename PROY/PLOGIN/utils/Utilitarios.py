@@ -1,4 +1,4 @@
-from flask import request
+from flask import request,render_template,session
 import logging
 import os
 from datetime import datetime
@@ -71,4 +71,12 @@ class Utiles(Auditor):
             if resultado:
                  Au.registra(40,'Posible ataque de inyeccion sql ['+dato+'] '+donde)
                  return 'Posible ataque de inyeccion sql ['+dato+'] '+donde
-        return 'x'                     
+        return 'x'  
+    @classmethod
+    def ValidaSesion(cs):
+        if 'usuario' not in session or session['usuario'] is None:
+            return True
+        else:
+            return False
+    
+                   
