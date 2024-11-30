@@ -216,6 +216,9 @@ def Pais():
 @app.route('/logout')
 def logout():
     session.clear()
+    app.config['MYSQL_USER'] = 'prueba'
+    app.config['MYSQL_PASSWORD'] = 'prueba'
+
     return redirect(url_for('/'))
 
 # ' OR 1=1 --
