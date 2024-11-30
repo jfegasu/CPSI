@@ -96,7 +96,7 @@ def cpwd():
         regreso="/" 
         Au.registra(40,msgito,'')       
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
-    
+    else:
         Au.registra(30,'Ingresa a cambiar clave','') 
         return render_template("clogin.html")
 @app.route("/cpw1",methods=['POST'])
