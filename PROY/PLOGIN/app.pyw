@@ -1,4 +1,4 @@
-from flask import Flask,session, jsonify,request,render_template
+from flask import Flask,session, jsonify,request,render_template,redirect,url_for
 import json
 from flask_mysqldb import MySQL
 from utils.Utilitarios import Auditor,Utiles
@@ -213,6 +213,11 @@ def Pais():
             Au.registra(40,msgito,'')
             
             return render_template("alerta.html", msgito=msgito,regreso=regreso) 
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('/'))
+
 # ' OR 1=1 --
 # ';DELETE FROM USUARIOS;
 # mm' UNION select contraseña from usuario where usuario='migma' --
