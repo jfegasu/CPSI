@@ -17,10 +17,7 @@ fe1=str(fecha.year)+str(fecha.month)+str(fecha.day)+"-"+str(fecha.hour)+"-"+str(
 fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
 print(fe)
 os.makedirs('/log/'+fe,exist_ok=True)
-
-# Configuración básica de registro
-# logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename='/log/'+fe+'/login.log', encoding='utf-8',level=logging.WARNING)
-        
+       
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename="/log/"+fe+"/system_check.log", level=logging.INFO)
 print("/log/"+fe+"/system_check.log")
 # Función para verificar los discos
