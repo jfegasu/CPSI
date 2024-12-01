@@ -1,7 +1,9 @@
 import psutil
-for proc in psutil.process_iter():
-    print(proc.name(), proc.pid)
+# for proc in psutil.process_iter():
+#     print(proc.name(), proc.pid)
+# https://nssm.cc/download
 
+# C:\nssm\nssm.exe install "CheckSystemService" python C:\ruta\a\tu\putil.py
 # https://tecnobillo.com/sections/python-en-windows/servicios-windows-python/servicios-windows-python.html
 import psutil
 import logging
