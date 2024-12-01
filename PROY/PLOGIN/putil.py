@@ -22,6 +22,8 @@ os.makedirs('/log/'+fe,exist_ok=True)
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename="/log/"+fe+"/system_check.log", level=logging.INFO)
 print("/log/"+fe+"/system_check.log")
 # Función para verificar los discos
+cpu=psutil.cpu_count()
+logging.info("CPU="+str(cpu))
 def check_disks():
     logging.info("Verificando discos duros..."+fe1)
     partitions = psutil.disk_partitions()
