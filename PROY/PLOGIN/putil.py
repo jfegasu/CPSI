@@ -11,15 +11,19 @@ import os
 from datetime import datetime
 
 fecha=datetime.now()
-fe=str(fecha.year)+str(fecha.month)+str(fecha.day)+"-"+str(fecha.hour)+"-"+str(fecha.minute)
+fe1=str(fecha.year)+str(fecha.month)+str(fecha.day)+"-"+str(fecha.hour)+"-"+str(fecha.minute)
+fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
+print(fe)
 os.makedirs('/log/'+fe,exist_ok=True)
 
 # Configuración básica de registro
-logging.basicConfig(filename="/Log/"+fe+"/system_check.log", level=logging.INFO)
-
+# logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename='/log/'+fe+'/login.log', encoding='utf-8',level=logging.WARNING)
+        
+logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename="/log/"+fe+"/system_check.log", level=logging.INFO)
+print("/log/"+fe+"/system_check.log")
 # Función para verificar los discos
 def check_disks():
-    logging.info("Verificando discos duros...")
+    logging.info("Verificando discos duros..."+fe1)
     partitions = psutil.disk_partitions()
     for partition in partitions:
         usage = psutil.disk_usage(partition.mountpoint)
