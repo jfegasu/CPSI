@@ -11,6 +11,7 @@ import logging
 import os
 from datetime import datetime
 
+datos=[]
 fecha=datetime.now()
 fe1=str(fecha.year)+str(fecha.month)+str(fecha.day)+"-"+str(fecha.hour)+"-"+str(fecha.minute)
 fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
@@ -24,17 +25,16 @@ logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename="/l
 print("/log/"+fe+"/system_check.log")
 # Función para verificar los discos
 def check_disks():
-    logging.info("Verificando discos duros..."+fe1)
     partitions = psutil.disk_partitions()
     for partition in partitions:
         usage = psutil.disk_usage(partition.mountpoint)
-        logging.info(f"Disco {partition.device}: Total {usage.total} Bytes, Usado {usage.used} Bytes, Libre {usage.free} Bytes, Porcentaje {usage.percent}%")
-
+        datos.append(partition.device+": "+str(usage.total))
+        
+        
 # Función para verificar la memoria RAM
 def check_memory():
-    logging.info("Verificando memoria RAM...")
     memory = psutil.virtual_memory()
-    logging.info(f"Memoria total: {memory.total} Bytes, Usada: {memory.used} Bytes, Libre: {memory.available} Bytes, Porcentaje: {memory.percent}%")
+    datos.append("RAM: "+str(memory.total))
 
 def Total():
     datos_sistema_operativo = [
@@ -54,13 +54,15 @@ def Total():
     'version',
     ]
     cpu=psutil.cpu_count()
-    logging.info("CPU: "+str(cpu))
-
+    nodo=hasattr(pl,'node')
+    
     for perfil in datos_sistema_operativo:
         if hasattr(pl, perfil):  # aqui preguntamos con el metodo hasattr si para la pataforma "pl" contamos con el atributo actual.
-            # print('%s:%s' % (perfil, getattr(pl, perfil)()))
-            logging.info('%s:%s' % (perfil, getattr(pl, perfil)()))
-
+            datos.append(perfil+": "+str(getattr(pl, perfil)()))
+            
+    for da in datos:
+       logging.info(da) 
+    
 # Función principal
 def main():
     logging.info('*******************************************************************')
