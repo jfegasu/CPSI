@@ -1,4 +1,5 @@
 import psutil
+import platform as pl 
 # for proc in psutil.process_iter():
 #     print(proc.name(), proc.pid)
 # https://nssm.cc/download
@@ -37,10 +38,34 @@ def check_memory():
     memory = psutil.virtual_memory()
     logging.info(f"Memoria total: {memory.total} Bytes, Usada: {memory.used} Bytes, Libre: {memory.available} Bytes, Porcentaje: {memory.percent}%")
 
+def Total():
+    datos_sistema_operativo = [
+    'architecture',
+    'linux_distribution',
+    'mac_ver',
+    'machine',
+    'node',
+    'platform',
+    'processor',
+    'python_build',
+    'python_compiler',
+    'python_version',
+    'release',
+    'system',
+    'uname',
+    'version',
+    ]
+    for perfil in datos_sistema_operativo:
+        if hasattr(pl, perfil):  # aqui preguntamos con el metodo hasattr si para la pataforma "pl" contamos con el atributo actual.
+            print('%s:%s' % (perfil, getattr(pl, perfil)()))
+            logging.info('%s:%s' % (perfil, getattr(pl, perfil)()))
+
 # Función principal
 def main():
+    logging.info('*******************************************************************')
     check_disks()
     check_memory()
+    Total()
 
 if __name__ == "__main__":
     main()
