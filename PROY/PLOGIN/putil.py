@@ -23,8 +23,6 @@ os.makedirs('/log/'+fe,exist_ok=True)
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename="/log/"+fe+"/system_check.log", level=logging.INFO)
 print("/log/"+fe+"/system_check.log")
 # Función para verificar los discos
-cpu=psutil.cpu_count()
-logging.info("CPU="+str(cpu))
 def check_disks():
     logging.info("Verificando discos duros..."+fe1)
     partitions = psutil.disk_partitions()
@@ -55,9 +53,12 @@ def Total():
     'uname',
     'version',
     ]
+    cpu=psutil.cpu_count()
+    logging.info("CPU: "+str(cpu))
+
     for perfil in datos_sistema_operativo:
         if hasattr(pl, perfil):  # aqui preguntamos con el metodo hasattr si para la pataforma "pl" contamos con el atributo actual.
-            print('%s:%s' % (perfil, getattr(pl, perfil)()))
+            # print('%s:%s' % (perfil, getattr(pl, perfil)()))
             logging.info('%s:%s' % (perfil, getattr(pl, perfil)()))
 
 # Función principal
