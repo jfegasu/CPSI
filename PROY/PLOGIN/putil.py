@@ -15,14 +15,15 @@ datos=[]
 fecha=datetime.now()
 fe1=str(fecha.year)+str(fecha.month)+str(fecha.day)+"-"+str(fecha.hour)+"-"+str(fecha.minute)
 fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
-print(fe)
+
 os.makedirs('/log/'+fe,exist_ok=True)
        
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename="/log/"+fe+"/system_check.log", level=logging.INFO)
-print("/log/"+fe+"/system_check.log")
+
 # Función para verificar los discos
 def check_disks():
     partitions = psutil.disk_partitions()
+    
     for partition in partitions:
         usage = psutil.disk_usage(partition.mountpoint)
         datos.append(partition.device+": "+str(usage.total))
@@ -39,7 +40,6 @@ def Total():
     'linux_distribution',
     'mac_ver',
     'machine',
-    'node',
     'platform',
     'processor',
     'python_build',
@@ -51,7 +51,10 @@ def Total():
     'version',
     ]
     cpu=psutil.cpu_count()
-    nodo=hasattr(pl,'node')
+    pc="PC: "+str(getattr(pl,'node')())
+    npc=(getattr(pl,'node')())
+    print(npc)
+    logging.info(pc)
     
     for perfil in datos_sistema_operativo:
         if hasattr(pl, perfil):  # aqui preguntamos con el metodo hasattr si para la pataforma "pl" contamos con el atributo actual.
