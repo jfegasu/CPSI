@@ -14,7 +14,7 @@ from datetime import datetime
 datos=[]
 fecha=datetime.now()
 fe1=str(fecha.year)+str(fecha.month)+str(fecha.day)+"-"+str(fecha.hour)+"-"+str(fecha.minute)
-fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
+fe=str(fecha.year)+"-"+str(fecha.month)+"-"+str(fecha.day)
 
 os.makedirs('/log/'+fe,exist_ok=True)
        
