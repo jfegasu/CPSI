@@ -10,15 +10,17 @@ import psutil
 import logging
 import os
 from datetime import datetime
+from utils.Utilitarios import *
 
 datos=[]
 fecha=datetime.now()
 fe1=str(fecha.year)+str(fecha.month)+str(fecha.day)+"-"+str(fecha.hour)+"-"+str(fecha.minute)
 fe=str(fecha.year)+"-"+str(fecha.month)+"-"+str(fecha.day)
-
-os.makedirs('/log/'+fe,exist_ok=True)
+ruta=getRegEd("path")+'/log/'+fe
+print(ruta)
+os.makedirs(ruta,exist_ok=True)
        
-logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename="/log/"+fe+"/system_check.log", level=logging.INFO)
+logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s ',filename=ruta+"/system_check.log", level=logging.INFO)
 
 # Función para verificar los discos
 def check_disks():

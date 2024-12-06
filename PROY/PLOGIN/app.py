@@ -5,50 +5,42 @@ from utils.Utilitarios import Auditor,Utiles
 from datetime import datetime,timedelta
 
 app=Flask(__name__)
-app.config['MYSQL_HOST'] = '127.0.0.1'
+app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'prueba'
 app.config['MYSQL_PASSWORD'] = 'prueba'
-app.config['MYSQL_DB'] = 'hr'
-app.config['MYSQL_PORT'] = '3306'
+app.config['MYSQL_DB'] = 'ejemplo'
 app.config['SECRET_KEY'] = "akDFJ34mdfsYMH567sdf" # this must be set in order to use sessions
-# app.config['PERMANENT_SESSION_LIFETIME'] =   timedelta(minutes=1440) # un dia
+app.config['PERMANENT_SESSION_LIFETIME'] =   timedelta(minutes=5)
+app.secret_key = 'akDFJ34mdfsYMH567sdf'
 
-
-
-
-# Or using timedelta hours
-# app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=24)
-
-# Or using timedelta days
-# app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
-mysql = MySQL()
-
+mysql = MySQL(app)
 
 Au=Auditor()
 
-@app.route("/") # Envia al template login.html
+@app.route("/")
 def Raiz():
     session['usuario']='prueba'    
     fecha=datetime.now()
     fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
     
     return render_template("login.html")
-@app.route("/v",methods=['POST']) # Verifica que no sea el usuario root y que las credenciales sean válidas
+@app.route("/v",methods=['POST'])
 def Raiz1():
     if request.method == 'POST':
         usua = request.form.get('usua')
         pw = request.form.get('pw')
-        
-        # Utiles.Inyeccion(usua,'usuario')
-        # Utiles.Inyeccion(pw,'clave')
-              
-        # if not usua=="root":
-        #     print(usua)
-        # else:
-        #     msgito="NO SE PUEDE UTILIZAR EL USUARIO ROOT"
-        #     regreso="/" 
-        #     Au.registra(30,msgito,'')       
-        #     return render_template("alerta.html", msgito=msgito,regreso=regreso)
+        Utiles.Inyeccion(usua,'usuario')
+        Utiles.Inyeccion(pw,'clave')
+        # if not Utiles.ConsistenciaClave(pw):
+        #     print("No cumple")
+      
+        if not usua=="root":
+            print(usua)
+        else:
+            msgito="NO SE PUEDE UTILIZAR EL USUARIO ROOT"
+            regreso="/" 
+            Au.registra(30,msgito,'')       
+            return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
         try:
             app.config['MYSQL_HOST'] = 'localhost'
@@ -56,15 +48,13 @@ def Raiz1():
             app.config['MYSQL_PASSWORD'] = pw
             app.config['MYSQL_DB'] = 'hr'
             cur = mysql.connection.cursor()
-
+            
             msgito="BIENVENIDO"
             regreso="/paso1"
-            # logger.error('INFO: ingresa '+usua)
             Au.registra(30,msgito,usua )
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
         except Exception as e:
-            print(f"Error: {e}")
-            msgito="USUARIO O CREDENCIALES NO VALIDOS "
+            msgito="USUARIO O CREDENCIALES NO VALIDOS"
             regreso="/"
             usua=''
             Au.registra(40,msgito,app.config['MYSQL_USER'])
@@ -167,6 +157,50 @@ def cpwd1():
         Au.registra(40,msgito,'')
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
+@app.route("/region")
+def Region():
+    if Utiles.ValidaSesion():
+        msgito="SESION CADUCADA"
+        regreso="/" 
+        Au.registra(40,msgito,'')       
+        return render_template("alerta.html", msgito=msgito,regreso=regreso)
+    else:
+        try:
+            cur = mysql.connection.cursor()
+            cur.execute("select * from regions")
+            cadena=cur.fetchall()
+
+            Au.registra(30,'Ingresa a regions ',app.config['MYSQL_USER'])
+            
+            return render_template("region.html",cadena=cadena)
+        except Exception as e:
+            msgito="NO TIENE ACCESO <region>"
+            regreso="/paso1"
+            Au.registra(40,msgito,'')
+            
+            return render_template("alerta.html", msgito=msgito,regreso=regreso) 
+@app.route("/pais")
+def Pais():
+    if Utiles.ValidaSesion():
+        msgito="SESION CADUCADA"
+        regreso="/" 
+        Au.registra(40,msgito,'')       
+        return render_template("alerta.html", msgito=msgito,regreso=regreso)
+    else:    
+        try:
+            cur = mysql.connection.cursor()
+            cur.execute("select * from countries c join regions r using(region_id)")
+            cadena=cur.fetchall()
+
+            Au.registra(30,'Ingresa a couuntries ',app.config['MYSQL_USER'])
+            
+            return render_template("pais.html",cadena=cadena)
+        except Exception as e:
+            msgito="NO TIENE ACCESO <pais>"
+            regreso="/paso1"
+            Au.registra(40,msgito,'')
+            
+            return render_template("alerta.html", msgito=msgito,regreso=regreso) 
 @app.route('/logout')
 def logout():
     session.clear()
@@ -205,5 +239,5 @@ def logout():
 # https://learn.microsoft.com/es-es/sql/relational-databases/security/sql-injection?view=sql-server-ver16
 # https://latam.kaspersky.com/resource-center/definitions/sql-injection
 
-if __name__ == '__main__':   
-    app.run(debug=True, port=5000,host='0.0.0.0')
+if __name__=='__main__':
+    app.run(debug=True,port=8000,host='0.0.0.0')
