@@ -25,7 +25,7 @@ mysql = MySQL(app)
 
 Au=Auditor()
 
-@app.route("/")
+@app.route("/") # Envia al template login.html
 def Raiz():
     session['usuario']='prueba'    
     fecha=datetime.now()
