@@ -32,16 +32,14 @@ def Raiz():
     fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
     
     return render_template("login.html")
-@app.route("/v",methods=['POST'])
+@app.route("/v",methods=['POST']) # Verifica que no sea el usuario root y que las credenciales sean válidas
 def Raiz1():
     if request.method == 'POST':
         usua = request.form.get('usua')
         pw = request.form.get('pw')
         Utiles.Inyeccion(usua,'usuario')
         Utiles.Inyeccion(pw,'clave')
-        # if not Utiles.ConsistenciaClave(pw):
-        #     print("No cumple")
-      
+              
         if not usua=="root":
             print(usua)
         else:
