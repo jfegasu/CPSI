@@ -1,4 +1,9 @@
 https://www.youtube.com/watch?v=ZSPGqmd-wHc&list=PLWkxwEHYPPt27zeS4757RDUEx-x5e8CwJ&index=1
 7 Principios de las Pruebas de Software | ISTQB examinable
 https://www.youtube.com/watch?v=nI28eoU6POQ&list=PLWkxwEHYPPt27zeS4757RDUEx-x5e8CwJ&index=2
-
+Técnica de Partición de Equivalencia | ISTQB examinable
+https://www.youtube.com/watch?v=aCCYwMiLoas&list=PLWkxwEHYPPt27zeS4757RDUEx-x5e8CwJ&index=3
+ISTQB Examen | Ejercicios de Particiones de Equivalencia
+https://www.youtube.com/watch?v=4Jf9uFrhspM&list=PLWkxwEHYPPt27zeS4757RDUEx-x5e8CwJ&index=4
+Técnica de Análisis de Valores Límites | ISTQB examinable
+https://www.youtube.com/watch?v=eFYFUUtTqdI&list=PLWkxwEHYPPt27zeS4757RDUEx-x5e8CwJ&index=5
