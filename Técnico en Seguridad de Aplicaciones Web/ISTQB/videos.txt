@@ -27,3 +27,9 @@ istqb examen provider
 https://www.youtube.com/watch?v=dDk4nsiXrPI&list=PLWkxwEHYPPt27zeS4757RDUEx-x5e8CwJ&index=15
 istqb examen provider
 https://astqb.org/get-certified/why-choose-astqb-for-your-istqb-certification-exam/?msclkid=3d75729b6dc817f78ba815cfbd40fb63&utm_source=bing&utm_medium=cpc&utm_campaign=ISTQB%20Keywords%20Bing&utm_term=%2Bistqb%20provider&utm_content=ISTQB%20Exam
+ ¿Qué es probar? Fundamentos de ISTQB
+https://www.youtube.com/watch?v=H_mCN6qgHVs&list=PL2TAY4y5YTPX7Vi8UuOMCOLe0b47T4qHe
+Pruebas y Depuración ¿Para que sirven las pruebas de Software?
+https://www.youtube.com/watch?v=k4pgVI3X3Us&list=PL2TAY4y5YTPX7Vi8UuOMCOLe0b47T4qHe&index=2
+Error, Defecto y Falla | Falsos Positivos y Falsos Negativos ISTQB
+https://www.youtube.com/watch?v=COEdDGrb-hI&list=PL2TAY4y5YTPX7Vi8UuOMCOLe0b47T4qHe&index=3
