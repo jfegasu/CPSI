@@ -1,5 +1,6 @@
 from peewee import MySQLDatabase
 from peewee import SqliteDatabase
+
 MYSQL = MySQLDatabase(
         'sinsonte',
         user='root',

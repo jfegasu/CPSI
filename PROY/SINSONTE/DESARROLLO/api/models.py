@@ -2,16 +2,6 @@ from peewee import Model, CharField, IntegerField, TextField, ForeignKeyField, D
 from peewee import MySQLDatabase
 from databases import *
 from flask import session
-# Definir la base de datos (cambia estos parámetros por los de tu configuración de MySQL)
-# DATABASE = MySQLDatabase(
-#         'sinsonte',
-#         user='root',
-#         password='',
-#         host='localhost',
-#         port=3306  # Usualmente 3306 para MySQL
-#     )
-# Definir la clase base
-
 class BaseModel(Model):
     class Meta:
         database = DATABASE
