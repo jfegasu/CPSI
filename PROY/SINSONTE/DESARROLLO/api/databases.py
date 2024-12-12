@@ -1,5 +1,7 @@
 from peewee import MySQLDatabase
 from peewee import SqliteDatabase
+# from peewee import PostgresqlDatabase
+
 
 MYSQL = MySQLDatabase(
         'sinsonte',
@@ -10,6 +12,13 @@ MYSQL = MySQLDatabase(
     )
 
 SQLITE = SqliteDatabase('sinsonte.db')
+
+# POSTGRES=PostgresqlDatabase(
+#     'Analitica', 
+#     host='192.168.134.56', 
+#     port=5432, 
+#     user='root', 
+#     password='root')
 
 DATABASE=MYSQL
 
