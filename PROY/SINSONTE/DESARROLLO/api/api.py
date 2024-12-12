@@ -1,6 +1,7 @@
 from flask import Flask, jsonify,request
 import json
 import sqlite3
+import sinsonteorm
 bd="sinsonte.db"
 
 

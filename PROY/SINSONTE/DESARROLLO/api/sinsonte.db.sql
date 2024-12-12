@@ -1,0 +1,33 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "APARTAMENTO" (
+	"idapartamento"	INTEGER,
+	"nomapto"	VARCHAR(4),
+	"PISO"	INTEGER,
+	"nomunidad"	INTEGER,
+	"observacion"	INTEGER,
+	"celular"	TEXT,
+	"contacto"	TEXT,
+	"correo"	TEXT,
+	PRIMARY KEY("idapartamento" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "AUTOMOTOR" (
+	"IDAUTOMOTOR"	INTEGER,
+	"PLACA"	TEXT,
+	"TIPO"	INTEGER,
+	"IDAPARTAMENTO"	INTEGER,
+	PRIMARY KEY("IDAUTOMOTOR" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "INGRESO" (
+	"idingreso"	INTEGER,
+	"fecha"	datetime,
+	"idautomotor"	INTEGER,
+	"tipo"	INTEGER,
+	PRIMARY KEY("idingreso" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "UNIDAD" (
+	"idunidad"	INTEGER,
+	"nomunidad"	TEXT,
+	PRIMARY KEY("idunidad")
+);
+
+COMMIT;

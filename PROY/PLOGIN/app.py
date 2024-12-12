@@ -206,8 +206,10 @@ def logout():
     session.clear()
     app.config['MYSQL_USER'] = 'prueba'
     app.config['MYSQL_PASSWORD'] = 'prueba'
-
-    return redirect(url_for('/'))
+    msgito="SALIENDO DEL SISTEMA"
+    regreso="/"
+    Au.registra(30,msgito,'')
+    return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
 # ' OR 1=1 --
 # ';DELETE FROM USUARIOS;
