@@ -1,18 +1,11 @@
-from flask import Flask, jsonify,request
+from flask import Flask, jsonify,request,session
 import json
 import sqlite3
 from CrearORM import *
-
 from databases import *
-# DATABASE = MySQLDatabase(
-#         'sinsonte',
-#         user='root',
-#         password='',
-#         host='localhost',
-#         port=3306  # Usualmente 3306 para MySQL
-#     )
-DATABASE=MYSQL
+
 app=Flask(__name__)
+
 @app.route("/t")
 def ListaUnidad():
     unidades = Unidad.select()

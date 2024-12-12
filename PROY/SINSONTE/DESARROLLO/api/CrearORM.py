@@ -1,15 +1,17 @@
 from peewee import Model, CharField, IntegerField, TextField, ForeignKeyField, DateTimeField, SqliteDatabase,AutoField
 from peewee import MySQLDatabase
-
+from databases import *
+from flask import session
 # Definir la base de datos (cambia estos parámetros por los de tu configuración de MySQL)
-DATABASE = MySQLDatabase(
-        'sinsonte',
-        user='root',
-        password='',
-        host='localhost',
-        port=3306  # Usualmente 3306 para MySQL
-    )
+# DATABASE = MySQLDatabase(
+#         'sinsonte',
+#         user='root',
+#         password='',
+#         host='localhost',
+#         port=3306  # Usualmente 3306 para MySQL
+#     )
 # Definir la clase base
+
 class BaseModel(Model):
     class Meta:
         database = DATABASE
@@ -24,7 +26,7 @@ class Apartamento(BaseModel):
     idapartamento = AutoField()
     nomapto = CharField(max_length=4)
     piso = IntegerField()
-    nomunidad = ForeignKeyField(Unidad, backref='apartamentos')
+    idunidad = ForeignKeyField(Unidad, backref='apartamentos')
     observacion = IntegerField()
     celular = TextField()
     contacto = TextField()
@@ -43,7 +45,7 @@ class Ingreso(BaseModel):
     tipo = IntegerField()
 
 # # Conectar a la base de datos
-# DATABASE.connect()
-
+if __name__=='__main__':
+    DATABASE.connect()
 # # Crear las tablas en la base de datos si no existen
-# DATABASE.create_tables([Unidad, Apartamento, Automotor, Ingreso])
+    DATABASE.create_tables([Unidad, Apartamento, Automotor, Ingreso])
