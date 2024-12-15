@@ -116,8 +116,8 @@ def EnviaCorreo(Para,Asunto,Cuerpo):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login('jfegasu@gmail.com', clave)
         smtp.send_message(msg)
+
 def CorreosHTML(Para,Asunto,Cuerpo):
-    # msg = EmailMessage()
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
     password=getRegEd('pwd')
@@ -130,10 +130,10 @@ def CorreosHTML(Para,Asunto,Cuerpo):
     html = """
 <html>
   <body>
-    <div style="width:70%;overflow:auto" class="w3-w3-green mx-auto">
+    <div style="width:100%;overflow:auto" class="w3-w3-green mx-auto">
       <img loading="lazy" class="tabla" src="https://blogger.googleusercontent.com/img/a/AVvXsEimdqxynaYJeDRuTUp3lzEWFnnQSC2KTVSxvnV70I2eZ5tOCfjwdNnExSTSm2tCf1xBFHVHwsN80OCpDCO0J80UTNWxPC86s7s5aB8rnizg7guNowqTxhr5Fd9WH48n7pn8uLZNFTgXuSGUH6BNncmfQEpOz9pAe_T0zD8n2-aGZk8-C_l6GWk-aq60fQ=s960" style="border:true;width:95%;border-color:black;height:100px;"><br>
-    </div>"""+Cuerpo+"""
-    <div   style="background-color:green; color:white;padding: 15px 0px 15px 60px;">Servicio Nacional de Aprendizaje SENA - Centro de Gestión de Mercados, Logística y Tenologías de la Información - Regional Distrito Capital <br />Dirección: Cl 52 N&#176; 13 65 -Telefono: +(57) 601 594 1301<br />Conmutador Nacional (601) 5461500 - Extensiones <br /> El SENA brinda a la ciudadanía, atención presencial en las 33 Regionales y 117 Centros de Formación
+    </div>"""+Cuerpo+""" <br><br><br>
+    <div   style="background-color:green; color:white;padding: 15px 0px 15px 60px;"><b>Servicio Nacional de Aprendizaje SENA - Centro de Gestión de Mercados, Logística y Tenologías de la Información - Regional Distrito Capital <br />Dirección: Cl 52 N&#176; 13 65 -Telefono: +(57) 601 594 1301<br />Conmutador Nacional (601) 5461500 - Extensiones <br /> El SENA brinda a la ciudadanía, atención presencial en las 33 Regionales y 117 Centros de Formación
 
  <br />Atención al ciudadano: Bogotá (601) 3430111 - Línea gratuita y resto del país 018000 910270 <br />Atención al empresario: Bogotá (601) 3430101 - Línea gratuita y resto del país 018000 910682</p></div>
   </body>
