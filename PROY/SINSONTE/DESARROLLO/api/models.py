@@ -34,8 +34,9 @@ class Ingreso(BaseModel):
     idautomotor = ForeignKeyField(Automotor, backref='ingresos')
     tipo = IntegerField()
 
-# # Conectar a la base de datos
 if __name__=='__main__':
-    DATABASE.connect()
-# # Crear las tablas en la base de datos si no existen
-    DATABASE.create_tables([Unidad, Apartamento, Automotor, Ingreso])
+    try:
+        DATABASE.connect() # Conectar a la base de datos
+        DATABASE.create_tables([Unidad, Apartamento, Automotor, Ingreso]) # Crear las tablas en la base de datos si no existen
+    except Exception as e:
+        print("Fallo la creacion de tablas, ya existen")

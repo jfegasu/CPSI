@@ -1,8 +1,10 @@
 from flask import Flask,session, jsonify,request,render_template,redirect,url_for
 import json
 from flask_mysqldb import MySQL
-from utils.Utilitarios import Auditor,Utiles
+from utils.Utilitarios import Auditor,Utiles,getRegEd,EnviaCorreo,CorreosHTML
 from datetime import datetime,timedelta
+import smtplib
+import os
 
 app=Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
@@ -33,15 +35,16 @@ def Raiz1():
         Utiles.Inyeccion(pw,'clave')
         # if not Utiles.ConsistenciaClave(pw):
         #     print("No cumple")
-      
+        cade=getRegEd('pwd')
+        
         if not usua=="root":
-            print(usua)
+            pass
         else:
             msgito="NO SE PUEDE UTILIZAR EL USUARIO ROOT"
             regreso="/" 
             Au.registra(30,msgito,'')       
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
-
+            
         try:
             app.config['MYSQL_HOST'] = 'localhost'
             app.config['MYSQL_USER'] = usua
@@ -52,17 +55,24 @@ def Raiz1():
             msgito="BIENVENIDO"
             regreso="/paso1"
             Au.registra(30,msgito,usua )
+            html="""
+            Hola
+            """
+            
+            # EnviaCorreo('fegasu@gmail.com','CENTRO DE PRODUCCION DE SOLUCIONES INTELIGENTES SENA',html)
+            CorreosHTML('fegasu@gmail.com','CENTRO DE PRODUCCION DE SOLUCIONES INTELIGENTES SENA',html)
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
         except Exception as e:
             msgito="USUARIO O CREDENCIALES NO VALIDOS"
             regreso="/"
+            print(e)
             usua=''
             Au.registra(40,msgito,app.config['MYSQL_USER'])
-            
+
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
     session.permanent = True
     session['usuario'] = usua
-    return usua
+    return cade
 
 @app.route("/paso1")
 def Paso1():

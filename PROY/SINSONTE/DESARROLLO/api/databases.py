@@ -1,6 +1,6 @@
 from peewee import MySQLDatabase
 from peewee import SqliteDatabase
-# from peewee import PostgresqlDatabase
+from peewee import PostgresqlDatabase
 
 
 MYSQL = MySQLDatabase(
@@ -13,12 +13,12 @@ MYSQL = MySQLDatabase(
 
 SQLITE = SqliteDatabase('sinsonte.db')
 
-# POSTGRES=PostgresqlDatabase(
-#     'Analitica', 
-#     host='192.168.134.56', 
-#     port=5432, 
-#     user='root', 
-#     password='root')
+POSTGRES=PostgresqlDatabase(
+    'Analitsinsonteica', 
+    host='localhost', 
+    port=5432, 
+    user='postgres', 
+    password='')
 
-DATABASE=MYSQL
+DATABASE=POSTGRES
 
