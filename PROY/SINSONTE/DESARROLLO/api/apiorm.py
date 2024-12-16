@@ -1,6 +1,6 @@
 from flask import Flask, jsonify,request,session
 import json
-import sqlite3
+
 from models import *
 from databases import *
 from peewee import  DoesNotExist
@@ -204,6 +204,22 @@ def ListaAutos(id):
                 "tipo":automotore.tipo,
         })
     return json.dumps(resultado)
+@app.route("/c/i", methods=['POST'])
+def InsertaAuto():
+    datos = request.get_json()
+    placa = datos.get('placa')
+    apartamento_id = datos.get('apartamento_id')
+    tipo = datos.get('tipo')
+    try:
+        Auto = Automotor.create(
+            placa=placa,
+            apartamento_id=apartamento_id,  
+            tipo=tipo,
+            
+        )
+    except Exception as e:
+        return f"Database error: {e}", 500
+    return "200"
 
 if __name__ == '__main__':
     DATABASE.connect()  # Conectar a la base de datos
