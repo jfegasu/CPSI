@@ -15,9 +15,8 @@ class Unidad(BaseModel):
 class Apartamento(BaseModel):
     idapartamento = AutoField()
     nomapto = CharField(max_length=4)
-    piso = IntegerField()
-    idunidad = ForeignKeyField(Unidad, backref='apartamentos')
-    observacion = IntegerField()
+    unidad = ForeignKeyField(Unidad, backref='apartamentos')
+    observacion = TextField()
     celular = TextField()
     contacto = TextField()
     correo = TextField()
@@ -26,17 +25,20 @@ class Automotor(BaseModel):
     idautomotor = AutoField()
     placa = TextField()
     tipo = IntegerField()
-    idapartamento = ForeignKeyField(Apartamento, backref='automotores')
+    apartamento = ForeignKeyField(Apartamento, backref='automotores')
 
 class Ingreso(BaseModel):
     idingreso = AutoField()
     fecha = DateTimeField()
-    idautomotor = ForeignKeyField(Automotor, backref='ingresos')
+    automotor = ForeignKeyField(Automotor, backref='ingresos')
     tipo = IntegerField()
 
 if __name__=='__main__':
     try:
+        print("Conectando")
         DATABASE.connect() # Conectar a la base de datos
+        print("Creando tablas")
         DATABASE.create_tables([Unidad, Apartamento, Automotor, Ingreso]) # Crear las tablas en la base de datos si no existen
+        print("Finalizando")
     except Exception as e:
         print("Fallo la creacion de tablas, ya existen")

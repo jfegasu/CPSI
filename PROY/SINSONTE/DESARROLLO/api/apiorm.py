@@ -3,6 +3,7 @@ import json
 import sqlite3
 from models import *
 from databases import *
+from peewee import  DoesNotExist
 
 app=Flask(__name__)
 
@@ -58,175 +59,123 @@ def ActualizaUnaUnidad():
     except Exception as e:
         return f"Database error: {e}", 500
     return "200"
+from flask import Flask, jsonify
+from models import Apartamento  # Import the Apartamento model
+
+@app.route("/a")
+def ListaApartamentos():
+    apartamentos = Apartamento.select()  # Query to get all apartments
+    
+    resultado = []
+    
+    if apartamentos:  # Ensure there are results before iterating
+        for apartamento in apartamentos:
+            # Create a dictionary for each apartment
+            resultado.append({
+                "idapartamento": apartamento.idapartamento,  # Correct field name
+                "nomapto": apartamento.nomapto,
+                "idunidad": apartamento.unidad_id,
+                "observacion":apartamento.observacion,
+                "celular":apartamento.celular,
+                "contacto":apartamento.contacto,
+                "correo":apartamento.correo,
+            })
+    else:
+        return jsonify({"error": "No apartments found"}), 404  # Return a 404 if no apartments are found
+    
+    return json.dumps(resultado)
 
 # Consultar apartamentos por ID de unidad
 @app.route("/a/<int:id>")
 def ListaAptos(id):
-    apartamentos = (Apartamento
-                    .select(Apartamento, Unidad)
-                    .join(Unidad)
-                    .where(Unidad.idunidad == id))
-    
+    apartamento = Apartamento.get(Apartamento.idapartamento == id)
     resultado = []
-    for apto in apartamentos:
-        resultado.append({
-            "idapartamento": apto.idapartamento,
-            "nomapto": apto.nomapto,
-            "torre": apto.unidad.nomunidad,
-            "contacto": apto.contacto
+    resultado.append({
+                "idapartamento": apartamento.idapartamento,  
+                "nomapto": apartamento.nomapto,
+                "idunidad": apartamento.unidad_id,
+                "observacion":apartamento.observacion,
+                "celular":apartamento.celular,
+                "contacto":apartamento.contacto,
+                "correo":apartamento.correo,
         })
     return json.dumps(resultado)
+@app.route("/a/i", methods=['POST'])
+def InsertaApto():
+    datos = request.get_json()
+    nomapto = datos.get('nomapto')
+    unidad_id = datos.get('unidad_id')
+    observacion = datos.get('observacion')
+    celular = datos.get('celular')
+    contacto = datos.get('contacto')
+    correo = datos.get('correo')
+    try:
+        apartamento = Apartamento.create(
+            nomapto=nomapto,
+            unidad_id=unidad_id,  
+            observacion=observacion,
+            celular=celular,
+            contacto=contacto,
+            correo=correo
+        )
+    except Exception as e:
+        return f"Database error: {e}", 500
+    return "200"
+
+@app.route("/a/d/<int:id>", methods=['DELETE'])
+def EliminaApto(id):
+    apartamento = Apartamento.get(Apartamento.idapartamento == id)
+    apartamento.delete_instance()
+    return "200"
+
+
+@app.route("/a/u", methods=['PUT'])
+def ActualizaUnApto():
+    try:
+        # Get the JSON data sent in the request body
+        datos = request.get_json()
+
+        # Extract data from the JSON
+        id = datos['idapartamento']
+        nomapto = datos.get('nomapto')
+        unidad_id = datos.get('unidad_id')
+        observacion = datos.get('observacion')
+        celular = datos.get('celular')
+        contacto = datos.get('contacto')
+        correo = datos.get('correo')
+
+        # Find the apartamento by ID
+        apartamento = Apartamento.get(Apartamento.idapartamento == id)
+
+        # Check if the Unidad exists before assigning it
+        try:
+            unidad = Unidad.get(Unidad.idunidad == unidad_id)  # Verify that the Unidad exists
+        except DoesNotExist:
+            return jsonify({"error": "Unidad not found"}), 404
+
+        # Update the fields
+        apartamento.nomapto = nomapto
+        apartamento.unidad_id = unidad_id  # Assign the full Unidad object, not just the ID
+        apartamento.observacion = observacion
+        apartamento.celular = celular
+        apartamento.contacto = contacto
+        apartamento.correo = correo
+
+        # Save the updated apartment record
+        apartamento.save()
+
+        # Return a success response with status code 200
+        return jsonify({"message": "Apartamento Actualizado correctamente", "idapartamento": apartamento.idapartamento}), 200
+
+    except DoesNotExist:
+        return jsonify({"error": "Apartamento no existe"}), 404  # Return 404 if the apartment doesn't exist
+    except Exception as e:
+        # If an error occurs, return a 500 error with the error message
+        return jsonify({"error": f"Database error: {str(e)}"}), 500
+
 
 if __name__ == '__main__':
     DATABASE.connect()  # Conectar a la base de datos
     app.run(debug=True, port=8000, host='0.0.0.0')
 
 
-# def ConsultarJson(sql):
-#         con = sqlite3.connect("api/sinsonte.db")
-#         todo=[]     
-#         cur = con.cursor()  
-#         res=cur.execute(sql)
-#         nombres_columnas = [descripcion[0] for descripcion in cur.description]
-#         primer_resultado = res.fetchall()
-    
-#         for i,valor in enumerate(primer_resultado):
-#             aux1=valor
-#             aux2= nombres_columnas
-#             aux3=dict(zip(aux2,aux1))   
-#             todo.append(aux3)
-#         con.close() 
-#         return list(todo)  
-
-    
-# app=Flask(__name__)
-# @app.route("/")
-# def Inicio():
-#     return "SINSONTE"
-# @app.route("/t")
-# def ListaUnidad():
-#     sql="select * from unidad"
-#     todo=ConsultarJson(sql)    
-#     return json.dumps(todo)
-
-# @app.route("/t/<id>")
-# def ListaUnaUnidad(id):
-#     sql="select * from UNIDAD where IDUNIDAD="+str(id)
-#     todo=ConsultarJson(sql)
-#     return json.dumps(todo)
-
-# @app.route("/t/d/<id>",methods=['DELETE'])
-# def EliminaUnidad(id):
-#     sql="delete from UNIDAD where IDUNIDAD="+str(id)
-#     con = sqlite3.connect("api/sinsonte.db")
-#     cur = con.cursor()
-#     cur.execute(sql)
-#     con.commit()
-#     con.close()
-#     return "200"
-# @app.route("/t/i",methods=['POST',])
-# def InsertaUnidad():
-#     datos = request.get_json()
-#     nom = datos.get('nombre')
-#     sql = "INSERT INTO UNIDAD (nombre) VALUES (?)"
-#     try:
-#         con = sqlite3.connect("api/sinsonte.db")
-#         cur = con.cursor()
-#         cur.execute(sql, (nom,))
-#         con.commit()
-#     except sqlite3.Error as e:
-#         return f"Database error: {e}", 500
-#     finally:
-#         con.close()
-#     return "200"
-# @app.route("/t/u",methods=['PUT',])
-# def ActualizaUnaUnidad():
-#     datos = request.get_json()    
-#     id = datos['id']
-#     nom = datos['nombre']
-#     sql = "update unidad set nombre=? where idunidad=?"
-#     try:
-#         con = sqlite3.connect("api/sinsonte.db")
-#         cur = con.cursor()
-#         cur.execute(sql, (nom,id,))
-#         con.commit()
-#     except sqlite3.Error as e:
-#         return f"Database error: {e}", 500
-#     finally:
-#         con.close()
-#     return "200"
-# @app.route("/a/<id>")
-# def ListaAptos(id):
-    
-#     sql="select a.idapartamento,a.nomapto apt,u.nomunidad torre,a.contacto from apartamento a join unidad u using(nomunidad) where u.idunidad="+str(id)
-#     # sql="select a.idapartamento,a.nomapto apt,u.nomunidad torre,a.contacto from apartamento a join unidad u using(nomunidad) where where u.idunidad="+str(id)
-#     todo=ConsultarJson(sql)    
-#     return json.dumps(todo)
-        
-
-# if __name__=='__main__':
-#     app.run(debug=True,port=8000,host='0.0.0.0')
-
-# Ejemplo de inserción de datos
-# Insertar una nueva unidad
-# nueva_unidad = Unidad.create(nomunidad="Unidad A")
-
-# Insertar un nuevo apartamento
-# nuevo_apartamento = Apartamento.create(
-#     nomapto="101", 
-#     piso=1, 
-#     nomunidad=nueva_unidad, 
-#     observacion=1, 
-#     celular="123456789", 
-#     contacto="Juan Pérez", 
-#     correo="juanperez@example.com"
-# )
-
-# Insertar un nuevo automotor
-# nuevo_automotor = Automotor.create(
-#     placa="ABC123", 
-#     tipo=1, 
-#     idapartamento=nuevo_apartamento
-# )
-
-# Insertar un nuevo ingreso
-# from datetime import datetime
-# nuevo_ingreso = Ingreso.create(
-#     fecha=datetime.now(), 
-#     idautomotor=nuevo_automotor, 
-#     tipo=1
-# )
-
-# Cerrar la conexión
-DATABASE.close()
-
-# nueva_unidad = Unidad.create(nomunidad="Unidad A")
-
-# # Insertar un nuevo apartamento
-# nuevo_apartamento = Apartamento.create(
-#     nomapto="101", 
-#     piso=1, 
-#     nomunidad=nueva_unidad, 
-#     observacion=1, 
-#     celular="123456789", 
-#     contacto="Juan Pérez", 
-#     correo="juanperez@example.com"
-# )
-
-# # Insertar un nuevo automotor
-# nuevo_automotor = Automotor.create(
-#     placa="ABC123", 
-#     tipo=1, 
-#     idapartamento=nuevo_apartamento
-# )
-
-# # Insertar un nuevo ingreso
-# from datetime import datetime
-# nuevo_ingreso = Ingreso.create(
-#     fecha=datetime.now(), 
-#     idautomotor=nuevo_automotor, 
-#     tipo=1
-# )
-
-# # Cerrar la conexión
-# DATABASE.close()
