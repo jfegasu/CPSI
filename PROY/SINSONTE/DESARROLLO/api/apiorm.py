@@ -172,7 +172,38 @@ def ActualizaUnApto():
     except Exception as e:
         # If an error occurs, return a 500 error with the error message
         return jsonify({"error": f"Database error: {str(e)}"}), 500
+@app.route("/c")
+def ListaAutomotor():
+    automotores = Automotor.select()  # Query to get all apartments
+    
+    resultado = []
+    
+    if automotores:  # Ensure there are results before iterating
+        for automotore in automotores:
+            # Create a dictionary for each apartment
+            resultado.append({
+                "idautomotor": automotore.idautomotor,  # Correct field name
+                "apartamento_id": automotore.apartamento_id,
+                "placa":automotore.placa,
+                "tipo":automotore.tipo,
+                
+            })
+    else:
+        return jsonify({"error": "No hay apartmentos "}), 404  # Return a 404 if no apartments are found
+    
+    return json.dumps(resultado)
 
+@app.route("/c/<int:id>")
+def ListaAutos(id):
+    automotore = Automotor.get(Automotor.idautomotor == id)
+    resultado = []
+    resultado.append({
+                "idautomotor": automotore.idautomotor,  # Correct field name
+                "apartamento_id": automotore.apartamento_id,
+                "placa":automotore.placa,
+                "tipo":automotore.tipo,
+        })
+    return json.dumps(resultado)
 
 if __name__ == '__main__':
     DATABASE.connect()  # Conectar a la base de datos
