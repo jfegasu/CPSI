@@ -185,7 +185,7 @@ def ListaAutomotor():
                 "idautomotor": automotore.idautomotor,  # Correct field name
                 "apartamento_id": automotore.apartamento_id,
                 "placa":automotore.placa,
-                "tipo":automotore.tipo,
+                "tipo":automotore.tipo
                 
             })
     else:
@@ -210,7 +210,7 @@ def InsertaIngresa():
     auto_id = datos.get('automotor_id')
     vtipo = datos.get('tipo')
     try:
-        Auto = Automotor.create(
+        Auto = Ingresos.create(
             automotor_id=auto_id,
             tipo=vtipo,
             FECHA=dt.datetime.now()

@@ -22,19 +22,19 @@ class Apartamento(BaseModel):
     observacion = TextField()
     celular = TextField()
     contacto = TextField()
-    correo = TextField()
+    correo = TextField(unique=True)
     FECHA = DateTimeField(default=dt.datetime.now())
 
 class Automotor(BaseModel):
     idautomotor = AutoField()
     placa = TextField()
     tipo = IntegerField(default=1)
-    apartamento = ForeignKeyField(Apartamento, backref='automotores')
+    apartamento = ForeignKeyField(Apartamento)
     FECHA = DateTimeField(default=dt.datetime.now())
 
 class Ingresos(BaseModel):
     idingreso = AutoField()
-    automotor = ForeignKeyField(Automotor, backref='ingresos')
+    automotor = ForeignKeyField(Automotor)
     tipo = IntegerField(default=1)
     FECHA = DateTimeField(default=dt.datetime.now())
 
