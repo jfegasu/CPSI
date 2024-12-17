@@ -205,19 +205,18 @@ def ListaAutos(id):
         })
     return json.dumps(resultado)
 @app.route("/c/i", methods=['POST'])
-def InsertaAuto():
+def InsertaIngresa():
     datos = request.get_json()
-    placa = datos.get('placa')
-    apartamento_id = datos.get('apartamento_id')
-    tipo = datos.get('tipo')
+    auto_id = datos.get('automotor_id')
+    vtipo = datos.get('tipo')
     try:
         Auto = Automotor.create(
-            placa=placa,
-            apartamento_id=apartamento_id,  
-            tipo=tipo,
+            automotor_id=auto_id,
+            tipo=vtipo,
             
         )
     except Exception as e:
+        print(f"Database error: {e}")
         return f"Database error: {e}", 500
     return "200"
 

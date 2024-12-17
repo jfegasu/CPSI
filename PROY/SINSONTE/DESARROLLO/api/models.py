@@ -31,19 +31,20 @@ class Automotor(BaseModel):
     apartamento = ForeignKeyField(Apartamento, backref='automotores')
     FECHA = DateTimeField(default=datetime.datetime.now())
 
-class Ingreso(BaseModel):
+class Ingresos(BaseModel):
     idingreso = AutoField()
-    fecha = DateTimeField(default=datetime.datetime.now())
+    fechai = DateTimeField(default=datetime.datetime.now(),null = True)
     automotor = ForeignKeyField(Automotor, backref='ingresos')
     tipo = IntegerField(default=1)
-    FECHA = DateTimeField(default=datetime.datetime.now())
+    FECHA = DateTimeField(default=datetime.datetime.now(),null = True)
+
 
 if __name__=='__main__':
     try:
         print("Conectando")
         DATABASE.connect() # Conectar a la base de datos
         print("Creando tablas")
-        DATABASE.create_tables([Unidad, Apartamento, Automotor, Ingreso]) # Crear las tablas en la base de datos si no existen
+        DATABASE.create_tables([Unidad, Apartamento, Automotor,Ingresos]) # Crear las tablas en la base de datos si no existen
         print("Finalizando")
     except Exception as e:
-        print("Fallo la creacion de tablas, ya existen")
+        print("Fallo la creacion de tablas, ya existen "+str(e))

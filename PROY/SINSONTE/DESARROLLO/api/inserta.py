@@ -19,3 +19,14 @@ Automotor.create(
    tipo=1,
    apartamento_id=1
 )
+
+Ingresos.create(
+    automotor_id=1,
+    tipo=1
+)
+if __name__=='__main__':
+   try:
+        print("Conectando")
+        print("Finalizando")
+   except Exception as e:
+       print("Fallo",e)
