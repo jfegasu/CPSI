@@ -213,6 +213,7 @@ def InsertaIngresa():
         Auto = Automotor.create(
             automotor_id=auto_id,
             tipo=vtipo,
+            FECHA=dt.datetime.now()
             
         )
     except Exception as e:

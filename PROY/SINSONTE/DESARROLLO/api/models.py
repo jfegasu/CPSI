@@ -2,7 +2,8 @@ from peewee import Model, CharField, IntegerField, TextField, ForeignKeyField, D
 from peewee import MySQLDatabase
 from databases import *
 from flask import session
-import datetime
+import datetime as dt
+
 class BaseModel(Model):
     class Meta:
         database = DATABASE
@@ -12,7 +13,7 @@ class BaseModel(Model):
 class Unidad(BaseModel):
     idunidad = AutoField()
     nomunidad = TextField()
-    FECHA = DateTimeField(default=datetime.datetime.now())
+    FECHA = DateTimeField(default=dt.datetime.now())
 
 class Apartamento(BaseModel):
     idapartamento = AutoField()
@@ -22,21 +23,20 @@ class Apartamento(BaseModel):
     celular = TextField()
     contacto = TextField()
     correo = TextField()
-    FECHA = DateTimeField(default=datetime.datetime.now())
+    FECHA = DateTimeField(default=dt.datetime.now())
 
 class Automotor(BaseModel):
     idautomotor = AutoField()
     placa = TextField()
     tipo = IntegerField(default=1)
     apartamento = ForeignKeyField(Apartamento, backref='automotores')
-    FECHA = DateTimeField(default=datetime.datetime.now())
+    FECHA = DateTimeField(default=dt.datetime.now())
 
 class Ingresos(BaseModel):
     idingreso = AutoField()
-    fechai = DateTimeField(default=datetime.datetime.now(),null = True)
     automotor = ForeignKeyField(Automotor, backref='ingresos')
     tipo = IntegerField(default=1)
-    FECHA = DateTimeField(default=datetime.datetime.now(),null = True)
+    FECHA = DateTimeField(default=dt.datetime.now())
 
 
 if __name__=='__main__':
