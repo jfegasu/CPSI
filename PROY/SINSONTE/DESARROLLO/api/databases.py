@@ -11,7 +11,7 @@ MYSQL = MySQLDatabase(
         port=3306  # Usualmente 3306 para MySQL
     )
 
-SQLITE = SqliteDatabase('sinsonte.db')
+SQLITE = SqliteDatabase('./sinsonte.db')
 
 POSTGRES=PostgresqlDatabase(
     'Analitsinsonteica', 
