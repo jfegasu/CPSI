@@ -1,15 +1,22 @@
+# pip install PyJWT
 
-from flask import Flask,render_template,request,redirect
+from flask import Flask,render_template,request,redirect,session
 import requests
 from flask_cors import CORS
 from api.apicnx import *
 from api.config import configura
+import jwt
+from flask_debugtoolbar import DebugToolbarExtension
 def create_app():
     app=Flask(__name__)
     CORS(app)
     return app
 
 app = create_app() # CREATE THE FLASK APP
+app.secret_key = jwt.encode({"some": "cuadrito"}, "secret", algorithm="HS256")
+a=app.secret_key
+print(a)
+#   print(session['TOK'])
 @app.route("/")
 def inicio():
     return render_template("otro.html")
@@ -113,4 +120,8 @@ def ListarAptos(id):
 
 
 if __name__ == '__main__':
+    # encoded = jwt.encode({"some": "payload"}, "secret", algorithm="HS256")
+    # encoded = jwt.encode({"some": "payload"}, "secret", algorithm="HS256")
+    # print(encoded)
+    # print(jwt.decode(encoded, "secret", algorithms=["HS256"]))
     app.run(debug=True,host='0.0.0.0',port=5000)

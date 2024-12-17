@@ -1,8 +1,9 @@
 from flask import Flask, jsonify,request
 import json
 import sqlite3
-import sinsonteorm
-bd="sinsonte.db"
+# import sinsonteorm
+import jwt
+cs=jwt.encode({"some": "cuadrito"}, "secret", algorithm="HS256")
 
 
 

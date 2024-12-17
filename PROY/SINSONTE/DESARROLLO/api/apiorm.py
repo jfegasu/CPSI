@@ -1,12 +1,22 @@
-from flask import Flask, jsonify,request,session
+from flask import Flask, jsonify,request,session,redirect,render_template,url_for
 import json
+# https://jwt.io/#debugger-io
 
 from models import *
 from databases import *
 from peewee import  DoesNotExist
+import jwt
+from flask_debugtoolbar import DebugToolbarExtension
+class validacion:
+    @classmethod
+    def Valide(pal):
+        jwt.decode(pal, "secret", algorithms=["HS256"])  
 
 app=Flask(__name__)
 
+@app.route("/")
+def Raiz():
+ return "<center><h1>CONDOMINIOS PALMANOVA SINSONTE<br>VILLETA CUNDINAMARCA<h1>"
 @app.route("/t")
 def ListaUnidad():
     unidades = Unidad.select()
