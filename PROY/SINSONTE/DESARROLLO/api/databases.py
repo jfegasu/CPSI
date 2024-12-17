@@ -20,5 +20,5 @@ POSTGRES=PostgresqlDatabase(
     user='postgres', 
     password='')
 
-DATABASE=SQLITE
+DATABASE=MYSQL
 

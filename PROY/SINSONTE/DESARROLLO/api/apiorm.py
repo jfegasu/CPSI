@@ -239,6 +239,27 @@ def InsertaIngresa():
         print(f"Database error: {e}")
         return f"Database error: {e}", 500
     return "200"
+@app.route("/lin")
+def ListaIngresos():
+    ingresos = Ingresos.select()  # Query to get all apartments
+    
+    resultado = []
+    
+    if ingresos:  # Ensure there are results before iterating
+        for ingreso in ingresos:
+            # Create a dictionary for each apartment
+            resultado.append(
+                {
+                    "idingreso":ingreso.idingreso,
+                    "automotor_id":ingreso.automotor_id,
+                    "tipo":ingreso.tipo,
+                    "FECHA":str(ingreso.FECHA)
+                }
+            )
+    else:
+        return jsonify({"error": "No hay apartmentos "}), 404  # Return a 404 if no apartments are found
+    
+    return json.dumps(resultado)
 
 if __name__ == '__main__':
     DATABASE.connect()  # Conectar a la base de datos
