@@ -1,19 +1,38 @@
 from flask import Flask, jsonify,request,session,redirect,render_template,url_for
 import json
 # https://jwt.io/#debugger-io
+# pip install Flask PyJWT Flask-JWT-Extended
 
 from models import *
 from databases import *
 from peewee import  DoesNotExist
 import jwt
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+
 class validacion:
     @classmethod
     def Valide(pal):
         jwt.decode(pal, "secret", algorithms=["HS256"])  
 
 app=Flask(__name__)
-
+app.config["JWT_SECRET_KEY"] = "mi_clave_secreta"
+jwt = JWTManager(app)
+# Ruta para iniciar sesión (autenticación)
+@app.route('/login', methods=['POST'])
+def login():
+    # Obtener los datos del usuario
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
+    
+    # Aquí normalmente validarías las credenciales en la base de datos
+    if username != "admin" or password != "1234":
+        return jsonify({"msg": "Usuario o contraseña incorrectos"}), 401
+    
+    # Crear un token de acceso para el usuario
+    access_token = create_access_token(identity=username)
+    return jsonify(access_token=access_token)
+    
 @app.route("/")
 def Raiz():
  return "<center><h1>CONDOMINIOS PALMANOVA SINSONTE<br>VILLETA CUNDINAMARCA<h1>"

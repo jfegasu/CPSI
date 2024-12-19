@@ -5,6 +5,9 @@ from utils.Utilitarios import Auditor,Utiles,getRegEd,EnviaCorreo,CorreosHTML
 from datetime import datetime,timedelta
 import smtplib
 import os
+import jwt
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+
 
 app=Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
@@ -16,6 +19,9 @@ app.config['PERMANENT_SESSION_LIFETIME'] =   timedelta(minutes=5)
 app.secret_key = 'akDFJ34mdfsYMH567sdf'
 
 mysql = MySQL(app)
+app.secret_key = jwt.encode({"some": "cuadrito"}, "secret", algorithm="HS256")
+
+wt = JWTManager(app)
 
 Au=Auditor()
 
@@ -51,7 +57,7 @@ def Raiz1():
             app.config['MYSQL_PASSWORD'] = pw
             app.config['MYSQL_DB'] = 'hr'
             cur = mysql.connection.cursor()
-            
+            token = create_access_token(identity=usua)
             msgito="BIENVENIDO"
             regreso="/paso1"
             Au.registra(30,msgito,usua )
@@ -60,8 +66,8 @@ def Raiz1():
             """
             
             # EnviaCorreo('fegasu@gmail.com','CENTRO DE PRODUCCION DE SOLUCIONES INTELIGENTES SENA',html)
-            CorreosHTML('fegasu@gmail.com','CENTRO DE PRODUCCION DE SOLUCIONES INTELIGENTES SENA',html)
-            return render_template("alerta.html", msgito=msgito,regreso=regreso)
+            # CorreosHTML('fegasu@gmail.com','CENTRO DE PRODUCCION DE SOLUCIONES INTELIGENTES SENA',html)
+            return render_template("paso1.html", msgito=msgito,regreso=regreso, jwt_token=token)
         except Exception as e:
             msgito="USUARIO O CREDENCIALES NO VALIDOS"
             regreso="/"
@@ -75,8 +81,10 @@ def Raiz1():
     return cade
 
 @app.route("/paso1")
+@jwt_required()
 def Paso1():
     try:
+        current_user = get_jwt_identity()
         cur = mysql.connection.cursor()
         return render_template("paso1.html")
     except Exception as e:
@@ -88,7 +96,9 @@ def Paso1():
 
 
 @app.route("/cpw")
+
 def cpwd():
+    # current_user = get_jwt_identity()
     if Utiles.ValidaSesion():
         msgito="SESION CADUCADA"
         regreso="/" 

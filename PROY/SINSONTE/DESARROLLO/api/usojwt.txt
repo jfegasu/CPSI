@@ -1,0 +1,638 @@
+ChatGPT 4o mini
+
+Inicia sesión
+
+Suscríbete
+Dijiste:
+como configurar y utñiza jwt en una apli en flask
+ChatGPT dijo:
+ChatGPT
+Para configurar y utilizar JWT (JSON Web Token) en una aplicación Flask, puedes seguir estos pasos. JWT es una forma de autenticar a los usuarios de manera segura en una API, ya que permite verificar la identidad de un usuario sin necesidad de guardar información del usuario en el servidor.
+
+Aquí te guiaré para configurarlo paso a paso:
+
+Paso 1: Instalación de dependencias
+Primero, necesitas instalar las bibliotecas necesarias. Puedes hacerlo utilizando pip:
+
+bash
+Copiar código
+pip install Flask PyJWT Flask-JWT-Extended
+Flask es el framework web que vamos a usar.
+PyJWT es la biblioteca que permite generar y verificar tokens JWT.
+Flask-JWT-Extended es una extensión para Flask que facilita el uso de JWT en aplicaciones Flask.
+Paso 2: Configuración básica de Flask
+Crea un archivo Python para tu aplicación Flask. Por ejemplo, app.py:
+
+python
+Copiar código
+from flask import Flask, jsonify, request
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+
+# Crear la aplicación Flask
+app = Flask(__name__)
+
+# Clave secreta para firmar los JWT
+app.config["JWT_SECRET_KEY"] = "mi_clave_secreta"  # Cambia esto por una clave más segura
+
+# Inicializar el JWTManager
+jwt = JWTManager(app)
+
+# Ruta pública para probar
+@app.route('/publico', methods=['GET'])
+def publico():
+    return jsonify(message="Este es un recurso público")
+
+# Ruta para iniciar sesión (autenticación)
+@app.route('/login', methods=['POST'])
+def login():
+    # Obtener los datos del usuario
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
+    
+    # Aquí normalmente validarías las credenciales en la base de datos
+    if username != "admin" or password != "1234":
+        return jsonify({"msg": "Usuario o contraseña incorrectos"}), 401
+    
+    # Crear un token de acceso para el usuario
+    access_token = create_access_token(identity=username)
+    return jsonify(access_token=access_token)
+
+# Ruta protegida por JWT
+@app.route('/protegida', methods=['GET'])
+@jwt_required()
+def protegida():
+    # Obtener la identidad del usuario desde el JWT
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
+Paso 3: Explicación del código
+Configuración de JWT_SECRET_KEY: Es la clave secreta que se usa para firmar el token JWT. En un entorno de producción, asegúrate de cambiar esta clave a algo más seguro y mantenerlo privado.
+Inicialización de JWTManager: Esta clase se encarga de manejar los tokens JWT en la aplicación.
+Rutas del ejemplo:
+/publico: Esta ruta es pública, por lo que no requiere autenticación.
+/login: Esta ruta permite a un usuario autenticarse. Si las credenciales son correctas (en este caso username="admin" y password="1234"), se genera un token JWT.
+/protegida: Esta ruta está protegida por JWT. Solo los usuarios que envíen un token válido pueden acceder a ella. Se usa el decorador @jwt_required() para proteger la ruta. Además, dentro de la ruta puedes obtener la identidad del usuario que ha hecho la solicitud usando get_jwt_identity().
+Paso 4: Probar la aplicación
+Iniciar el servidor Flask:
+
+Ejecuta tu aplicación Flask:
+
+bash
+Copiar código
+python app.py
+Obtener un JWT:
+
+Realiza una solicitud POST a /login con un cuerpo JSON como este:
+
+json
+Copiar código
+{
+  "username": "admin",
+  "password": "1234"
+}
+Si las credenciales son correctas, recibirás un token JWT en la respuesta:
+
+json
+Copiar código
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+Acceder a la ruta protegida:
+
+Ahora, realiza una solicitud GET a /protegida, pero esta vez agrega el token JWT en el encabezado de la solicitud como un "Bearer token":
+
+bash
+Copiar código
+curl -H "Authorization: Bearer <tu_token_jwt>" http://127.0.0.1:5000/protegida
+Si el token es válido, la respuesta será algo como:
+
+json
+Copiar código
+{
+  "logged_in_as": "admin"
+}
+Si no proporcionas un token o el token es inválido, recibirás un error 401.
+
+Paso 5: Seguridad adicional
+Vencimiento del token: Puedes agregar una fecha de expiración al token para hacerlo más seguro. Por ejemplo:
+
+python
+Copiar código
+access_token = create_access_token(identity=username, fresh=True, expires_delta=timedelta(hours=1))
+Revocación del token: Si deseas revocar un token, puedes usar la funcionalidad de "blacklist" o mantener un control en la base de datos sobre los tokens válidos.
+
+Con estos pasos, tienes una aplicación básica con autenticación JWT en Flask. Puedes expandirla y agregar más funcionalidades según tus necesidades.
+
+
+Dijiste:
+con apirest
+ChatGPT dijo:
+ChatGPT
+Si deseas utilizar JWT en una aplicación Flask que sigue la arquitectura API REST, el proceso es muy similar al ejemplo anterior, pero adaptado a las convenciones de un API REST. Aquí te explico cómo hacerlo paso a paso.
+
+Paso 1: Instalación de dependencias
+Como mencioné anteriormente, necesitas instalar las bibliotecas necesarias para trabajar con Flask y JWT. Asegúrate de tener las siguientes dependencias:
+
+bash
+Copiar código
+pip install Flask PyJWT Flask-JWT-Extended
+Paso 2: Crear la estructura básica de la API REST en Flask
+Creación de la aplicación y configuración de JWT:
+Primero, vamos a crear la estructura básica para nuestra aplicación RESTful, que incluirá rutas para el login y para acceder a recursos protegidos.
+
+python
+Copiar código
+from flask import Flask, jsonify, request
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+
+# Crear la aplicación Flask
+app = Flask(__name__)
+
+# Clave secreta para firmar los JWT
+app.config["JWT_SECRET_KEY"] = "mi_clave_secreta"  # Cambia esto por una clave más segura
+
+# Inicializar el JWTManager
+jwt = JWTManager(app)
+
+# Rutas de la API
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    """Ruta para obtener el token JWT tras autenticar al usuario"""
+    # Obtener las credenciales del cuerpo de la solicitud
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
+
+    # Verificar las credenciales del usuario (aquí es un ejemplo sencillo)
+    if username != "admin" or password != "1234":
+        return jsonify({"msg": "Usuario o contraseña incorrectos"}), 401
+
+    # Crear el token de acceso
+    access_token = create_access_token(identity=username)
+    return jsonify(access_token=access_token)
+
+@app.route('/api/protegida', methods=['GET'])
+@jwt_required()
+def protegida():
+    """Ruta protegida que requiere un JWT para acceder"""
+    current_user = get_jwt_identity()  # Obtener la identidad del usuario desde el JWT
+    return jsonify(logged_in_as=current_user), 200
+
+@app.route('/api/publica', methods=['GET'])
+def publica():
+    """Ruta pública (sin autenticación requerida)"""
+    return jsonify(message="Este es un recurso público disponible sin autenticación")
+
+if __name__ == '__main__':
+    app.run(debug=True)
+Paso 3: Explicación de las rutas y los conceptos clave
+/api/login:
+
+Esta ruta es un POST que recibe las credenciales del usuario (username y password) en el cuerpo de la solicitud.
+Si las credenciales son correctas, se genera un token JWT utilizando create_access_token(), el cual incluye la identidad del usuario (username).
+El token generado se retorna en formato JSON.
+/api/protegida:
+
+Esta es una ruta protegida que requiere autenticación.
+Se utiliza el decorador @jwt_required() de Flask-JWT-Extended, lo que significa que el usuario debe proporcionar un JWT válido en el encabezado de la solicitud para acceder a esta ruta.
+Se obtiene la identidad del usuario desde el JWT usando get_jwt_identity().
+/api/publica:
+
+Esta es una ruta pública que no requiere autenticación, es accesible sin un token JWT.
+Paso 4: Probar la API REST
+Iniciar el servidor Flask:
+
+Ejecuta el servidor de Flask:
+
+bash
+Copiar código
+python app.py
+Esto iniciará el servidor en http://127.0.0.1:5000/.
+
+Obtener un token JWT:
+
+Realiza una solicitud POST a /api/login con el siguiente cuerpo JSON para obtener un token JWT:
+
+json
+Copiar código
+{
+  "username": "admin",
+  "password": "1234"
+}
+Si las credenciales son correctas, recibirás una respuesta con el token JWT:
+
+json
+Copiar código
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+Acceder a rutas protegidas:
+
+Para acceder a la ruta protegida (/api/protegida), debes incluir el token JWT en el encabezado de la solicitud:
+
+bash
+Copiar código
+curl -H "Authorization: Bearer <tu_token_jwt>" http://127.0.0.1:5000/api/protegida
+La respuesta será:
+
+json
+Copiar código
+{
+  "logged_in_as": "admin"
+}
+Si no incluyes el token o el token es inválido, recibirás una respuesta de error:
+
+json
+Copiar código
+{
+  "msg": "Missing Authorization Header"
+}
+Acceder a la ruta pública:
+
+La ruta /api/publica es accesible sin autenticación. Puedes acceder a ella directamente sin ningún token:
+
+bash
+Copiar código
+curl http://127.0.0.1:5000/api/publica
+La respuesta será:
+
+json
+Copiar código
+{
+  "message": "Este es un recurso público disponible sin autenticación"
+}
+Paso 5: Mejoras y Seguridad
+Vencimiento del token:
+
+Puedes agregar un tiempo de expiración al token, lo que hace que el token caduque después de un tiempo determinado. Esto es útil para mejorar la seguridad. Por ejemplo:
+
+python
+Copiar código
+from datetime import timedelta
+access_token = create_access_token(identity=username, expires_delta=timedelta(minutes=30))
+En este caso, el token expirará después de 30 minutos.
+
+Revocar un token:
+
+Si deseas revocar el token (por ejemplo, cuando el usuario cierra sesión), puedes implementar una lista negra de tokens. Esto implicaría mantener un registro de los tokens expirados o revocados y validarlos antes de permitir el acceso a rutas protegidas.
+
+Conclusión
+Con estos pasos, has creado una API REST en Flask que utiliza JWT para la autenticación. Esto te permite proteger tus rutas y asegurarte de que solo los usuarios autenticados puedan acceder a ciertos recursos de la API. Puedes expandir y mejorar la seguridad según las necesidades de tu aplicación.
+
+
+Dijiste:
+apirest con flask en python 
+ChatGPT dijo:
+ChatGPT
+Crear una API REST en Python con Flask es un proceso sencillo. Flask es un micro-framework de Python ideal para construir aplicaciones web y APIs de forma rápida y sencilla. Aquí te mostraré cómo construir una API REST básica utilizando Flask, paso a paso.
+
+Requisitos Previos
+Antes de comenzar, necesitas tener instalados:
+
+Python: Asegúrate de tener Python instalado en tu máquina.
+Flask: Flask es el marco de trabajo principal para construir nuestra API.
+Para instalar Flask, ejecuta:
+
+bash
+Copiar código
+pip install Flask
+Paso 1: Crear una estructura básica de API REST en Flask
+Crea un archivo llamado app.py (o el nombre que prefieras para tu aplicación).
+
+python
+Copiar código
+from flask import Flask, jsonify, request
+
+# Crear una instancia de la aplicación Flask
+app = Flask(__name__)
+
+# Ruta de inicio
+@app.route('/')
+def inicio():
+    return jsonify(message="Bienvenido a la API REST con Flask!")
+
+# Ruta para obtener todos los elementos (en este caso, una lista simulada)
+@app.route('/api/items', methods=['GET'])
+def obtener_items():
+    items = [
+        {"id": 1, "nombre": "Elemento 1"},
+        {"id": 2, "nombre": "Elemento 2"},
+        {"id": 3, "nombre": "Elemento 3"}
+    ]
+    return jsonify(items)
+
+# Ruta para obtener un elemento específico por ID
+@app.route('/api/items/<int:item_id>', methods=['GET'])
+def obtener_item(item_id):
+    items = [
+        {"id": 1, "nombre": "Elemento 1"},
+        {"id": 2, "nombre": "Elemento 2"},
+        {"id": 3, "nombre": "Elemento 3"}
+    ]
+    
+    # Buscar el item por ID
+    item = next((item for item in items if item["id"] == item_id), None)
+    
+    if item is None:
+        return jsonify({"message": "Elemento no encontrado"}), 404
+    
+    return jsonify(item)
+
+# Ruta para crear un nuevo elemento (POST)
+@app.route('/api/items', methods=['POST'])
+def crear_item():
+    # Obtenemos los datos enviados por el usuario (en formato JSON)
+    data = request.get_json()
+    
+    # Creamos un nuevo item (en un escenario real, esto se guardaría en una base de datos)
+    nuevo_item = {
+        "id": 4,  # En una API real, deberías generar un ID único
+        "nombre": data['nombre']
+    }
+    
+    return jsonify(nuevo_item), 201  # 201 indica que el recurso fue creado con éxito
+
+# Ruta para actualizar un elemento (PUT)
+@app.route('/api/items/<int:item_id>', methods=['PUT'])
+def actualizar_item(item_id):
+    # Obtenemos los datos enviados por el usuario
+    data = request.get_json()
+    
+    # Simulación de lista de items
+    items = [
+        {"id": 1, "nombre": "Elemento 1"},
+        {"id": 2, "nombre": "Elemento 2"},
+        {"id": 3, "nombre": "Elemento 3"}
+    ]
+    
+    # Buscar el item por ID
+    item = next((item for item in items if item["id"] == item_id), None)
+    
+    if item is None:
+        return jsonify({"message": "Elemento no encontrado"}), 404
+    
+    # Actualizamos el item con los nuevos datos
+    item['nombre'] = data['nombre']
+    
+    return jsonify(item)
+
+# Ruta para eliminar un elemento (DELETE)
+@app.route('/api/items/<int:item_id>', methods=['DELETE'])
+def eliminar_item(item_id):
+    # Simulación de lista de items
+    items = [
+        {"id": 1, "nombre": "Elemento 1"},
+        {"id": 2, "nombre": "Elemento 2"},
+        {"id": 3, "nombre": "Elemento 3"}
+    ]
+    
+    # Buscar el item por ID
+    item = next((item for item in items if item["id"] == item_id), None)
+    
+    if item is None:
+        return jsonify({"message": "Elemento no encontrado"}), 404
+    
+    # Eliminar el item (en una API real, esto sería una operación sobre la base de datos)
+    items.remove(item)
+    
+    return jsonify({"message": "Elemento eliminado"}), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
+Paso 2: Explicación de las rutas
+En el código de arriba, hemos definido varias rutas para interactuar con la API:
+
+/ (Ruta de inicio): Un endpoint básico para verificar que la API está funcionando.
+
+/api/items (GET): Este endpoint devuelve una lista de elementos. Simula la respuesta de una base de datos con una lista de diccionarios.
+
+/api/items/<int:item_id> (GET): Este endpoint devuelve un solo item según su ID. Si no se encuentra el item, se devuelve un error 404.
+
+/api/items (POST): Este endpoint permite agregar un nuevo item. Los datos se envían en formato JSON. En este caso, simplemente simulamos la creación de un item sin persistirlo en una base de datos real.
+
+/api/items/<int:item_id> (PUT): Este endpoint permite actualizar un item existente. Recibe los datos en formato JSON y reemplaza el valor del item.
+
+/api/items/<int:item_id> (DELETE): Este endpoint elimina un item según su ID. Si no existe, devuelve un error 404.
+
+Paso 3: Ejecutar la aplicación
+Guarda el archivo como app.py.
+
+Ejecuta el archivo para iniciar el servidor de Flask:
+
+bash
+Copiar código
+python app.py
+Esto debería iniciar la aplicación en el puerto 5000. Puedes acceder a la API en http://127.0.0.1:5000/.
+
+Paso 4: Probar la API con herramientas como Postman o cURL
+Puedes probar los diferentes endpoints usando herramientas como Postman o cURL.
+
+Obtener todos los items (GET /api/items):
+
+bash
+Copiar código
+curl http://127.0.0.1:5000/api/items
+Obtener un item específico (GET /api/items/1):
+
+bash
+Copiar código
+curl http://127.0.0.1:5000/api/items/1
+Crear un nuevo item (POST /api/items):
+
+Envía una solicitud POST con JSON en el cuerpo, por ejemplo:
+
+json
+Copiar código
+{
+  "nombre": "Elemento Nuevo"
+}
+Usando cURL:
+
+bash
+Copiar código
+curl -X POST -H "Content-Type: application/json" -d '{"nombre": "Elemento Nuevo"}' http://127.0.0.1:5000/api/items
+Actualizar un item (PUT /api/items/1):
+
+Envía una solicitud PUT con los nuevos datos:
+
+bash
+Copiar código
+curl -X PUT -H "Content-Type: application/json" -d '{"nombre": "Elemento Actualizado"}' http://127.0.0.1:5000/api/items/1
+Eliminar un item (DELETE /api/items/1):
+
+bash
+Copiar código
+curl -X DELETE http://127.0.0.1:5000/api/items/1
+Conclusión
+Has creado una API REST básica en Flask que maneja operaciones CRUD (Crear, Leer, Actualizar, Eliminar). Este es solo un ejemplo simple; en una aplicación real, normalmente trabajarías con bases de datos como MySQL, PostgreSQL o MongoDB para almacenar los datos, y también podrías agregar autenticación y control de acceso usando tecnologías como JWT o sesiones.
+
+
+Dijiste:
+pasando el jwt en un template de flask
+ChatGPT dijo:
+ChatGPT
+Pasar un JWT (JSON Web Token) desde Flask a un template (usualmente utilizando Jinja2, el motor de plantillas de Flask) es una tarea que involucra generar el token en el backend y luego incluirlo en el frontend (por ejemplo, en una página HTML). Esto se hace comúnmente cuando tienes una aplicación de una sola página (SPA) o una aplicación web tradicional que usa autenticación basada en JWT.
+
+A continuación te mostraré un ejemplo de cómo hacer esto.
+
+Paso 1: Instalación de dependencias
+Como mencioné anteriormente, necesitas tener instaladas las bibliotecas necesarias, como Flask, Flask-JWT-Extended y PyJWT (si es necesario). Si aún no las tienes instaladas, puedes hacerlo con:
+
+bash
+Copiar código
+pip install Flask Flask-JWT-Extended
+Paso 2: Configuración básica de Flask con JWT
+Vamos a configurar una aplicación básica de Flask que use JWT para autenticación y pase el token al frontend.
+
+app.py - Código en el backend de Flask
+python
+Copiar código
+from flask import Flask, render_template, jsonify, request
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+
+# Crear la aplicación Flask
+app = Flask(__name__)
+
+# Clave secreta para firmar los JWT
+app.config["JWT_SECRET_KEY"] = "mi_clave_secreta"  # Cambia esto por una clave más segura
+
+# Inicializar el JWTManager
+jwt = JWTManager(app)
+
+# Ruta pública que renderiza un template
+@app.route('/')
+def index():
+    # Aquí no requerimos autenticación, simplemente renderizamos el template
+    return render_template('index.html')
+
+# Ruta para iniciar sesión (autenticación)
+@app.route('/login', methods=['POST'])
+def login():
+    # Obtener las credenciales del cuerpo de la solicitud
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
+    
+    # Verificar las credenciales (puedes hacer la validación con base de datos aquí)
+    if username != "admin" or password != "1234":
+        return jsonify({"msg": "Usuario o contraseña incorrectos"}), 401
+    
+    # Crear el token de acceso
+    access_token = create_access_token(identity=username)
+    
+    return jsonify(access_token=access_token)
+
+# Ruta protegida que requiere JWT
+@app.route('/protegida')
+@jwt_required()
+def protegida():
+    # Acceder a la identidad del usuario desde el JWT
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
+Estructura de directorios:
+bash
+Copiar código
+myapp/
+│
+├── app.py            # Archivo principal con la lógica de Flask
+└── templates/
+    └── index.html    # Template donde se renderiza el JWT
+Paso 3: Crear el template index.html
+El archivo index.html es el template donde vamos a pasar el JWT desde el backend de Flask al frontend. En este caso, vamos a pasar el JWT desde el servidor a un script de JavaScript en el frontend.
+
+templates/index.html
+html
+Copiar código
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación con JWT</title>
+</head>
+<body>
+    <h1>Bienvenido a la aplicación con JWT</h1>
+
+    <div id="app">
+        <!-- El token JWT se colocará en un elemento oculto -->
+        <input type="hidden" id="jwt_token" value="{{ jwt_token }}">
+    </div>
+
+    <script>
+        // Obtener el JWT desde el HTML (en un elemento oculto)
+        const token = document.getElementById('jwt_token').value;
+        console.log("Token JWT:", token);
+
+        // Ahora, el token está disponible para realizar solicitudes HTTP (por ejemplo, usando fetch)
+    </script>
+</body>
+</html>
+Paso 4: Modificar el backend para pasar el JWT a la plantilla
+En el backend (app.py), antes de renderizar el template, generamos el token JWT y lo pasamos al frontend como parte del contexto al renderizar el template.
+
+Modificación en app.py:
+python
+Copiar código
+@app.route('/')
+def index():
+    # Aquí generamos el token JWT (esto se hace solo como ejemplo)
+    # En una aplicación real, probablemente deberías generar el token después de un login exitoso.
+    token = create_access_token(identity="admin")  # Esto es solo un ejemplo
+    
+    # Pasamos el token al template
+    return render_template('index.html', jwt_token=token)
+Explicación de cómo funciona:
+Generación del token JWT: En la ruta index(), generamos un token JWT de ejemplo con el usuario admin. Este es solo un ejemplo para mostrar cómo pasar el token al template. En una aplicación real, el token debería generarse después de un proceso de inicio de sesión en la ruta /login.
+
+Renderizado del template: Cuando se llama a render_template('index.html', jwt_token=token), pasamos el token generado como una variable de contexto llamada jwt_token al template.
+
+Uso del token en el frontend: En el archivo index.html, utilizamos el motor de plantillas Jinja2 de Flask para incrustar el valor de jwt_token en un elemento HTML oculto (<input type="hidden" id="jwt_token" value="{{ jwt_token }}">).
+
+Acceso al token desde JavaScript: En el script de JavaScript en el frontend, obtenemos el token desde el campo oculto con document.getElementById('jwt_token').value. Ahora el token está disponible en el frontend y puede ser utilizado para realizar solicitudes HTTP autenticadas o almacenarlo para su uso posterior.
+
+Paso 5: Probar la aplicación
+Inicia el servidor Flask con:
+
+bash
+Copiar código
+python app.py
+Abre tu navegador y ve a http://127.0.0.1:5000/. Deberías ver el mensaje "Bienvenido a la aplicación con JWT" y el token JWT impreso en la consola del navegador.
+
+Si quieres ver el token en la consola del navegador, abre las herramientas de desarrollador (F12 en la mayoría de los navegadores) y revisa la consola.
+
+Paso 6: Realizar solicitudes autenticadas con el token
+Ahora que tienes el token en el frontend, puedes usarlo para realizar solicitudes autenticadas a rutas protegidas en Flask.
+
+Por ejemplo, para realizar una solicitud GET a la ruta /protegida usando fetch en JavaScript:
+
+javascript
+Copiar código
+fetch('/protegida', {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${token}`
+    }
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.log('Error:', error));
+Conclusión
+En este ejemplo, hemos creado una aplicación Flask con JWT donde:
+
+Generamos un token JWT en el backend.
+Pasamos ese token al frontend a través de un template de Jinja2.
+En el frontend, usamos JavaScript para acceder al token y luego utilizarlo en solicitudes autenticadas.
+Este flujo es común en aplicaciones que manejan autenticación basada en JWT, y puedes adaptarlo para interactuar con APIs y manejar la autenticación de manera segura.
+
+
+
+
+
+
+
+ChatGPT puede cometer errores. Comprueba la información importante.
+?

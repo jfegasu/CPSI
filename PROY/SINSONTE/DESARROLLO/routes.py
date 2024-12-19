@@ -7,6 +7,8 @@ from api.apicnx import *
 from api.config import configura
 import jwt
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+
 def create_app():
     app=Flask(__name__)
     CORS(app)
