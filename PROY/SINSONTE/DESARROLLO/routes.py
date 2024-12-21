@@ -49,7 +49,6 @@ def Unidad():
         
 @app.route("/u/d/<id>")
 def BorraUnidad3(id):
-    print("*****>",id)
     N=3
     return render_template("unidad.html",N=N,url=configura['PUERTOREST'],ID=id)
 @app.route("/u/d31",methods=["POST","DELETE"])

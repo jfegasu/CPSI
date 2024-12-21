@@ -9,6 +9,29 @@
     <div class="card-body" >
 
 <a class="btn btn-outline-primary" href="/cpw"><i class="fa fa-refresh"></i> Cambiar clave</a><hr>
+<!-- <button id="enviar_token">Enviar JWT al servidor</button>
+
+    <script>
+        document.getElementById('enviar_token').onclick = function() {
+            var token = document.getElementById('jwt_token').value;
+            alert("ok")
+            // Enviar el token al servidor usando AJAX
+            fetch('/cpw', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ token: token })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Respuesta del servidor:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        };
+    </script> -->
 <div style="width:70%;padding: 10,10,10,10;">
 <center>
     <a href="/region" class="btn btn-outline-primary sena-borde" id="bt" style="width: 90%;padding-bottom: 10px;">Regiones</a><br><br>

@@ -7,6 +7,7 @@ import smtplib
 import os
 import jwt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+# from decouple import config
 
 
 app=Flask(__name__)
@@ -66,7 +67,7 @@ def Raiz1():
             """
             
             # EnviaCorreo('fegasu@gmail.com','CENTRO DE PRODUCCION DE SOLUCIONES INTELIGENTES SENA',html)
-            # CorreosHTML('fegasu@gmail.com','CENTRO DE PRODUCCION DE SOLUCIONES INTELIGENTES SENA',html)
+            #TODO CorreosHTML('fegasu@gmail.com','CENTRO DE PRODUCCION DE SOLUCIONES INTELIGENTES SENA',html)
             return render_template("paso1.html", msgito=msgito,regreso=regreso, jwt_token=token)
         except Exception as e:
             msgito="USUARIO O CREDENCIALES NO VALIDOS"
@@ -81,7 +82,7 @@ def Raiz1():
     return cade
 
 @app.route("/paso1")
-@jwt_required()
+
 def Paso1():
     try:
         current_user = get_jwt_identity()
@@ -90,13 +91,13 @@ def Paso1():
     except Exception as e:
         msgito="NO HA VALIDADO CREDENCIALES <paso1>"
         regreso="/"
-        # logger.error('ERROR: '+msgito+' ')
+        #TODO: registrar en el log
         Au.registra(40,msgito,'')
         return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
 
 @app.route("/cpw")
-
+# @jwt_required()
 def cpwd():
     # current_user = get_jwt_identity()
     if Utiles.ValidaSesion():
