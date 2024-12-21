@@ -12,7 +12,6 @@
 <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vTc_6H2AzaWIW1Hh5M3a5u8uYf_AvnHKsRf7LNTR7kpLC5KB1pg6al53u4Kdt3MSw/pub?start=false&loop=false&delayms=3000">CAPA DE PERSISTENCIA 1</a></li>
 <li><a href="https://drive.google.com/file/d/1KeQ5qJ-zQggqKHSbRcI-KTWQ7TvzV9pY/view?usp=drive_link">CAPA DE PERSISTENCIA 2</a></li>
 
-<li><a href="https://github.com/Jfegasu/CPSI/tree/main/NOVEDADES#readme">PROYECTO NOVEDADES AMBIENTE DE FORMACION</a></li>
 
 </ul>
  
