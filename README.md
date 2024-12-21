@@ -5,14 +5,14 @@
 <br>
 <ul>
 <li>
-<a href="https://github.com/fegasu/CPSI/blob/main/APIREST.md">CONSUMIR SERVICIOS APIRESTS</a></li>
+<a href="https://github.com/Jfegasu/CPSI/blob/main/APIREST.md">CONSUMIR SERVICIOS APIRESTS</a></li>
 <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vSTzLSx6Wo2IrYrcESQlpIe0vFapdvG0cGtbQF4he1RptdsjKZWBMAjplsGresQsw/pub?start=false&loop=false&delayms=3000">PRESENTACION BLUEPRINT</a></li>
 <li><a href="https://ecampuzano.notion.site/Crear-una-API-Flask-con-Blueprints-y-MongoDB-ab1c48df22734de6928c6a7e01914de2">EJEMPLO BLUEPRINT</a></li>
 
 <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vTc_6H2AzaWIW1Hh5M3a5u8uYf_AvnHKsRf7LNTR7kpLC5KB1pg6al53u4Kdt3MSw/pub?start=false&loop=false&delayms=3000">CAPA DE PERSISTENCIA 1</a></li>
 <li><a href="https://drive.google.com/file/d/1KeQ5qJ-zQggqKHSbRcI-KTWQ7TvzV9pY/view?usp=drive_link">CAPA DE PERSISTENCIA 2</a></li>
 
-<li><a href="https://github.com/fegasu/CPSI/tree/main/NOVEDADES#readme">PROYECTO NOVEDADES AMBIENTE DE FORMACION</a></li>
+<li><a href="https://github.com/Jfegasu/CPSI/tree/main/NOVEDADES#readme">PROYECTO NOVEDADES AMBIENTE DE FORMACION</a></li>
 
 </ul>
  
