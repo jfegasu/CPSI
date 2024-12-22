@@ -9,7 +9,7 @@
 
 >[PRESENTACION ANACONDA](https://t.ly/2y_WW)<BR>
 >[PRESENTACION BLUEPRINT](http://t.ly/7vC89)<BR>
->[CAPA DE PERSISTENCIA 1](https://drive.google.com/drive/u/0/folders/1MDFhfnRDhSMPcpLNSDrMlu9bJCENrzeP)<BR>
+>[CAPA DE PERSISTENCIA 1](https://tinyurl.com/26jak3xz)<BR>
 >[CAPA DE PERSISTENCIA 2](https://t.ly/sI2bD)<BR>
 
 
