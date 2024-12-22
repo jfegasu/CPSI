@@ -16,7 +16,7 @@
             var token = document.getElementById('jwt_token').value;
             alert("ok")
             // Enviar el token al servidor usando AJAX
-            fetch('/cpw', {
+            fetch('/cpw', 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

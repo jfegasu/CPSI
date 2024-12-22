@@ -2,13 +2,12 @@
 {% block content %}
 <br>
 <script>
-    function revisa(){
-        let p1=document.getElementById(pw2).Value;
-        let p2=document.getElementById(pw3).Value;
-        alert(p2);
-        return false;
-        
+
+    function regresa(donde) {
+    location.href='/paso1'
     }
+;
+
 </script>
 <div class="coard  mx-auto border sena-borde" style="width:70%;">
     <div class="card-header w3-black">
@@ -35,7 +34,7 @@
                     
                 </table>
                 <center><input class="btn btn-outline-primary" type="submit" value="Ingresar">
-                    <a href="/logout" class="btn btn-outline-danger" ><i class="fa fa-home"></i>Regresar</a>
+                    <a href="javascript:regresa('/paso1')" class="btn btn-outline-danger" ><i class="fa fa-home"></i>Regresar</a>
             </form>
         </td>
             <td><img src="{{url_for('static',filename='images/RequisitosPWD.png')}}"</td>

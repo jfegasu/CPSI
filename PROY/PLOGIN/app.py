@@ -7,7 +7,7 @@ import smtplib
 import os
 import jwt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-# from decouple import config
+#TODO from decouple import config
 
 
 app=Flask(__name__)
@@ -80,12 +80,11 @@ def Raiz1():
     session.permanent = True
     session['usuario'] = usua
     return cade
-
 @app.route("/paso1")
-
 def Paso1():
     try:
         current_user = get_jwt_identity()
+        print(current_user)
         cur = mysql.connection.cursor()
         return render_template("paso1.html")
     except Exception as e:
