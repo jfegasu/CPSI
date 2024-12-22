@@ -8,7 +8,7 @@
 
 
 <!-- > -<a href="https://github.com/Jfegasu/CPSI/blob/main/APIREST.md">CONSUMIR SERVICIOS APIRESTS</a><BR> -->
->[PRESENTACION ANACONDA](https://t.ly/vtjWT)<BR>
+>[PRESENTACION ANACONDA](https://t.ly/2y_WW)<BR>
 >[PRESENTACION BLUEPRINT](http://t.ly/5jry2)<BR>
 ><a href="https://t.ly/5qqlo">EJEMPLO BLUEPRINT</a><BR>
 >[CAPA DE PERSISTENCIA 1](https://t.ly/G3emX)<BR>
