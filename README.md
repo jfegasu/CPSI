@@ -5,9 +5,6 @@
 <img src="https://tinyurl.com/29kam4wb">
 <br>
 <HR><H3>TALLERES</H3><HR>
-
-
-
 <!-- > -<a href="https://github.com/Jfegasu/CPSI/blob/main/APIREST.md">CONSUMIR SERVICIOS APIRESTS</a><BR> -->
 >[PRESENTACION ANACONDA](https://t.ly/2y_WW)<BR>
 >[PRESENTACION BLUEPRINT](http://t.ly/7vC89)<BR>
