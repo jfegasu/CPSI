@@ -426,3 +426,6 @@ grant all privileges on hr.* to 'admin';
 FLUSH PRIVILEGES;
 ALTER USER 'admin'@'localhost' IDENTIFIED BY 'admin';
 FLUSH PRIVILEGES;
+
+create user 'prueba'@'localhost' identified by 'prueba';
+

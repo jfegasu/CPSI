@@ -29,6 +29,8 @@ Au=Auditor()
 @app.route("/") # Envia al template login.html
 def Raiz():
     session['usuario']='prueba'    
+    session['clave']='prueba'    
+    
     fecha=datetime.now()
     fe=str(fecha.year)+str(fecha.month)+str(fecha.day)
     
