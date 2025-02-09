@@ -420,3 +420,9 @@ WHERE e.department_id = d.department_id
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+create user 'admin'@'localhost' identified by 'admin';
+grant all privileges on hr.* to 'admin';
+FLUSH PRIVILEGES;
+ALTER USER 'admin'@'localhost' IDENTIFIED BY 'admin';
+FLUSH PRIVILEGES;
