@@ -3,6 +3,7 @@ import json
 from flask_mysqldb import MySQL
 from utils.Utilitarios import Auditor,Utiles
 from datetime import datetime,timedelta
+from databases.databases import *
 
 app=Flask(__name__)
 app.config['MYSQL_HOST'] = '127.0.0.1'
@@ -23,6 +24,8 @@ app.config['SECRET_KEY'] = "akDFJ34mdfsYMH567sdf" # this must be set in order to
 # app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
 mysql = MySQL()
 
+CargarBD(app.config)
+mysql = MySQL(app)
 
 Au=Auditor()
 
@@ -53,10 +56,9 @@ def Raiz1():
         #     return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
         try:
-            app.config['MYSQL_HOST'] = 'localhost'
+            
             app.config['MYSQL_USER'] = usua
             app.config['MYSQL_PASSWORD'] = pw
-            app.config['MYSQL_DB'] = 'hr'
             cur = mysql.connection.cursor()
 
             msgito="BIENVENIDO"
@@ -65,10 +67,11 @@ def Raiz1():
             Au.registra(30,msgito,usua )
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
         except Exception as e:
-            print(f"Error: {e}")
-            msgito="USUARIO O CREDENCIALES NO VALIDOS "
+            # print(f"Error: {e}")
+            msgito=f"USUARIO O CREDENCIALES NO VALIDOS"
             regreso="/"
             usua=''
+            print(str(e))
             Au.registra(40,msgito,app.config['MYSQL_USER'])
             
             return render_template("alerta.html", msgito=msgito,regreso=regreso)
