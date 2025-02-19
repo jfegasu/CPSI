@@ -40,44 +40,16 @@ def Raiz():
     return render_template("login.html")
 @app.route("/v",methods=['POST']) # Verifica que no sea el usuario root y que las credenciales sean válidas
 def Raiz1():
-    if request.method == 'POST':
-        usua = request.form.get('usua')
-        pw = request.form.get('pw')
-        
-        # Utiles.Inyeccion(usua,'usuario')
-        # Utiles.Inyeccion(pw,'clave')
-              
-        # if not usua=="root":
-        #     print(usua)
-        # else:
-        #     msgito="NO SE PUEDE UTILIZAR EL USUARIO ROOT"
-        #     regreso="/" 
-        #     Au.registra(30,msgito,'')       
-        #     return render_template("alerta.html", msgito=msgito,regreso=regreso)
+    # app.config['MYSQL_USER'] = usua
+    # app.config['MYSQL_PASSWORD'] = pw
+    # cur = mysql.connection.cursor()
 
-        try:
-            
-            app.config['MYSQL_USER'] = usua
-            app.config['MYSQL_PASSWORD'] = pw
-            cur = mysql.connection.cursor()
-
-            msgito="BIENVENIDO"
-            regreso="/paso1"
-            # logger.error('INFO: ingresa '+usua)
-            Au.registra(30,msgito,usua )
-            return render_template("alerta.html", msgito=msgito,regreso=regreso)
-        except Exception as e:
-            # print(f"Error: {e}")
-            msgito=f"USUARIO O CREDENCIALES NO VALIDOS"
-            regreso="/"
-            usua=''
-            print(str(e))
-            Au.registra(40,msgito,app.config['MYSQL_USER'])
-            
-            return render_template("alerta.html", msgito=msgito,regreso=regreso)
-    session.permanent = True
-    session['usuario'] = usua
-    return usua
+    msgito="BIENVENIDO"
+    regreso="/paso1"
+    usua="admin"
+    # logger.error('INFO: ingresa '+usua)
+    Au.registra(30,msgito,usua )
+    return render_template("alerta.html", msgito=msgito,regreso=regreso)
 
 @app.route("/paso1")
 def Paso1():

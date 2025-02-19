@@ -26,20 +26,28 @@
 {% endblock %}
   </head>
   <body>
-    {% include 'banner.html' %}
-  </div>
-  
-      <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="/paso1">Inicio</a> 
-        <a class="navbar-brand" href="/">Terminar</a>  
-      </nav>
-      
-    {% block content %}
-    q{% endblock content %}
-  </div>   
 
-  <br> 
-   <br>
+  <div class="containerg">
+    <div class="banner">
+      {% include 'banner.html' %}
+    </div>
+<div class="menu">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/paso1">Inicio</a>
+  <a class="navbar-brand" href="/">Terminar</a>
+  </nav>
+
+    </div>
+  <div class="contenidos">
+    {% block content %}
+    {% endblock content %}
+  </div>
+
+
+
+  </div> 
+  
+   
   </body>
   <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{url_for('static',filename='css/w3css.min.css')}}" rel="stylesheet">

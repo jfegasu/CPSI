@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-.container{
+*{
+  margin:0;
+
+}
+.containerf{
   display: flex;
   width: 800px;
   flex-direction: row;
@@ -9,7 +13,52 @@
   align-items:flex-start;
   gap: 10px;
 }
+.containerg{
+  display: grid;
+  width: 90%;
+  height: 500px;
+  grid-template-rows: 1fr;
+  gap: 10px;
+  padding: 1em;
+  align-items: center;
+  margin:auto;
+  
+  grid-template-areas: 
+  "header"
+  "banner"
+  "menu"
+  "contenido"
+  "pie";
+}
+.menu{
+  grid-area: menu;
+  width: 100%;
+}
+.banner{
+  grid-area: banner;
+  width: 100%;
+}
+.contenidos{
+  grid-area: contenido;
+  width: 100%;
+  overflow: auto;
+  border: solid 1px  #000;
+  border-radius: 10px;
+  align-items: center;
+  margin:auto;
+  padding: 0.625em;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 1px solid black;-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 
+}
+.pie{
+  grid-area: pie;
+  
+}
 
 table{
   font-size: 14pt;
@@ -174,6 +223,8 @@ select{
   }
   .sena-navbar{
     background-color:rgb(1, 1, 32);
+    display: flex;
+    justify-content: flex-end;
   }
   .sena-btn {
   cursor:pointer;    
@@ -433,6 +484,11 @@ border: 1px solid #000000;
     box-shadow: var(--primary-shadow);
 }
 
+@media (min-width: 600px) and (max-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+}
 @media(max-width: 1200px) {
     .sena__container {
         display: grid;
@@ -661,4 +717,10 @@ border: 1px solid #000000;
 
 .modal-icon {
   margin-bottom: 3px;
+}
+
+@media (min-width: 1025px) {
+  body {
+    font-size: 20px;
+  }
 }
